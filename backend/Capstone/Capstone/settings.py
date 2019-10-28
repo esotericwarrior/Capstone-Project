@@ -92,8 +92,13 @@ WSGI_APPLICATION = 'Capstone.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'djongo',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'grandpa1',
+        'HOST': 'mongodb+srv://sample_user:467grandpapassword@cluster0-sjdfw.mongodb.net/test?retryWrites=true&w=majority',
+        'USER': 'sample_user',
+        'PASSWORD': '467grandpapassword',
     }
 }
 
