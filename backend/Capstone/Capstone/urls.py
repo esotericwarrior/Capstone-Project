@@ -24,6 +24,13 @@ from users.forms import CustomUserForm
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    # Registration path
+    path("accounts/register/",
+        RegistrationView.as_view(
+            form_class=CustomUserForm,  # Use CustomUserForm fields in registration form
+            success_url="/",    # Route to homepage on successful login
+            ), name="django_registration_register"),
+
     # Remaining URL paths included in django registration package
     path("accounts/",
         include("django_registration.backends.one_step.urls")),
