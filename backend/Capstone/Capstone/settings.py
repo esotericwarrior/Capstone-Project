@@ -135,3 +135,13 @@ STATIC_URL = '/static/'
 
 # Custom User Model
 AUTH_USER_MODEL = "users.CustomUser"
+
+# django-crispy-forms
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+# django.contrib.ssites
+SITE_ID = 1
+
+# django-allauth
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_REQUIRED = (True)
