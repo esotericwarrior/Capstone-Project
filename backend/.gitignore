@@ -7,6 +7,7 @@ node_modules
 .env.*.local
 
 env
+*.__pycache__*
 
 # Log files
 npm-debug.log*
