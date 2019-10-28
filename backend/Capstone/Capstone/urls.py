@@ -18,4 +18,20 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # Remaining URL paths included in django registration package
+    path("accounts/",
+        include("django_registration.backends.one_step.urls")),
+
+    # Login via browsable URI
+    path("api-auth/",
+        include("rest_framework.urls")),
+
+    # Login endpoints via REST
+    path("api/rest-auth/",
+        include("rest_auth.urls")),
+
+    # Registration endpoint via REST
+    path("api/rest-auth/registration/",
+        include("rest_auth.registration.urls")),
 ]
