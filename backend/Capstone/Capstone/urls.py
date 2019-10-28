@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+# One-step activation workflow to skip email verification for now:
+from django_registration.backends.one_step.views import RegistrationView
+
+from users.forms import CustomUserForm
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
