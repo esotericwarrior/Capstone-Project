@@ -35,6 +35,10 @@ urlpatterns = [
     path("accounts/",
         include("django_registration.backends.one_step.urls")),
 
+    # Login path (provided by django)
+    path("accounts/",
+        include("django.contrib.auth.urls")),
+
     # Login via browsable URI
     path("api-auth/",
         include("rest_framework.urls")),
