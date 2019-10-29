@@ -40,6 +40,10 @@ urlpatterns = [
     path("accounts/",
         include("django.contrib.auth.urls")),
 
+    #  Users API path
+    path("api/",
+        include("users.api.urls")),
+
     # Login via browsable URI
     path("api-auth/",
         include("rest_framework.urls")),
