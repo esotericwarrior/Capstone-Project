@@ -32,7 +32,7 @@ Before getting started you should have the following installed and running:
 - [X] Yarn - [instructions](https://yarnpkg.com/en/docs/install)
 - [X] Vue CLI 3 - [instructions](https://cli.vuejs.org/guide/installation.html)
 - [X] Python 3 - [instructions](https://wiki.python.org/moin/BeginnersGuide)
-- [X] Pip - [instructions] (https://pypi.org/project/pip/)
+- [X] Pip - [instructions](https://pypi.org/project/pip/)
 - [X] Pipenv - [instructions](https://pipenv.readthedocs.io/en/latest/install/#installing-pipenv)
 
 ## Setup Template
