@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar color="">
+    <v-app-bar color="" fixed>
       <v-spacer></v-spacer>
       <v-btn class="ml-4" icon to="/">
         <v-icon>mdi-home</v-icon>
@@ -30,7 +30,7 @@
         <font-awesome-icon icon="user-circle" size="2x" />
       </v-btn>
       <v-spacer></v-spacer>
-    </v-toolbar>
+    </v-app-bar>
   </div>
 </template>
 <script>
