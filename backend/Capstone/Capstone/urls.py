@@ -44,6 +44,10 @@ urlpatterns = [
     path("api/",
         include("users.api.urls")),
 
+    # Posts Paths
+    path("api/",
+        include("posts.api.urls")),
+
     # Login via browsable URI
     path("api-auth/",
         include("rest_framework.urls")),
