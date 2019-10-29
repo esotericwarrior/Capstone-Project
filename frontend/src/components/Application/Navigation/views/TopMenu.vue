@@ -23,6 +23,9 @@
         v-model="search"
       >
       </v-text-field>
+      <v-btn icon>
+        <v-icon>mdi-bell</v-icon>
+      </v-btn>
     </v-toolbar>
   </div>
 </template>
