@@ -17,6 +17,7 @@ class PostViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
+
 class CommentCreateAPIView(generics.CreateAPIView):
     """Allow users to Comment a Post instance if they haven't already."""
     queryset = Comment.objects.all()
@@ -34,6 +35,7 @@ class CommentCreateAPIView(generics.CreateAPIView):
 
         serializer.save(author=request_user, post=post)
 
+
 class CommentListAPIView(generics.ListAPIView):
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticated]
@@ -41,3 +43,10 @@ class CommentListAPIView(generics.ListAPIView):
     def get_queryset(self):
         kwarg_slug = self.kwargs.get("slug")
         return Comment.objects.filter(post__slug=kwarg_slug).order_by("-created_at")
+
+
+class CommentRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
+    """Provide *RUD functionality for a Comment instance to its author."""
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
