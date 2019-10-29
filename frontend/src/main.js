@@ -6,12 +6,14 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faBell,
   faHome,
+  faSearch,
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
   faBell,
   faHome,
+  faSearch,
   faUserCircle
 );
 
