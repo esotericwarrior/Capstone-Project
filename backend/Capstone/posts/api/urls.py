@@ -23,4 +23,9 @@ urlpatterns = [
     path("comments/<int:pk>/",  # /comments/integer-primarykey/
          pv.CommentRUDAPIView.as_view(),
          name="comment-detail"),
+
+    # Path to like a specific comment.
+    path("comments/<int:pk>/like/", # /comments/integer-primarykey/like/
+         pv.CommentLikeAPIView.as_view(),
+         name="comment-like")
 ]
