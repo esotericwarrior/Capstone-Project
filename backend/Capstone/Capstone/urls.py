@@ -51,4 +51,7 @@ urlpatterns = [
     # Registration endpoint via REST
     path("api/rest-auth/registration/",
         include("rest_auth.registration.urls")),
+
+    # Catch all for other paths
+    re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point")
 ]
