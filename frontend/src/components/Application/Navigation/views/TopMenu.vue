@@ -1,5 +1,7 @@
 <template>
-  <div id=""></div>
+  <div>
+    <v-toolbar color=""> </v-toolbar>
+  </div>
 </template>
 <script>
 export default {
