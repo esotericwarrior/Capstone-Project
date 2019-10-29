@@ -14,11 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path, re_path
 
 # One-step activation workflow to skip email verification for now:
 from django_registration.backends.one_step.views import RegistrationView
 
+from core.views import IndexTemplateView
 from users.forms import CustomUserForm
 
 urlpatterns = [
