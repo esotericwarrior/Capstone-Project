@@ -5,11 +5,13 @@ import vuetify from "./plugins/vuetify";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faBell,
+  faHome,
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
   faBell,
+  faHome,
   faUserCircle
 );
 
