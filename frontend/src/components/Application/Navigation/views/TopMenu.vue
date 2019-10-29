@@ -31,7 +31,12 @@ export default {
   name: "TopMenu",
   data: () => ({
     search: ""
-  })
+  }),
+  methods: {
+    clearSearch() {
+      this.search = "";
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>
