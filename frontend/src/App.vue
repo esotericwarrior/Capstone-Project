@@ -1,15 +1,17 @@
 <template>
   <v-app>
-    <v-app-bar app> </v-app-bar>
-
-    <v-content> </v-content>
+    <TopMenu />
   </v-app>
 </template>
 
 <script>
+import { TopMenu } from "@/components/Application/Navigation";
+
 export default {
   name: "App",
-  components: {},
+  components: {
+    TopMenu
+  },
   data: () => ({
     //
   })
