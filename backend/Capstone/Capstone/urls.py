@@ -22,7 +22,11 @@ from django_registration.backends.one_step.views import RegistrationView
 from core.views import IndexTemplateView
 from users.forms import CustomUserForm
 
+# Link to docs which explain adding two-step activation workflow (email verification):
+# https://django-registration.readthedocs.io/en/3.0/activation-workflow.html
+
 urlpatterns = [
+    # Admin path
     path('admin/', admin.site.urls),
 
     # Registration path
@@ -40,11 +44,11 @@ urlpatterns = [
     path("accounts/",
         include("django.contrib.auth.urls")),
 
-    #  Users API path
+    # Users API path
     path("api/",
         include("users.api.urls")),
 
-    # Posts Paths
+    # Posts paths
     path("api/",
         include("posts.api.urls")),
 
