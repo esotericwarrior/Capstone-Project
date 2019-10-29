@@ -11,6 +11,18 @@
           App Title / Logo
         </div>
       </v-toolbar-title>
+      <v-text-field
+        append-icon="mdi-magnify"
+        class="mx-3 pt-7"
+        clearable
+        @click:clear="clearSearch"
+        color="primary"
+        flat
+        label="Search"
+        solo-inverted
+        v-model="search"
+      >
+      </v-text-field>
     </v-toolbar>
   </div>
 </template>
