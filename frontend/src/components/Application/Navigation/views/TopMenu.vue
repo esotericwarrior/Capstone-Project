@@ -29,6 +29,7 @@
       <v-btn icon>
         <font-awesome-icon icon="user-circle" size="2x" />
       </v-btn>
+      <v-spacer></v-spacer>
     </v-toolbar>
   </div>
 </template>
