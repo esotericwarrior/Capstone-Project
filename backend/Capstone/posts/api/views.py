@@ -9,6 +9,25 @@ from posts.api.permissions import IsAuthorOrReadOnly
 from posts.api.serializers import CommentSerializer, PostSerializer
 from posts.models import Comment, Post
 
+
+class CommentLikeAPIView(APIView):
+    """Allow users to add/remove a like to/from an Comment instance."""
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, pk):  # Unlike
+        """Remove request.user from the 'likers' queryset of an Comment instance."""
+        comment = get_object_or_404(Comment, pk=pk)
+        user = request.user
+
+        comment.likers.remove(user) # Remove user's like from instance
+        comment.save()  # Save the instance
+
+        serializer_context = {"request": request}
+        serializer = self.serializer_class(comment, context=serializer_context)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 class PostViewSet(viewsets.ModelViewSet):
     """Provide CRUD +L functionality for Post."""
     queryset = Post.objects.all()
