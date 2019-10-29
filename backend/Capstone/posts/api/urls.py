@@ -18,4 +18,9 @@ urlpatterns = [
     path("posts/<slug:slug>/comment/",  # /posts/slug+randomly_generated_string/comment/
          pv.CommentCreateAPIView.as_view(),
          name="comment-create"),
+
+    # Path to view a specific comment.
+    path("comments/<int:pk>/",  # /comments/integer-primarykey/
+         pv.CommentRUDAPIView.as_view(),
+         name="comment-detail"),
 ]
