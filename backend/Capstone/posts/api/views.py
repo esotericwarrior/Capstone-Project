@@ -33,3 +33,11 @@ class CommentCreateAPIView(generics.CreateAPIView):
             raise ValidationError("You have already commented on this post!")
 
         serializer.save(author=request_user, post=post)
+
+class CommentListAPIView(generics.ListAPIView):
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        kwarg_slug = self.kwargs.get("slug")
+        return Comment.objects.filter(post__slug=kwarg_slug).order_by("-created_at")
