@@ -1,12 +1,13 @@
 .DS_Store
 node_modules
 /dist
-env
-*.__pycache__*
 
 # local env files
 .env.local
 .env.*.local
+
+env
+*.__pycache__*
 
 # Log files
 npm-debug.log*

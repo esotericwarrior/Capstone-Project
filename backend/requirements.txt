@@ -1,4 +1,31 @@
+<<<<<<< HEAD
 Django==2.2.6
 djangorestframework==3.10.3
 pytz==2019.3
 sqlparse==0.3.0
+=======
+certifi==2019.9.11
+chardet==3.0.4
+confusable-homoglyphs==3.2.0
+defusedxml==0.6.0
+Django==2.2.6
+django-allauth==0.40.0
+django-crispy-forms==1.8.0
+django-registration==3.0.1
+django-rest-auth==0.9.5
+django-webpack-loader==0.6.0
+djangorestframework==3.10.3
+djongo==1.2.36
+dnspython==1.16.0
+idna==2.8
+oauthlib==3.1.0
+python3-openid==3.1.0
+pytz==2019.3
+requests==2.22.0
+requests-oauthlib==1.2.0
+six==1.12.0
+sqlparse==0.2.4
+urllib3==1.25.6
+ 
+ 
+>>>>>>> 91be1bde9fff02a9f19c97d13830e68f324246a3
