@@ -47,7 +47,7 @@ Setup
 $ yarn install
 $ pipenv install --dev && pipenv shell
 $ source venv/Scripts/activate (from within `/backend/venv`)
-$ pip install -r requirements.txt
+$ pip install -r requirements.txt (from within `/backend`)
 $ python manage.py makemigrations
 $ python manage.py migrate
 ```
