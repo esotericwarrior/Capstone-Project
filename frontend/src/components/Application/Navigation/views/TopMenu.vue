@@ -29,7 +29,9 @@
 <script>
 export default {
   name: "TopMenu",
-  data: () => ({})
+  data: () => ({
+    search: ""
+  })
 };
 </script>
 <style lang="scss" scoped></style>
