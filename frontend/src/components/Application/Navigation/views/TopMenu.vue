@@ -1,6 +1,8 @@
 <template>
   <div>
-    <v-toolbar color=""> </v-toolbar>
+    <v-toolbar color="">
+      <v-spacer></v-spacer>
+    </v-toolbar>
   </div>
 </template>
 <script>
