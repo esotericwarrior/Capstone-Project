@@ -42,6 +42,13 @@ class CommentLikeAPIView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+class CommentRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
+    """Provide *RUD functionality for a Comment instance to its author."""
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
+
+
 class PostViewSet(viewsets.ModelViewSet):
     """Provide CRUD +L functionality for Post."""
     queryset = Post.objects.all()
@@ -70,7 +77,6 @@ class CommentCreateAPIView(generics.CreateAPIView):
 
         serializer.save(author=request_user, post=post)
 
-
 class CommentListAPIView(generics.ListAPIView):
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticated]
@@ -78,10 +84,3 @@ class CommentListAPIView(generics.ListAPIView):
     def get_queryset(self):
         kwarg_slug = self.kwargs.get("slug")
         return Comment.objects.filter(post__slug=kwarg_slug).order_by("-created_at")
-
-
-class CommentRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
-    """Provide *RUD functionality for a Comment instance to its author."""
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
-    permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
