@@ -26,12 +26,20 @@
       <v-btn icon>
         <v-icon>mdi-bell</v-icon>
       </v-btn>
+      <v-btn icon>
+        <font-awesome-icon icon="user-circle" size="2x" />
+      </v-btn>
     </v-toolbar>
   </div>
 </template>
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
 export default {
   name: "TopMenu",
+  components: {
+    FontAwesomeIcon
+  },
   data: () => ({
     search: ""
   }),
