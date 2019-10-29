@@ -4,8 +4,8 @@ module.exports = {
     // On Linux you might want to set publicPath: "http://0.0.0.0:8080/"
     publicPath: "http://127.0.0.1:8080/",
     outputDir: './dist/',
-    transpileDependencies: ["vuetify"]
-    
+    transpileDependencies: ["vuetify"],
+
     chainWebpack: config => {
 
         config
