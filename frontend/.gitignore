@@ -3,12 +3,15 @@
 node_modules
 /dist
 env
+venv
 *.__pycache__*
 webpack-stats.json
 
 # local env files
 .env.local
 .env.*.local
+.venv.local
+.venv.*.local
 
 # Log files
 npm-debug.log*
