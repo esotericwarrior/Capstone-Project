@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+Django==2.2.6
+djangorestframework==3.10.3
+pytz==2019.3
+sqlparse==0.3.0
+=======
 certifi==2019.9.11
 chardet==3.0.4
 confusable-homoglyphs==3.2.0
@@ -22,3 +28,4 @@ sqlparse==0.2.4
 urllib3==1.25.6
  
  
+>>>>>>> 91be1bde9fff02a9f19c97d13830e68f324246a3

@@ -44,11 +44,11 @@ urlpatterns = [
     path("accounts/",
         include("django.contrib.auth.urls")),
 
-    #
+    # Users API path
     path("api/",
         include("users.api.urls")),
 
-    # Posts Paths
+    # Posts paths
     path("api/",
         include("posts.api.urls")),
 
