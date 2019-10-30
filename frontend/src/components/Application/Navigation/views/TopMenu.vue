@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--Scrolling Toolbar -->
-    <v-app-bar color="" fixed>
+    <v-app-bar color="">
       <v-spacer></v-spacer>
       <v-btn class="ml-4" icon to="/">
         <font-awesome-icon icon="home" size="2x" />
