@@ -4,7 +4,7 @@
     <v-app-bar color="" fixed>
       <v-spacer></v-spacer>
       <v-btn class="ml-4" icon to="/">
-        <v-icon>mdi-home</v-icon>
+        <font-awesome-icon icon="home" size="2x" />
       </v-btn>
       <v-divider class="mx-4" inset vertical></v-divider>
       <v-toolbar-title>
@@ -13,7 +13,6 @@
         </div>
       </v-toolbar-title>
       <v-text-field
-        append-icon="mdi-magnify"
         class="mx-3 pt-7"
         clearable
         @click:clear="clearSearch"
@@ -23,9 +22,12 @@
         solo-inverted
         v-model="search"
       >
+        <template v-slot:append>
+          <font-awesome-icon icon="search" size="lg" />
+        </template>
       </v-text-field>
       <v-btn icon>
-        <v-icon>mdi-bell</v-icon>
+        <font-awesome-icon icon="bell" size="2x" />
       </v-btn>
       <v-btn icon>
         <font-awesome-icon icon="user-circle" size="2x" />
