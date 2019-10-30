@@ -10,6 +10,7 @@ import {
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
 
+// Import the Icons used in the Application
 library.add(
   faBell,
   faHome,
