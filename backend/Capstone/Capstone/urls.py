@@ -21,6 +21,10 @@ from django_registration.backends.one_step.views import RegistrationView
 
 from core.views import IndexTemplateView
 from users.forms import CustomUserForm
+from iv.views import image_form_upload, video_form_upload
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 # Link to docs which explain adding two-step activation workflow (email verification):
 # https://django-registration.readthedocs.io/en/3.0/activation-workflow.html
@@ -64,6 +68,16 @@ urlpatterns = [
     path("api/rest-auth/registration/",
         include("rest_auth.registration.urls")),
 
+
+    path("upload/image/", image_form_upload, name="image"),
+
+    path("upload/video/", video_form_upload, name="video"),
+
     # Catch all for other paths
     re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point")
+
+
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

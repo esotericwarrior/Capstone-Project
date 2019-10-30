@@ -5,8 +5,6 @@ from django.contrib.auth.models import Group
 
 
 class CustomUserAdmin(UserAdmin):
-    # add_form =
-    # form =
     model = CustomUser
 
     # The fields to be used in displaying the User model.
