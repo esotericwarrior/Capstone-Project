@@ -37,6 +37,16 @@
               :rules="[v => !!v || 'A message is required']"
               class="grey lighten-5"
             ></v-textarea>
+            <v-btn
+              block
+              color="primary"
+              class="mr-4"
+              @click="validate"
+              :disabled="!valid"
+              large
+            >
+              Submit
+            </v-btn>
           </v-form>
         </v-card>
       </v-col>
