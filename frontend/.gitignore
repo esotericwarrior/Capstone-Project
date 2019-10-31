@@ -1,13 +1,19 @@
+# Misc related to npm and webpack
 .DS_Store
 node_modules
 /dist
 env
 venv
+/venv
+
 *.__pycache__*
+webpack-stats.json
 
 # local env files
 .env.local
 .env.*.local
+.venv.local
+.venv.*.local
 
 # Log files
 npm-debug.log*
