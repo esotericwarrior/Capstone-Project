@@ -1,14 +1,16 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <NewsFeed />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import { NewsFeed } from "@/components/Application/NewsFeed";
 
 export default {
   name: "home",
-  components: {}
+  components: {
+    NewsFeed
+  }
 };
 </script>
