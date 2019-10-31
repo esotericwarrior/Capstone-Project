@@ -22,7 +22,8 @@ export default {
           return pattern.test(value) || "Invalid e-mail.";
         }
       },
-      submitResult: ""
+      submitResult: "",
+      timeout: 3000
     };
   }
 };
