@@ -1,5 +1,7 @@
 <template>
-  <v-footer absolute color="primary lighten-1" padless> </v-footer>
+  <v-footer absolute color="primary lighten-1" padless>
+    <v-row justify="center" no-gutters> </v-row>
+  </v-footer>
 </template>
 <script>
 export default {
