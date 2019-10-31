@@ -1,5 +1,12 @@
 <template>
-  <div id="support"></div>
+  <v-container fluid fill-height align="center" justify="center">
+    <v-row align="center" justify="center" no-gutters>
+      <v-col align="center" justify="center" cols="12">
+        <h1>Contact Us</h1>
+        Remember to check out our tutorial videos for guided help.
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 <script>
 export default {
