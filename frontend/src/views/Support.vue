@@ -23,6 +23,11 @@ export default {
       timeout: 3000,
       valid: true
     };
+  },
+  methods: {
+    reset() {
+      this.$refs.form.reset();
+    }
   }
 };
 </script>
