@@ -1,11 +1,14 @@
 <template>
   <v-container> </v-container>
 </template>
+
 <script>
 export default {
   name: "NewsFeed",
   data() {
-    return {};
+    return {
+      posts: []
+    };
   }
 };
 </script>
