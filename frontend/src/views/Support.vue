@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid fill-height align="center" justify="center">
+  <v-container class="pa-10" align="center" justify="center">
     <v-row align="center" justify="center" no-gutters>
       <v-col align="center" justify="center" cols="12">
         <h1>Contact Us</h1>
