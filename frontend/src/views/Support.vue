@@ -24,6 +24,12 @@
               label="Name"
               required
             ></v-text-field>
+            <v-text-field
+              v-model="email"
+              :rules="emailRules"
+              label="E-mail"
+              required
+            ></v-text-field>
           </v-form>
         </v-card>
       </v-col>
