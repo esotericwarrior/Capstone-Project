@@ -11,7 +11,11 @@
         <v-col cols="4"><v-divider class="my-4"/></v-col>
       </v-col>
       <v-col cols="12">
-        <v-card class="mx-auto grey lighten-5" max-width="500" flat> </v-card>
+        <v-card class="mx-auto grey lighten-5" max-width="500" flat>
+          <v-card-title class="headline justify-center">
+            What can we do to help?
+          </v-card-title>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
