@@ -50,6 +50,17 @@
           </v-form>
         </v-card>
       </v-col>
+      <!-- Form Submission Snackbar -->
+      <v-snackbar
+        :color="formSubmitted ? 'success' : 'red'"
+        v-model="snackbar"
+        :timeout="timeout"
+      >
+        {{ submitResult }}
+        <v-btn dark text @click="snackbar = false">
+          Close
+        </v-btn>
+      </v-snackbar>
     </v-row>
   </v-container>
 </template>
