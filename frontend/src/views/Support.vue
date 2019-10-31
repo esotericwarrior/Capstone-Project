@@ -6,7 +6,8 @@ export default {
   name: "Support",
   data() {
     return {
-      email: ""
+      email: "",
+      message: ""
     };
   }
 };
