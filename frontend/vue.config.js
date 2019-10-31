@@ -31,6 +31,7 @@ module.exports = {
             .https(false)
             .disableHostCheck(true)
             .headers({"Access-Control-Allow-Origin": ["\*"]})
+            .historyApiFallback(true)
 
     },
 
