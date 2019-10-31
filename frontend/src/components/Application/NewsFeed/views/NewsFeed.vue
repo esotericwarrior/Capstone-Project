@@ -12,7 +12,8 @@ export default {
       posts: []
     };
   },
-  methods: {}
+  methods: {},
+  mounted: {}
 };
 </script>
 <style lang="scss" scoped></style>
