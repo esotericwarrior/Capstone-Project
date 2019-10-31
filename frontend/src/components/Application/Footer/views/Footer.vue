@@ -12,6 +12,12 @@
       >
         {{ link.title }}
       </v-btn>
+
+      <!-- Footer Text -->
+      <v-col class="primary lighten-2 py-4 text-center white--text" cols="12">
+        {{ new Date().getFullYear() }} —
+        <strong>OSU CS 467_400 Online Capstone</strong>
+      </v-col>
     </v-row>
   </v-footer>
 </template>
