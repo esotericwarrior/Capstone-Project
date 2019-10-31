@@ -23,7 +23,8 @@ export default {
         }
       },
       submitResult: "",
-      timeout: 3000
+      timeout: 3000,
+      valid: true
     };
   }
 };
