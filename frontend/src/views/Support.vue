@@ -9,6 +9,10 @@ export default {
       email: "",
       message: "",
       name: "",
+      nameRules: [
+        v => !!v || "Name is required",
+        v => (v && v.length <= 30) || "Name must be less than 30 characters"
+      ],
       rules: {
         required: value => !!value || "Required.",
         counter: value => value.length <= 30 || "Max 30 characters",
