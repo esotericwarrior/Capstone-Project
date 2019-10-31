@@ -30,6 +30,13 @@
               label="E-mail"
               required
             ></v-text-field>
+            <v-textarea
+              label="Message"
+              v-model="message"
+              required
+              :rules="[v => !!v || 'A message is required']"
+              class="grey lighten-5"
+            ></v-textarea>
           </v-form>
         </v-card>
       </v-col>
