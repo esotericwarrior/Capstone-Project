@@ -1,5 +1,5 @@
 <template>
-  <v-footer absolute color="primary lighten-1" padless>
+  <v-footer absolute dark padless>
     <v-row justify="center" no-gutters>
       <!-- Footer Links -->
       <v-btn
@@ -14,7 +14,7 @@
       </v-btn>
 
       <!-- Footer Text -->
-      <v-col class="primary lighten-2 py-4 text-center white--text" cols="12">
+      <v-col class="py-4 text-center white--text" cols="12" dark>
         {{ new Date().getFullYear() }} —
         <strong>OSU CS 467_400 Online Capstone</strong>
       </v-col>
