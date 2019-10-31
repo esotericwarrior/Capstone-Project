@@ -5,6 +5,11 @@
         <h1>Contact Us</h1>
         Remember to check out our tutorial videos for guided help.
       </v-col>
+      <v-col align="center" justify="center" cols="12">
+        For all other questions, please feel free to ask!
+        <!-- Horizontal Divider -->
+        <v-col cols="4"><v-divider class="my-4"/></v-col>
+      </v-col>
     </v-row>
   </v-container>
 </template>
