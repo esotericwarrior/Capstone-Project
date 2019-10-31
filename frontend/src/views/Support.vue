@@ -5,7 +5,9 @@
 export default {
   name: "Support",
   data() {
-    return {};
+    return {
+      email: ""
+    };
   }
 };
 </script>
