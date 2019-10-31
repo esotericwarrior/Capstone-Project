@@ -27,6 +27,14 @@ export default {
   methods: {
     reset() {
       this.$refs.form.reset();
+    },
+    validate() {
+      if (this.$refs.form.validate()) {
+        this.snackbar = true;
+        this.formSubmitted = true;
+        this.submitResult = "Thanks! We'll be in touch!";
+        this.reset();
+      }
     }
   }
 };
