@@ -16,7 +16,15 @@
             What can we do to help?
           </v-card-title>
           <!-- Contact Us Form -->
-          <v-form ref="form" v-model="valid" lazy-validation> </v-form>
+          <v-form ref="form" v-model="valid" lazy-validation>
+            <v-text-field
+              v-model="name"
+              :counter="30"
+              :rules="nameRules"
+              label="Name"
+              required
+            ></v-text-field>
+          </v-form>
         </v-card>
       </v-col>
     </v-row>
