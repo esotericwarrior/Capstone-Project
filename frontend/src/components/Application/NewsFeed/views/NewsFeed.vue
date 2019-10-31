@@ -11,7 +11,8 @@ export default {
     return {
       posts: []
     };
-  }
+  },
+  methods: {}
 };
 </script>
 <style lang="scss" scoped></style>
