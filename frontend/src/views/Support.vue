@@ -37,6 +37,7 @@
               :rules="[v => !!v || 'A message is required']"
               class="grey lighten-5"
             ></v-textarea>
+            <v-divider class="mx-auto mt-5 mb-5" inset dark color="white" />
             <v-btn
               block
               color="primary"
