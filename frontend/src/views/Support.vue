@@ -63,11 +63,17 @@
         </v-btn>
       </v-snackbar>
     </v-row>
+    <Footer />
   </v-container>
 </template>
 <script>
+import { Footer } from "@/components/Application/Footer";
+
 export default {
   name: "Support",
+  components: {
+    Footer
+  },
   data() {
     return {
       formSubmitted: false,
