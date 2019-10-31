@@ -15,6 +15,8 @@
           <v-card-title class="headline justify-center">
             What can we do to help?
           </v-card-title>
+          <!-- Contact Us Form -->
+          <v-form ref="form" v-model="valid" lazy-validation> </v-form>
         </v-card>
       </v-col>
     </v-row>
