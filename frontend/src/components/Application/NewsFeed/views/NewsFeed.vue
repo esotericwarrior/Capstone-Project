@@ -63,6 +63,15 @@
       </v-card>
       <v-divider class="mx-auto mt-5 mb-5" inset dark color="white" />
     </div>
+    <div align="center">
+      <!-- Load More Posts Button -->
+      <v-btn color="success" v-show="next" @click="getPosts" class="ma-2">
+        Load More Posts
+        <template v-slot:loader>
+          <span>Loading...</span>
+        </template>
+      </v-btn>
+    </div>
   </v-container>
 </template>
 
