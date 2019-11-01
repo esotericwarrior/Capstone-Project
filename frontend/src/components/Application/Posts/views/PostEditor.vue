@@ -1,5 +1,17 @@
 <template>
-  <div></div>
+  <div class="container mt-2">
+    <h1 class="mb-3">Post Something</h1>
+    <v-form @submit.prevent="onSubmit">
+      <v-textarea
+        v-model="post_body"
+        class="form-control"
+        placehodler="What do you want to post?"
+        rows="3"
+      ></v-textarea>
+      <v-btn type="submit">Publish</v-btn>
+    </v-form>
+    <p v-if="error">{{ error }}</p>
+  </div>
 </template>
 <script>
 import { apiService } from "@/common/api.service.js";
