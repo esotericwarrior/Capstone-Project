@@ -51,7 +51,11 @@
         </v-card-subtitle>
 
         <v-card-text class="text--primary">
-          <div>{{ post.content }}</div>
+          <div>
+            <router-link :to="{ name: 'post', params: { slug: post.slug } }">{{
+              post.content
+            }}</router-link>
+          </div>
           <div>Comments: {{ post.comments_count }}</div>
         </v-card-text>
       </v-card>
