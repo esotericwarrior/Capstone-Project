@@ -16,6 +16,11 @@ export default {
       type: String,
       required: true
     }
+  },
+  data() {
+    return {
+      post: {}
+    };
   }
 };
 </script>
