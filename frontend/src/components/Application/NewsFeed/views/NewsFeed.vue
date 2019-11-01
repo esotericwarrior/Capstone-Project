@@ -4,6 +4,11 @@
       <v-card class="mx-auto" max-width="650">
         <v-list-item>
           <v-list-item-avatar color="grey"></v-list-item-avatar>
+          <v-list-item-content>
+            <v-list-item-title class="headline">
+              {{ post.author }}
+            </v-list-item-title>
+          </v-list-item-content>
         </v-list-item>
       </v-card>
     </div>
