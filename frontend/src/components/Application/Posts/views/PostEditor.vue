@@ -4,6 +4,7 @@
 <script>
 export default {
   name: "PostEditor",
+  created() {},
   data() {
     return {
       error: null,
