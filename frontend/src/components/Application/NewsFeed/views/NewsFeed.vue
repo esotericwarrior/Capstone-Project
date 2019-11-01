@@ -19,9 +19,14 @@
         </v-img>
 
         <v-card-actions>
-          <v-btn icon>
-            <font-awesome-icon icon="heart" size="2x" />
-          </v-btn>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn icon>
+                <font-awesome-icon icon="heart" size="2x" v-on="on" />
+              </v-btn>
+            </template>
+            <span>Like</span>
+          </v-tooltip>
           <v-tooltip bottom>
             <template v-slot:activator="{ on }">
               <v-btn icon>
