@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import About from "../views/About.vue";
 import Home from "../views/Home.vue";
+import Post from "../views/Post.vue";
 import Support from "../views/Support.vue";
 
 Vue.use(VueRouter);
@@ -18,6 +19,12 @@ export default new VueRouter({
       path: '/about',
       component: About,
       name: "About"
+    },
+    {
+      path: '/post/:slug',
+      name: 'post',
+      component: Post,
+      props: true
     },
     {
       path: '/support',
