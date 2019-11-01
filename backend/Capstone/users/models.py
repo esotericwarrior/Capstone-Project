@@ -3,4 +3,5 @@ from django.db import models
 from django.contrib.auth.hashers import make_password
 
 class CustomUser(AbstractUser):
-    is_admin = models.BooleanField(default=False)
+    #is_admin = models.BooleanField(default=False)
+    pass
