@@ -26,9 +26,14 @@
           <font-awesome-icon icon="search" size="lg" />
         </template>
       </v-text-field>
-      <v-btn icon>
-        <font-awesome-icon icon="bell" size="2x" />
-      </v-btn>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn icon>
+            <font-awesome-icon icon="bell" size="2x" v-on="on" />
+          </v-btn>
+        </template>
+        <span>Notifications</span>
+      </v-tooltip>
       <v-btn icon>
         <font-awesome-icon icon="plus-square" size="2x" />
       </v-btn>
