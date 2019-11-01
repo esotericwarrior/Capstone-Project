@@ -25,6 +25,10 @@
           <v-btn icon>
             <font-awesome-icon icon="comment" size="2x" />
           </v-btn>
+          <v-spacer />
+          <v-btn icon>
+            <font-awesome-icon icon="star" size="2x" />
+          </v-btn>
         </v-card-actions>
 
         <v-card-subtitle class="pb-0">
