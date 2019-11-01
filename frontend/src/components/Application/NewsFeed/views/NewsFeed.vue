@@ -96,6 +96,7 @@ export default {
       if (this.next) {
         endpoint = this.next;
       }
+      this.loadingPosts = true;
       apiService(endpoint).then(data => {
         this.posts.push(...data.results);
         this.loadingPosts = false;
