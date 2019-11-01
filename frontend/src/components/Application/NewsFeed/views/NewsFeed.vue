@@ -21,6 +21,10 @@
         <v-card-subtitle class="pb-0">
           Posted by: {{ post.author }} on {{ post.created_at }}
         </v-card-subtitle>
+
+        <v-card-text class="text--primary">
+          <div>Comments: {{ post.comments_count }}</div>
+        </v-card-text>
       </v-card>
     </div>
   </v-container>
