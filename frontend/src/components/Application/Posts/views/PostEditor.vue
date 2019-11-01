@@ -2,15 +2,15 @@
   <div></div>
 </template>
 <script>
-
 export default {
   name: "PostEditor",
   data() {
-    return {};
+    return {
+      error: null
+    };
   },
-  methods: {
-
-}
+  methods: {}
+};
 </script>
 
 <style lang="scss" scoped></style>
