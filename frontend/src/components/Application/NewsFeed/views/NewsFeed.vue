@@ -78,6 +78,7 @@ export default {
   },
   data() {
     return {
+      next: null,
       posts: []
     };
   },
