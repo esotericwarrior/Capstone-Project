@@ -52,9 +52,11 @@
 
         <v-card-text class="text--primary">
           <div>
-            <router-link :to="{ name: 'post', params: { slug: post.slug } }">{{
-              post.content
-            }}</router-link>
+            <router-link
+              :to="{ name: 'post', params: { slug: post.slug } }"
+              class="post-link"
+              >{{ post.content }}
+            </router-link>
           </div>
           <div>Comments: {{ post.comments_count }}</div>
         </v-card-text>
@@ -97,4 +99,14 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.post-link {
+  font-weight: bold;
+  color: black;
+}
+
+.post-link:hover {
+  color: #343a40;
+  text-decoration: none;
+}
+</style>
