@@ -10,6 +10,13 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
+        <v-img
+          class="white--text align-end"
+          height="600px"
+          src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+        >
+        </v-img>
       </v-card>
     </div>
   </v-container>
