@@ -6,7 +6,8 @@ export default {
   name: "PostEditor",
   data() {
     return {
-      error: null
+      error: null,
+      post_body: null
     };
   },
   methods: {}
