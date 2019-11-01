@@ -35,6 +35,7 @@ export default {
       let endpoint = `/api/posts/${this.slug}/`;
       apiService(endpoint).then(data => {
         this.post = data;
+        this.setPageTitle(data.content);
       });
     },
     setPageTitle(title) {
