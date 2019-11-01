@@ -41,7 +41,7 @@
       </v-tooltip>
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
-          <v-btn icon>
+          <v-btn icon :to="{ name: 'post-editor' }">
             <font-awesome-icon icon="plus-square" size="2x" v-on="on" />
           </v-btn>
         </template>
