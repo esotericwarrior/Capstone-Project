@@ -8,6 +8,7 @@ import {
   faComment,
   faHeart,
   faHome,
+  faPlusSquare,
   faSearch,
   faStar,
   faUserCircle
@@ -19,6 +20,7 @@ library.add(
   faComment,
   faHeart,
   faHome,
+  faPlusSquare,
   faSearch,
   faStar,
   faUserCircle
