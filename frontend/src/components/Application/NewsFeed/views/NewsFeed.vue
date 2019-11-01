@@ -22,6 +22,9 @@
           <v-btn icon>
             <font-awesome-icon icon="heart" size="2x" />
           </v-btn>
+          <v-btn icon>
+            <font-awesome-icon icon="comment" size="2x" />
+          </v-btn>
         </v-card-actions>
 
         <v-card-subtitle class="pb-0">
