@@ -6,6 +6,7 @@
         Posted by:
         <span class="author-name">{{ post.author }}</span>
       </p>
+      <p>{{ post.created_at }}</p>
     </div>
   </div>
 </template>
@@ -35,6 +36,9 @@ export default {
       apiService(endpoint).then(data => {
         this.post = data;
       });
+    },
+    setPageTitle(title) {
+      document.title = title;
     }
   }
 };
