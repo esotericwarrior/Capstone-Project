@@ -78,6 +78,7 @@ export default {
   },
   data() {
     return {
+      loadingPosts: false,
       next: null,
       posts: []
     };
@@ -89,6 +90,7 @@ export default {
       //   .then(response => (this.posts = response.data.results))
       //   // eslint-disable-next-line no-console
       //   .catch(error => console.log(error));
+      // Make a GET Request to the posts list endpoint and populate the posts array.
       let endpoint = "/api/posts/";
       apiService(endpoint).then(data => {
         this.posts.push(...data.results);
