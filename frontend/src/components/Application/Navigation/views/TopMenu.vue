@@ -42,9 +42,14 @@
         </template>
         <span>Create Post</span>
       </v-tooltip>
-      <v-btn icon>
-        <font-awesome-icon icon="user-circle" size="2x" />
-      </v-btn>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn icon>
+            <font-awesome-icon icon="user-circle" size="2x" v-on="on" />
+          </v-btn>
+        </template>
+        <span>My Profile</span>
+      </v-tooltip>
       <v-spacer></v-spacer>
     </v-app-bar>
   </div>
