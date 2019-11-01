@@ -17,7 +17,9 @@ export default {
       required: true
     }
   },
-  created() {},
+  created() {
+    this.getPostData();
+  },
   data() {
     return {
       post: {}
