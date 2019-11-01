@@ -5,10 +5,8 @@
 
 export default {
   name: "PostEditor",
-  data: {
-    return {
-
-    }
+  data() {
+    return {};
   },
   methods: {
 
