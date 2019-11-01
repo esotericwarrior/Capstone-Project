@@ -22,9 +22,14 @@
           <v-btn icon>
             <font-awesome-icon icon="heart" size="2x" />
           </v-btn>
-          <v-btn icon>
-            <font-awesome-icon icon="comment" size="2x" />
-          </v-btn>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn icon>
+                <font-awesome-icon icon="comment" size="2x" v-on="on" />
+              </v-btn>
+            </template>
+            <span>Comment</span>
+          </v-tooltip>
           <v-spacer />
           <v-tooltip bottom>
             <template v-slot:activator="{ on }">
