@@ -17,6 +17,10 @@
           src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
         >
         </v-img>
+
+        <v-card-subtitle class="pb-0">
+          Posted by: {{ post.author }} on {{ post.created_at }}
+        </v-card-subtitle>
       </v-card>
     </div>
   </v-container>
