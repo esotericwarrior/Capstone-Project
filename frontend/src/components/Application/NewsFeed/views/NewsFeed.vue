@@ -55,6 +55,7 @@
           <div>Comments: {{ post.comments_count }}</div>
         </v-card-text>
       </v-card>
+      <v-divider class="mx-auto mt-5 mb-5" inset dark color="white" />
     </div>
   </v-container>
 </template>
