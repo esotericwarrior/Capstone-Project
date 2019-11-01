@@ -26,9 +26,14 @@
             <font-awesome-icon icon="comment" size="2x" />
           </v-btn>
           <v-spacer />
-          <v-btn icon>
-            <font-awesome-icon icon="star" size="2x" />
-          </v-btn>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn icon>
+                <font-awesome-icon icon="star" size="2x" v-on="on" />
+              </v-btn>
+            </template>
+            <span>Favorite</span>
+          </v-tooltip>
         </v-card-actions>
 
         <v-card-subtitle class="pb-0">
