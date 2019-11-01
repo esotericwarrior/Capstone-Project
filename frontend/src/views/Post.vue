@@ -21,6 +21,14 @@ export default {
     return {
       post: {}
     };
+  },
+  methods: {
+    getPostData() {
+      let endpoint = `/api/posts/${this.slug}/`;
+      apiService(endpoint).then(data => {
+        this.post = data;
+      });
+    }
   }
 };
 </script>
