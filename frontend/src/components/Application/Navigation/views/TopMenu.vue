@@ -30,6 +30,9 @@
         <font-awesome-icon icon="bell" size="2x" />
       </v-btn>
       <v-btn icon>
+        <font-awesome-icon icon="plus-square" size="2x" />
+      </v-btn>
+      <v-btn icon>
         <font-awesome-icon icon="user-circle" size="2x" />
       </v-btn>
       <v-spacer></v-spacer>
