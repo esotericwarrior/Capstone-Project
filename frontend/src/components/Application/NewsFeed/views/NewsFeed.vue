@@ -21,7 +21,7 @@ export default {
         .catch(error => console.log(error));
     }
   },
-  mounted: {}
+  mounted() {}
 };
 </script>
 <style lang="scss" scoped></style>
