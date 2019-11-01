@@ -87,6 +87,7 @@ export default {
   },
   data() {
     return {
+      loader: null,
       loadingPosts: false,
       next: null,
       posts: []
@@ -99,6 +100,7 @@ export default {
       //   .then(response => (this.posts = response.data.results))
       //   // eslint-disable-next-line no-console
       //   .catch(error => console.log(error));
+      this.loader = this.loadingPosts;
       // Make a GET Request to the posts list endpoint and populate the posts array.
       let endpoint = "/api/posts/";
       // If there are paginated posts, set the appropriate endpoint.
@@ -119,6 +121,16 @@ export default {
   },
   mounted() {
     this.getPosts();
+  },
+  watch: {
+    loader() {
+      const l = this.loader;
+      this[l] = !this[l];
+
+      setTimeout(() => (this[l] = false), 3000);
+
+      this.loader = null;
+    }
   }
 };
 </script>
