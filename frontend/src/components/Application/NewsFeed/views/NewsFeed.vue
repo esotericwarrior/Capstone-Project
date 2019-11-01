@@ -92,8 +92,18 @@ export default {
       //   .catch(error => console.log(error));
       // Make a GET Request to the posts list endpoint and populate the posts array.
       let endpoint = "/api/posts/";
+      // If there are paginated posts, set the appropriate endpoint.
+      if (this.next) {
+        endpoint = this.next;
+      }
       apiService(endpoint).then(data => {
         this.posts.push(...data.results);
+        this.loadingPosts = false;
+        if (data.next) {
+          this.next = data.next;
+        } else {
+          this.next = null;
+        }
       });
     }
   },
