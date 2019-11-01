@@ -18,6 +18,12 @@
         >
         </v-img>
 
+        <v-card-actions>
+          <v-btn icon>
+            <font-awesome-icon icon="heart" size="2x" />
+          </v-btn>
+        </v-card-actions>
+
         <v-card-subtitle class="pb-0">
           Posted by: {{ post.author }} on {{ post.created_at }}
         </v-card-subtitle>
