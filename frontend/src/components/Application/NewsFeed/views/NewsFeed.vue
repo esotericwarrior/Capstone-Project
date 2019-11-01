@@ -1,7 +1,11 @@
 <template>
   <v-container>
     <div v-for="post in posts" :key="post.pk">
-      <v-card class="mx-auto" max-width="650"> </v-card>
+      <v-card class="mx-auto" max-width="650">
+        <v-list-item>
+          <v-list-item-avatar color="grey"></v-list-item-avatar>
+        </v-list-item>
+      </v-card>
     </div>
   </v-container>
 </template>
