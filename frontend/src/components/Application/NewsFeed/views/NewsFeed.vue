@@ -34,9 +34,13 @@
 <script>
 // import axios from "axios";
 import { apiService } from "@/common/api.service";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
   name: "NewsFeed",
+  components: {
+    FontAwesomeIcon
+  },
   data() {
     return {
       posts: []
