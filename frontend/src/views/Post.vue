@@ -1,7 +1,11 @@
 <template>
   <div class="single-post mt-2">
     <div class="container">
-      {{ slug }}
+      <h1>{{ post.content }}</h1>
+      <p class="mb-0">
+        Posted by:
+        <span class="author-name">{{ post.author }}</span>
+      </p>
     </div>
   </div>
 </template>
