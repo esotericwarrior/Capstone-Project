@@ -88,7 +88,7 @@ export default {
       //   .then(response => (this.posts = response.data.results))
       //   // eslint-disable-next-line no-console
       //   .catch(error => console.log(error));
-      let endpoint = "api/posts/";
+      let endpoint = "/api/posts/";
       apiService(endpoint).then(data => {
         this.posts.push(...data.results);
       });
