@@ -1,6 +1,8 @@
 <template>
   <v-container>
-    <v-card class="mx-auto" max-width="650"> </v-card>
+    <div v-for="post in posts" :key="post.pk">
+      <v-card class="mx-auto" max-width="650"> </v-card>
+    </div>
   </v-container>
 </template>
 
