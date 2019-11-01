@@ -1,5 +1,7 @@
 <template>
-  <v-container> </v-container>
+  <v-container>
+    <v-card class="mx-auto" max-width="650"> </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -28,8 +30,6 @@ export default {
   },
   mounted() {
     this.getPosts();
-    // eslint-disable-next-line no-console
-    console.log(this.posts);
   }
 };
 </script>
