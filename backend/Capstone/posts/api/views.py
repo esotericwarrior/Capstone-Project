@@ -51,7 +51,7 @@ class CommentRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
 
 class PostViewSet(viewsets.ModelViewSet):
     """Provide CRUD +L functionality for Post."""
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by("-created_at")
     lookup_field = "slug"
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]

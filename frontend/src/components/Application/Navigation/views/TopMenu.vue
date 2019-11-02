@@ -3,9 +3,14 @@
     <!--Scrolling Toolbar -->
     <v-app-bar color="">
       <v-spacer></v-spacer>
-      <v-btn class="ml-4" icon to="/">
-        <font-awesome-icon icon="home" size="2x" />
-      </v-btn>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn class="ml-4" icon to="/">
+            <font-awesome-icon icon="home" size="2x" v-on="on" />
+          </v-btn>
+        </template>
+        <span>Home</span>
+      </v-tooltip>
       <v-divider class="mx-4" inset vertical></v-divider>
       <v-toolbar-title>
         <div class="pl-3">
@@ -26,12 +31,30 @@
           <font-awesome-icon icon="search" size="lg" />
         </template>
       </v-text-field>
-      <v-btn icon>
-        <font-awesome-icon icon="bell" size="2x" />
-      </v-btn>
-      <v-btn icon>
-        <font-awesome-icon icon="user-circle" size="2x" />
-      </v-btn>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn icon>
+            <font-awesome-icon icon="bell" size="2x" v-on="on" />
+          </v-btn>
+        </template>
+        <span>Notifications</span>
+      </v-tooltip>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn icon :to="{ name: 'post-editor' }">
+            <font-awesome-icon icon="plus-square" size="2x" v-on="on" />
+          </v-btn>
+        </template>
+        <span>Create Post</span>
+      </v-tooltip>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn icon>
+            <font-awesome-icon icon="user-circle" size="2x" v-on="on" />
+          </v-btn>
+        </template>
+        <span>My Profile</span>
+      </v-tooltip>
       <v-spacer></v-spacer>
     </v-app-bar>
   </div>
