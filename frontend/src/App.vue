@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { apiService } from "@/common/api.service.js";
 import { TopMenu } from "@/components/Application/Navigation";
 
 export default {
