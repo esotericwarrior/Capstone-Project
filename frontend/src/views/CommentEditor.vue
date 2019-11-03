@@ -14,7 +14,8 @@ export default {
   },
   data() {
     return {
-      commentBody: null
+      commentBody: null,
+      error: null
     };
   },
   methods: {}
