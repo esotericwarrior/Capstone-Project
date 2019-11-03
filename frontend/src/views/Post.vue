@@ -64,6 +64,7 @@ export default {
       comments: [],
       error: null,
       newCommentBody: null,
+      next: null,
       post: {},
       showForm: false,
       userHasCommented: false
