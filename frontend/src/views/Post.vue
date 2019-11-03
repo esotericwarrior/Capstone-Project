@@ -92,7 +92,7 @@ export default {
   },
   methods: {
     async deleteComment(comment) {
-      let endpoint = `/api/comments/${comment.id}`;
+      let endpoint = `/api/comments/${comment.id}/`;
       try {
         await apiService(endpoint, "DELETE");
         this.$delete(this.comments, this.comments.indexOf(comment));
