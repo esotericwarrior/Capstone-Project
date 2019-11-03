@@ -63,6 +63,7 @@ export default {
     return {
       comments: [],
       error: null,
+      loadingComments: false,
       newCommentBody: null,
       next: null,
       post: {},
