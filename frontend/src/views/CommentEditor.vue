@@ -13,7 +13,9 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      commentBody: null
+    };
   },
   methods: {}
 };
