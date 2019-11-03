@@ -30,7 +30,7 @@ export default {
     isCommentAuthor() {
       return this.comment.author === this.requestUser;
     }
-  }
+  },
   data() {
     return {};
   }
