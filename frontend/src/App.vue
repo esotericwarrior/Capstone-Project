@@ -16,6 +16,9 @@ export default {
   components: {
     TopMenu
   },
+  created() {
+    this.setUserInfo();
+  },
   methods: {
     async setUserInfo() {
       const data = await apiService("/api/user/");
