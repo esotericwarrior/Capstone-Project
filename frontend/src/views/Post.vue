@@ -35,6 +35,14 @@ export default {
     };
   },
   methods: {
+    getPostComments() {
+      let endpoint = `/api/posts/${this.slug}/comments/`;
+      apiService(endpoint).then(data => {
+        this.comments = data.results;
+        // eslint-disable-next-line no-console
+        console.log(this.comments);
+      });
+    },
     getPostData() {
       let endpoint = `/api/posts/${this.slug}/`;
       apiService(endpoint).then(data => {
