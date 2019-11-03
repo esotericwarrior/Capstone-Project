@@ -26,7 +26,7 @@
           </v-textarea>
         </v-form>
         <div v-if="error">
-          {{ error }}
+          <p class="error">{{ error }}</p>
         </div>
       </div>
     </div>
@@ -107,4 +107,9 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.error {
+  font-weight: bold;
+  color: blue;
+}
+</style>
