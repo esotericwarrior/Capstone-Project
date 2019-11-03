@@ -4,6 +4,7 @@
       <strong>{{ comment.author }}</strong> &#8901; {{ comment.created_at }}
     </p>
     <p>{{ comment.body }}</p>
+    <div v-if="isCommentAuthor"></div>
     <v-divider />
   </div>
 </template>
