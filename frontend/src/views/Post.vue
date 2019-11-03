@@ -13,6 +13,7 @@
 
 <script>
 import { apiService } from "@/common/api.service.js";
+import { Comment } from "@/components/Application/Comment";
 
 export default {
   name: "Post",
@@ -21,6 +22,9 @@ export default {
       type: String,
       required: true
     }
+  },
+  components: {
+    Comment
   },
   created() {
     this.getPostData();
