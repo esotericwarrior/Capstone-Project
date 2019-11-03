@@ -15,6 +15,10 @@ export default {
     comment: {
       type: Object,
       required: true
+    },
+    requestUser: {
+      type: String,
+      required: true
     }
   },
   data() {
