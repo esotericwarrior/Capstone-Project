@@ -20,6 +20,9 @@
             solo
             v-model="newCommentBody"
           >
+            <template v-slot:append>
+              <v-btn type="submit" color="success">Post</v-btn>
+            </template>
           </v-textarea>
         </v-form>
       </div>
