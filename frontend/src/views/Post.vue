@@ -43,7 +43,8 @@ export default {
       comments: [],
       error: null,
       newCommentBody: null,
-      post: {}
+      post: {},
+      userHasCommented: false
     };
   },
   methods: {
