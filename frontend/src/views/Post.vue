@@ -44,6 +44,7 @@ export default {
       error: null,
       newCommentBody: null,
       post: {},
+      showForm: false,
       userHasCommented: false
     };
   },
