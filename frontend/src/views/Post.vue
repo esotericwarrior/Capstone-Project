@@ -71,6 +71,7 @@ export default {
     };
   },
   methods: {
+    // Get a page of comments for a single post from the REST API
     getPostComments() {
       let endpoint = `/api/posts/${this.slug}/comments/`;
       apiService(endpoint).then(data => {
