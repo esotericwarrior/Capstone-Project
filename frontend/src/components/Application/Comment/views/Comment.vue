@@ -16,7 +16,12 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn icon>
-            <font-awesome-icon icon="trash" size="2x" v-on="on" />
+            <font-awesome-icon
+              icon="trash"
+              size="2x"
+              v-on="on"
+              @click="triggerDeleteComment"
+            />
           </v-btn>
         </template>
         <span>Delete Comment</span>
