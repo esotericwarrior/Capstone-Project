@@ -9,7 +9,19 @@
       <p>{{ post.created_at }}</p>
       <v-divider />
       <div>
-        <v-form @submit.prevent="onSubmit"> </v-form>
+        <v-form @submit.prevent="onSubmit">
+          <v-textarea
+            background-color="grey lighten-5"
+            class="mx-2 grey lighten-5"
+            flat
+            no-resize
+            placeholder="Add a comment..."
+            rows="2"
+            solo
+            v-model="newCommentBody"
+          >
+          </v-textarea>
+        </v-form>
       </div>
     </div>
     <div class="container">
