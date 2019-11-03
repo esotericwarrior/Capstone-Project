@@ -1,7 +1,20 @@
 <template>
   <div class="container">
     <div>
-      <v-form @submit.prevent="onSubmit"> </v-form>
+      <v-form @submit.prevent="onSubmit">
+        <v-textarea
+          background-color="grey lighten-5"
+          class="mx-2 grey lighten-5"
+          no-resize
+          rows="2"
+          solo
+          v-model="commentBody"
+        >
+          <template v-slot:append>
+            <v-btn type="submit" color="success">Save Comment</v-btn>
+          </template>
+        </v-textarea>
+      </v-form>
       <div v-if="error">
         <p class="error">{{ error }}</p>
       </div>
