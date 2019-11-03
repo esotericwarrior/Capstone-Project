@@ -6,6 +6,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faBell,
   faComment,
+  faEdit,
   faHeart,
   faHome,
   faPlusSquare,
@@ -19,6 +20,7 @@ import {
 library.add(
   faBell,
   faComment,
+  faEdit,
   faHeart,
   faHome,
   faPlusSquare,
