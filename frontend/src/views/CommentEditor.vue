@@ -1,5 +1,9 @@
 <template>
-  <div class="container"></div>
+  <div class="container">
+    <div>
+      <v-form @submit.prevent="onSubmit"> </v-form>
+    </div>
+  </div>
 </template>
 
 <script>
