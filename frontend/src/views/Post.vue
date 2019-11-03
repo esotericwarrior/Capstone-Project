@@ -80,6 +80,24 @@ export default {
         this.setPageTitle(data.content);
       });
     },
+    onSubmit() {
+      // Tell the REST API to create a new comment for this post based on the user input, then update some data properties
+      if (this.newCommentBody) {
+        let endpoint = `/api/posts/${this.slug}/comment/`;
+        apiService(endpoint, "POST", { body: this.newCommentBody }).then(
+          data => {
+            this.comments.unshift(data);
+          }
+        );
+        this.newCommentBody = null;
+        this.userHasCommented = true;
+        if (this.error) {
+          this.error = null;
+        }
+      } else {
+        this.error = "Please add a comment before submitting!";
+      }
+    },
     setPageTitle(title) {
       document.title = title;
     }
