@@ -8,6 +8,9 @@
       </p>
       <p>{{ post.created_at }}</p>
       <v-divider />
+      <div>
+        <v-form @submit.prevent="onSubmit"> </v-form>
+      </div>
     </div>
     <div class="container">
       <Comment
