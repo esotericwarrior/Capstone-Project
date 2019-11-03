@@ -7,6 +7,7 @@
         <span class="author-name">{{ post.author }}</span>
       </p>
       <p>{{ post.created_at }}</p>
+      <v-divider />
     </div>
     <div class="container">
       <Comment
