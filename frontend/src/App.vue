@@ -15,9 +15,6 @@ export default {
   name: "App",
   components: {
     TopMenu
-  },
-  data: () => ({
-    //
-  })
+  }
 };
 </script>
