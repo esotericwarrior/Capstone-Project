@@ -4,7 +4,16 @@
       <strong>{{ comment.author }}</strong> &#8901; {{ comment.created_at }}
     </p>
     <p>{{ comment.body }}</p>
-    <div v-if="isCommentAuthor"></div>
+    <div v-if="isCommentAuthor">
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn icon>
+            <font-awesome-icon icon="edit" size="2x" v-on="on" />
+          </v-btn>
+        </template>
+        <span>Edit Comment</span>
+      </v-tooltip>
+    </div>
     <v-divider />
   </div>
 </template>
