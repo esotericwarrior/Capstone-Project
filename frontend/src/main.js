@@ -11,6 +11,7 @@ import {
   faPlusSquare,
   faSearch,
   faStar,
+  faTrash,
   faUserCircle
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -23,6 +24,7 @@ library.add(
   faPlusSquare,
   faSearch,
   faStar,
+  faTrash,
   faUserCircle
 );
 
