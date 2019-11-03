@@ -49,8 +49,6 @@ export default {
       let endpoint = `/api/posts/${this.slug}/comments/`;
       apiService(endpoint).then(data => {
         this.comments = data.results;
-        // eslint-disable-next-line no-console
-        console.log(this.comments);
       });
     },
     getPostData() {
