@@ -13,6 +13,14 @@
         </template>
         <span>Edit Comment</span>
       </v-tooltip>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn icon>
+            <font-awesome-icon icon="trash" size="2x" v-on="on" />
+          </v-btn>
+        </template>
+        <span>Delete Comment</span>
+      </v-tooltip>
     </div>
     <v-divider />
   </div>
