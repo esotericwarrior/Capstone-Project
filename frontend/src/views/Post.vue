@@ -8,6 +8,13 @@
       </p>
       <p>{{ post.created_at }}</p>
     </div>
+    <div class="container">
+      <Comment
+        v-for="(comment, index) in comments"
+        :comment="comment"
+        :key="index"
+      />
+    </div>
   </div>
 </template>
 
