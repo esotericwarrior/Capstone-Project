@@ -8,7 +8,11 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn icon>
-            <font-awesome-icon icon="edit" size="2x" v-on="on" />
+            <router-link
+              :to="{ name: 'comment-editor', params: { id: comment.id } }"
+            >
+              <font-awesome-icon icon="edit" size="2x" v-on="on" />
+            </router-link>
           </v-btn>
         </template>
         <span>Edit Comment</span>
