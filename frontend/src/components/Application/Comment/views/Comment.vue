@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
 export default {
   name: "Comment",
   props: {
@@ -20,6 +22,9 @@ export default {
       type: String,
       required: true
     }
+  },
+  components: {
+    FontAwesomeIcon
   },
   computed: {
     isCommentAuthor() {
