@@ -35,6 +35,7 @@
         v-for="(comment, index) in comments"
         :comment="comment"
         :key="index"
+        :requestUser="requestUser"
       />
     </div>
     <div align="center">
