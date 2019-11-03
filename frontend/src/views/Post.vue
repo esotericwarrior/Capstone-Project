@@ -27,6 +27,7 @@ export default {
     Comment
   },
   created() {
+    this.getPostComments();
     this.getPostData();
   },
   data() {
