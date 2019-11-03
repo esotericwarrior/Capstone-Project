@@ -37,6 +37,21 @@
         :key="index"
       />
     </div>
+    <div align="center">
+      <!-- Load More Comments Button -->
+      <v-btn
+        text
+        color="success"
+        v-show="next"
+        @click="getPostComments"
+        class="ma-2"
+      >
+        Load More Comments
+        <template v-slot:loader>
+          <span>Loading...</span>
+        </template>
+      </v-btn>
+    </div>
   </div>
 </template>
 
