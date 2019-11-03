@@ -2,6 +2,9 @@
   <div class="container">
     <div>
       <v-form @submit.prevent="onSubmit"> </v-form>
+      <div v-if="error">
+        <p class="error">{{ error }}</p>
+      </div>
     </div>
   </div>
 </template>
