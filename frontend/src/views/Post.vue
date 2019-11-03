@@ -90,6 +90,16 @@ export default {
     };
   },
   methods: {
+    async deleteComment(comment) {
+      let endpoint = `/api/comments/${comment.id}`;
+      try {
+        await apiService(endpoint, "DELETE");
+        this.$delete(this.comments, this.comments.indexOf(comment));
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.log(err);
+      }
+    },
     // Get a page of comments for a single post from the REST API
     getPostComments() {
       let endpoint = `/api/posts/${this.slug}/comments/`;
