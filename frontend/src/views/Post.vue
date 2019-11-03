@@ -36,6 +36,7 @@
         :comment="comment"
         :key="index"
         :requestUser="requestUser"
+        @delete-comment="deleteComment"
       />
     </div>
     <div align="center">
