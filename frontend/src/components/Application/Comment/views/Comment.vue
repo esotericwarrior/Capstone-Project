@@ -33,6 +33,11 @@ export default {
   },
   data() {
     return {};
+  },
+  methods: {
+    triggerDeleteComment() {
+      this.$emit("delete-comment", this.comment);
+    }
   }
 };
 </script>
