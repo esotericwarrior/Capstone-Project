@@ -82,6 +82,7 @@ export default {
       newCommentBody: null,
       next: null,
       post: {},
+      requestUser: null,
       showForm: false,
       userHasCommented: false
     };
@@ -130,6 +131,9 @@ export default {
     },
     setPageTitle(title) {
       document.title = title;
+    },
+    setRequestUser() {
+      this.requestUser = window.localStorage.getItem("username");
     }
   }
 };
