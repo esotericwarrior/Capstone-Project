@@ -25,6 +25,9 @@
             </template>
           </v-textarea>
         </v-form>
+        <div v-if="error">
+          {{ error }}
+        </div>
       </div>
     </div>
     <div class="container">
