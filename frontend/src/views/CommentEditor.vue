@@ -15,7 +15,8 @@ export default {
   data() {
     return {
       commentBody: null,
-      error: null
+      error: null,
+      postSlug: null
     };
   },
   methods: {}
