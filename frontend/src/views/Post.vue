@@ -41,6 +41,7 @@ export default {
   data() {
     return {
       comments: [],
+      newCommentBody: null,
       post: {}
     };
   },
