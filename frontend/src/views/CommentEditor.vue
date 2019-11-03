@@ -19,7 +19,21 @@ export default {
       postSlug: null
     };
   },
-  methods: {},
+  methods: {
+    onSubmit() {
+      if (this.commentBody) {
+        let endpoint = `/api/comments/${this.id}/`;
+        apiService(endpoint, "PUT", { body: this.commentBody }).then(() => {
+          this.$router.push({
+            name: "post",
+            params: { slug: this.postSlug }
+          });
+        });
+      } else {
+        this.error = "You can't submit an empty comment!";
+      }
+    }
+  },
   async beforeRouteEnter(to, from, next) {
     // Get the comment's data from the REST API and set two data properties for the component
     let endpoint = `/api/comments/${to.params.id}/`;
