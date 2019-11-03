@@ -73,6 +73,7 @@ export default {
   created() {
     this.getPostComments();
     this.getPostData();
+    this.setRequestUser();
   },
   data() {
     return {
