@@ -6,11 +6,13 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faBell,
   faComment,
+  faEdit,
   faHeart,
   faHome,
   faPlusSquare,
   faSearch,
   faStar,
+  faTrash,
   faUserCircle
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -18,11 +20,13 @@ import {
 library.add(
   faBell,
   faComment,
+  faEdit,
   faHeart,
   faHome,
   faPlusSquare,
   faSearch,
   faStar,
+  faTrash,
   faUserCircle
 );
 

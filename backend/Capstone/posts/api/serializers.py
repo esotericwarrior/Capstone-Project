@@ -6,7 +6,7 @@ class CommentSerializer(serializers.ModelSerializer):
     author = serializers.StringRelatedField(read_only=True)
     created_at = serializers.SerializerMethodField()
     likes_count = serializers.SerializerMethodField()
-    user_has_voted = serializers.SerializerMethodField()
+    user_has_liked = serializers.SerializerMethodField()
     post_slug = serializers.SerializerMethodField()
 
     class Meta:
@@ -19,7 +19,7 @@ class CommentSerializer(serializers.ModelSerializer):
     def get_likes_count(self, instance):
         return instance.likers.count()
 
-    def get_user_has_voted(self, instance):
+    def get_user_has_liked(self, instance):
         request = self.context.get("request")
         return instance.likers.filter(pk=request.user.pk).exists()
 
