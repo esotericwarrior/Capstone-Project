@@ -72,8 +72,8 @@ class CommentCreateAPIView(generics.CreateAPIView):
         post = get_object_or_404(Post, slug=kwarg_slug)
 
         # Raises a validation error if the user has already commented.
-        if post.comments.filter(author=request_user).exists():
-            raise ValidationError("You have already commented on this post!")
+        # if post.comments.filter(author=request_user).exists():
+        #     raise ValidationError("You have already commented on this post!")
 
         serializer.save(author=request_user, post=post)
 

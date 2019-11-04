@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import About from "../views/About.vue";
+import CommentEditor from "../views/CommentEditor.vue";
+// import { CommentEditor } from "@/components/Application/Comment";
 import Home from "../views/Home.vue";
 import Post from "../views/Post.vue";
 import { PostEditor } from "@/components/Application/Posts";
@@ -20,6 +22,12 @@ export default new VueRouter({
       path: '/about',
       component: About,
       name: "About"
+    },
+    {
+      path: "/comment/:id",
+      name: "comment-editor",
+      component: CommentEditor,
+      props: true
     },
     {
       path: "/createpost",
