@@ -29,7 +29,7 @@ SECRET_KEY = '4-mf9!839!2*seox%ao3dgikeltyua1vvi6kptbr^(kuf5@ek0'
 DEBUG = True
 
 
-ALLOWED_HOSTS = [‘0.0.0.0’, 'localhost']
+ALLOWED_HOSTS = [‘0.0.0.0’, 'localhost', 'shrouded-everglades-17058.herokuapp.com']
 
 CORS_ORIGIN_WHITELIST = (
     'https://localhost:8080',
