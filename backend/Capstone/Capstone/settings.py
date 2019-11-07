@@ -29,6 +29,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ORIGIN_WHITELIST = (
+    'https://localhost:8080',
+    'http://localhost:8080',
+    'https://localhost:8000',
+    'http://localhost:8000',
+    'https://127.0.0.1:8080',
+    'https://127.0.0.1:8000',
+    'http://127.0.0.1:8080',
+    'http://127.0.0.1:8000',
+)
 
 # Application definition
 
@@ -47,6 +57,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    'corsheaders',
 
     'rest_auth',
     'rest_auth.registration',
@@ -67,6 +79,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'Capstone.urls'
@@ -109,6 +123,7 @@ DATABASES = {
         'PASSWORD': '467grandpapassword',
     }
 }
+
 
 
 # Password validation
@@ -176,7 +191,7 @@ REST_FRAMEWORK = {
     ),
     # Data Pagination
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 2
+    'PAGE_SIZE': 4
 }
 
 WEBPACK_LOADER = {

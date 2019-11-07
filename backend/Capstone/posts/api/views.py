@@ -51,7 +51,7 @@ class CommentRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
 
 class PostViewSet(viewsets.ModelViewSet):
     """Provide CRUD +L functionality for Post."""
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by("-created_at")
     lookup_field = "slug"
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
@@ -72,8 +72,8 @@ class CommentCreateAPIView(generics.CreateAPIView):
         post = get_object_or_404(Post, slug=kwarg_slug)
 
         # Raises a validation error if the user has already commented.
-        if post.comments.filter(author=request_user).exists():
-            raise ValidationError("You have already commented on this post!")
+        # if post.comments.filter(author=request_user).exists():
+        #     raise ValidationError("You have already commented on this post!")
 
         serializer.save(author=request_user, post=post)
 
