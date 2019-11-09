@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,9 +26,10 @@ MEDIA_URL="/media/"
 SECRET_KEY = '4-mf9!839!2*seox%ao3dgikeltyua1vvi6kptbr^(kuf5@ek0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'https://hi-grandpa.herokuapp.com/']
 
 CORS_ORIGIN_WHITELIST = (
     'https://localhost:8080',
@@ -166,6 +168,14 @@ LOGOUT_REDIRECT_URL = "/"
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "assets"),
+    # os.path.join(BASE_DIR, "../../frontend/dist"),
+]
+
+# STATIC_ROOT = "" # The absolute path to the directory where collectstatic will collect static files for deployment.
 
 # Custom User Model
 AUTH_USER_MODEL = "users.CustomUser"
@@ -200,3 +210,6 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, '../../frontend/webpack-stats.json'),
     }
 }
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
