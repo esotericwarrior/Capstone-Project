@@ -55,6 +55,14 @@
         </template>
         <span>My Profile</span>
       </v-tooltip>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn outlined href="/accounts/logout/">
+            Logout
+          </v-btn>
+        </template>
+        <span>Logout</span>
+      </v-tooltip>
       <v-spacer></v-spacer>
     </v-app-bar>
   </div>
