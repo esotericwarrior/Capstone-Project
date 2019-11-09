@@ -60,6 +60,7 @@
 <script>
 import { apiService } from "@/common/api.service.js";
 import { Comment } from "@/components/Application/Comment";
+import { PostActions } from "@/components/Application/Posts";
 
 export default {
   name: "Post",
@@ -70,7 +71,8 @@ export default {
     }
   },
   components: {
-    Comment
+    Comment,
+    PostActions
   },
   created() {
     this.getPostComments();
