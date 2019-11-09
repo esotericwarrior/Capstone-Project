@@ -12,17 +12,13 @@ export default {
       required: true
     }
   },
-  data() {
-    return {};
-  }
   methods: {
     async deletePost() {
       let endpoint = `/api/posts/${this.slug}/`;
       try {
         await apiService(endpoint, "DELETE");
         this.$router.push("/");
-      }
-      catch (err) {
+      } catch (err) {
         // eslint-disable-next-line no-console
         console.log(err);
       }
