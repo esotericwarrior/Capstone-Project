@@ -15,6 +15,19 @@ export default {
   data() {
     return {};
   }
+  methods: {
+    async deletePost() {
+      let endpoint = `/api/posts/${this.slug}/`;
+      try {
+        await apiService(endpoint, "DELETE");
+        this.$router.push("/");
+      }
+      catch (err) {
+        // eslint-disable-next-line no-console
+        console.log(err);
+      }
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>
