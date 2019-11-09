@@ -74,6 +74,12 @@ export default {
     Comment,
     PostActions
   },
+  computed: {
+    isPostAuthor() {
+      // Returns true if the logged in user is also the author of the post instance
+      return this.post.author === this.requestUser;
+    }
+  },
   created() {
     this.getPostComments();
     this.getPostData();
