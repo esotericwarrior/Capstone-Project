@@ -30,9 +30,10 @@ export default new VueRouter({
       props: true
     },
     {
-      path: "/createpost",
+      path: "/createpost/:slug?",
       name: "post-editor",
-      component: PostEditor
+      component: PostEditor,
+      props: true
     },
     {
       path: "/post/:slug",
