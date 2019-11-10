@@ -1,6 +1,9 @@
 <template>
   <div>
-    <v-btn @click="deletePost">Delete </v-btn>
+    <router-link :to="{ name: 'post-editor', params: { slug: slug } }"
+      ><v-btn>Edit</v-btn>
+    </router-link>
+    <v-btn @click="deletePost">Delete</v-btn>
   </div>
 </template>
 <script>
