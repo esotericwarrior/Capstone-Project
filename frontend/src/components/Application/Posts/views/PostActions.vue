@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <v-btn @click="deletePost">Delete </v-btn>
+  </div>
 </template>
 <script>
 import { apiService } from "@/common/api.service.js";
