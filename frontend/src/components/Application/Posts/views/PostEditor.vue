@@ -18,7 +18,6 @@ import { apiService } from "@/common/api.service.js";
 
 export default {
   name: "PostEditor",
-  created() {},
   data() {
     return {
       error: null,
