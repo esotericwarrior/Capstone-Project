@@ -2,6 +2,7 @@
   <div class="single-post mt-2">
     <div class="container">
       <h1>{{ post.content }}</h1>
+      <PostActions v-if="isPostAuthor" :slug="post.slug" />
       <p class="mb-0">
         Posted by:
         <span class="author-name">{{ post.author }}</span>
