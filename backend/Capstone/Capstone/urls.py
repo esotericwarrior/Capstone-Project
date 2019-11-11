@@ -21,7 +21,7 @@ from django_registration.backends.one_step.views import RegistrationView
 
 from core.views import IndexTemplateView
 from users.forms import CustomUserForm
-from iv.views import image_form_upload, video_form_upload
+from iv.views import image_form_upload, video_form_upload, image_favorite, image_delete, image_get_favorites
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -72,6 +72,12 @@ urlpatterns = [
     path("upload/image/", image_form_upload, name="image"),
 
     path("upload/video/", video_form_upload, name="video"),
+
+    path("favorite/image/<image_hash>/", image_favorite),
+
+    path("delete/image/<image_hash>/", image_delete),
+
+    path("list/favorites/", image_get_favorites),
 
     # Catch all for other paths
     re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point")
