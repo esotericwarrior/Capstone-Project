@@ -40,10 +40,10 @@ export default {
       } else {
         let endpoint = "/api/posts/";
         let method = "POST";
-        // if (this.slug !== undefined) {
-        //   endpoint += `${this.slug}/`;
-        //   method = "PUT";
-        // }
+        if (this.slug !== undefined) {
+          endpoint += `${this.slug}/`;
+          method = "PUT";
+        }
         apiService(endpoint, method, { content: this.post_body }).then(
           post_data => {
             this.$router.push({
