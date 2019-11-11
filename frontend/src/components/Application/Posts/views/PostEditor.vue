@@ -54,6 +54,15 @@ export default {
         );
       }
     }
+  },
+  async beforeRouteEnter(to, from, next) {
+    if (to.params.slug !== undefined) {
+      let endpoint = `/api/posts/${to.params.slug}/`;
+      let data = await apiService(endpoint);
+      return next(vm => (vm.post_body = data.content));
+    } else {
+      return next();
+    }
   }
 };
 </script>
