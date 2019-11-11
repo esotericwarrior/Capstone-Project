@@ -18,6 +18,12 @@ import { apiService } from "@/common/api.service.js";
 
 export default {
   name: "PostEditor",
+  props: {
+    slug: {
+      type: String,
+      required: false
+    }
+  },
   data() {
     return {
       error: null,
