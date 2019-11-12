@@ -9,6 +9,7 @@ class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                on_delete=models.CASCADE,
                                related_name="posts")
+    file = models.FileField(null=True, max_length=255)
 
     def __str__(self):
         return self.content

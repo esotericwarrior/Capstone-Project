@@ -4,6 +4,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.parsers import FileUploadParser, MultiPartParser, FormParser, JSONParser
 
 from posts.api.permissions import IsAuthorOrReadOnly
 from posts.api.serializers import CommentSerializer, PostSerializer
@@ -55,9 +56,25 @@ class PostViewSet(viewsets.ModelViewSet):
     lookup_field = "slug"
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
+    #parser_classes = (FormParser, MultiPartParser, FileUploadParser, JSONParser)
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+    #def post(self, request, filename, format=None):
+    #    serializer = PostSerializer(post=request.data['file'])
+    #    if serializer.is_valid():
+    #        serializer.save()
+    #        return Response(serializer.post, status=status.HTTP_201_CREATED)
+    #    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+   # def post(self, request, *args, **kwargs):
+    #    file_serializer = MyFileSerializer(data=request.data)
+     #   if file_serializer.is_valid():
+      #          file_serializer.save()
+       #         return Response(file_serializer.data, status=status.HTTP_201_CREATED)
+        #else:
+         #       return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class CommentCreateAPIView(generics.CreateAPIView):
