@@ -18,7 +18,12 @@ import { apiService } from "@/common/api.service.js";
 
 export default {
   name: "PostEditor",
-  created() {},
+  props: {
+    slug: {
+      type: String,
+      required: false
+    }
+  },
   data() {
     return {
       error: null,
@@ -35,10 +40,10 @@ export default {
       } else {
         let endpoint = "/api/posts/";
         let method = "POST";
-        // if (this.slug !== undefined) {
-        //   endpoint += `${this.slug}/`;
-        //   method = "PUT";
-        // }
+        if (this.slug !== undefined) {
+          endpoint += `${this.slug}/`;
+          method = "PUT";
+        }
         apiService(endpoint, method, { content: this.post_body }).then(
           post_data => {
             this.$router.push({
@@ -48,6 +53,15 @@ export default {
           }
         );
       }
+    }
+  },
+  async beforeRouteEnter(to, from, next) {
+    if (to.params.slug !== undefined) {
+      let endpoint = `/api/posts/${to.params.slug}/`;
+      let data = await apiService(endpoint);
+      return next(vm => (vm.post_body = data.content));
+    } else {
+      return next();
     }
   }
 };

@@ -37,8 +37,8 @@ Before getting started you should have the following installed and running:
 ## Setup Template
 
 ```
-$ git clone https://github.com/esotericwarrior/Capstone-Project.git
-$ cd Capstone-Project
+$ git clone https://github.com/absurdtheory/capstone.git
+$ cd capstone
 ```
 
 Setup
