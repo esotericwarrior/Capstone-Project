@@ -30,8 +30,9 @@ library.add(
   faUserCircle
 );
 
-
 Vue.config.productionTip = false;
+
+// axios settings
 
 new Vue({
   router,

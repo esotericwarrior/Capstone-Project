@@ -11,15 +11,15 @@ import Support from "../views/Support.vue";
 Vue.use(VueRouter);
 
 export default new VueRouter({
-  mode: 'history',
+  mode: "history",
   routes: [
     {
-      path: '/',
+      path: "/",
       component: Home,
-      name: 'Home'
+      name: "Home"
     },
     {
-      path: '/about',
+      path: "/about",
       component: About,
       name: "About"
     },
@@ -35,15 +35,15 @@ export default new VueRouter({
       component: PostEditor
     },
     {
-      path: '/post/:slug',
-      name: 'post',
+      path: "/post/:slug",
+      name: "post",
       component: Post,
       props: true
     },
     {
-      path: '/support',
+      path: "/support",
       component: Support,
       name: "Support"
     }
   ]
-})
+});
