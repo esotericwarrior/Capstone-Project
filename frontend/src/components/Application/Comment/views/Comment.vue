@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import { apiService } from "@/common/api.service.js";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
