@@ -31,6 +31,19 @@
         <span>Delete Comment</span>
       </v-tooltip>
     </div>
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-btn icon @click="liked = !liked">
+          <font-awesome-icon
+            :color="liked ? 'red' : ''"
+            icon="heart"
+            size="2x"
+            v-on="on"
+          />
+        </v-btn>
+      </template>
+      <span>Like</span>
+    </v-tooltip>
     <v-divider />
   </div>
 </template>
