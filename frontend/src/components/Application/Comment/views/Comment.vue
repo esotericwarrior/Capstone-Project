@@ -78,6 +78,7 @@ export default {
     };
   },
   methods: {
+    likeComment() {},
     triggerDeleteComment() {
       this.$emit("delete-comment", this.comment);
     }
