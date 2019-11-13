@@ -81,7 +81,8 @@ export default {
     likeComment() {},
     triggerDeleteComment() {
       this.$emit("delete-comment", this.comment);
-    }
+    },
+    unlikeComment() {}
   }
 };
 </script>
