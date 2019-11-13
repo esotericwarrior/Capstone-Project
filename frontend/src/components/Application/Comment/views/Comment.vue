@@ -60,7 +60,8 @@ export default {
   },
   data() {
     return {
-      liked: false
+      liked: false,
+      userLikedComment: this.comment.user_has_voted
     };
   },
   methods: {
