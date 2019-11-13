@@ -74,6 +74,7 @@ export default {
   data() {
     return {
       liked: false,
+      likesCounter: this.comment.likes_count
       userLikedComment: this.comment.user_has_voted
     };
   },
