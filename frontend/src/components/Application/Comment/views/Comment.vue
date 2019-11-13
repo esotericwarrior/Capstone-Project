@@ -80,7 +80,12 @@ export default {
     };
   },
   methods: {
-    likeComment() {},
+    likeComment() {
+      this.userLikedComment = true;
+      this.likesCounter += 1;
+      let endpoint = `/api/comments/${this.comment.id}/like/`;
+      apiService(endpoint, "POST");
+    },
     toggleLike() {
       this.userLikedComment === false
         ? this.likeComment()
