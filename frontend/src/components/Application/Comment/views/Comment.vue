@@ -94,7 +94,12 @@ export default {
     triggerDeleteComment() {
       this.$emit("delete-comment", this.comment);
     },
-    unLikeComment() {}
+    unLikeComment() {
+      this.userLikedComment = false;
+      this.likesCounter -= 1;
+      let endpoint = `/api/comments/${this.comment.id}/like/`;
+      apiService(endpoint, "DELETE");
+    }
   }
 };
 </script>
