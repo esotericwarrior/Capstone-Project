@@ -79,6 +79,11 @@ export default {
   },
   methods: {
     likeComment() {},
+    toggleLike() {
+      this.userLikedComment === false
+        ? this.likeComment()
+        : this.unLikeComment();
+    },
     triggerDeleteComment() {
       this.$emit("delete-comment", this.comment);
     },
