@@ -59,7 +59,9 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      liked: false
+    };
   },
   methods: {
     triggerDeleteComment() {
