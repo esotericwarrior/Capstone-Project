@@ -11,12 +11,12 @@ from posts.models import Comment, Post
 
 
 class CommentLikeAPIView(APIView):
-    """Allow users to add/remove a like to/from an Comment instance."""
+    """Allow users to add/remove a like to/from a Comment instance."""
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticated]
 
     def delete(self, request, pk):  # Unlike
-        """Remove request.user from the 'likers' queryset of an Comment instance."""
+        """Remove request.user from the 'likers' queryset of a Comment instance."""
         comment = get_object_or_404(Comment, pk=pk)
         user = request.user
 
@@ -29,14 +29,14 @@ class CommentLikeAPIView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, pk):    # Like
-        """Add request.user to the 'likers' queryset of an Comment instance."""
+        """Add request.user to the 'likers' queryset of a Comment instance."""
         comment = get_object_or_404(Comment, pk=pk)
         user = request.user
 
         comment.likers.add(user)
         comment.save()
 
-        serializer_context = {"request": request}   # TODO: Remove restriction that only allows users to comment once.
+        serializer_context = {"request": request}
         serializer = self.serializer_class(comment, context=serializer_context)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
