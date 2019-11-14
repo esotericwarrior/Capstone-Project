@@ -33,7 +33,7 @@
     </div>
     <v-tooltip bottom>
       <template v-slot:activator="{ on }">
-        <v-btn icon @click="liked = !liked">
+        <v-btn icon @click="toggleLike">
           <font-awesome-icon
             :color="userLikedComment ? 'red' : ''"
             icon="heart"
