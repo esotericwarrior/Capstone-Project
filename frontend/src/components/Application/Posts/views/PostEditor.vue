@@ -159,21 +159,31 @@ export default {
       /*eslint no-console: ["error", { allow: ["log", "error"]}] */
        console.log(this)
       // Tell the REST API to create or update a Post Instance
-      if ((this.post_body && this.post_body.length > 0) && speech.length > 0) {
+      if ((this.post_body && this.post_body.length > 0) && (speech && speech.length > 0)) {
         this.error = "Please use text-to-speech or type your message, not both.";
       } else if (!this.post_body && speech.length < 1) {
         this.error = "You can't send an empty post!";
-      } else if ((this.post_body && this.post_body.length > 240) || speech.length > 240) {
+      } else if ((this.post_body && this.post_body.length > 240) || (speech && speech.length > 240)) {
         this.error = "Ensure this field has no more than 240 characters!";
       } else {
         let endpoint = "/api/posts/";
         let method = "POST";
 
+        var new_content;
+
+        if (!this.post_body){
+          new_content = speech
+        }
+        else{
+          new_content = this.post_body
+        }
+
         if (this.slug !== undefined) {
           endpoint += `${this.slug}/`;
           method = "PUT";
         }
-        apiService(endpoint, method, { content: this.post_body }).then(
+
+        apiService(endpoint, method, { content: new_content }).then(
           post_data => {
             this.$router.push({
               name: "post",
