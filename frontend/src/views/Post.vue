@@ -2,6 +2,7 @@
   <div class="single-post mt-2">
     <div class="container">
       <h1>{{ post.content }}</h1>
+      <PostActions v-if="isPostAuthor" :slug="post.slug" />
       <p class="mb-0">
         Posted by:
         <span class="author-name">{{ post.author }}</span>
@@ -60,6 +61,7 @@
 <script>
 import { apiService } from "@/common/api.service.js";
 import { Comment } from "@/components/Application/Comment";
+import { PostActions } from "@/components/Application/Posts";
 
 export default {
   name: "Post",
@@ -70,7 +72,14 @@ export default {
     }
   },
   components: {
-    Comment
+    Comment,
+    PostActions
+  },
+  computed: {
+    isPostAuthor() {
+      // Returns true if the logged in user is also the author of the post instance
+      return this.post.author === this.requestUser;
+    }
   },
   created() {
     this.getPostComments();

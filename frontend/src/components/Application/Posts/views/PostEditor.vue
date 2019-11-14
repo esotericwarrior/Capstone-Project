@@ -66,6 +66,10 @@ export default {
     text: {
       type: [String, null],
       required: true
+    },
+    slug: {
+      type: String,
+      required: false
     }
   },
   data() {
@@ -164,36 +168,29 @@ export default {
       } else {
         let endpoint = "/api/posts/";
         let method = "POST";
-        // if (this.slug !== undefined) {
-        //   endpoint += `${this.slug}/`;
-        //   method = "PUT";
-        // }
 
-        /*eslint no-console: ["error", { allow: ["log", "error"]}] */
-        //console.log(this.post_body)
-        //console.log(this.file)
-
-        var new_content;
-
-        if (!this.post_body){
-          new_content = speech
+        if (this.slug !== undefined) {
+          endpoint += `${this.slug}/`;
+          method = "PUT";
         }
-        else{
-          new_content = this.post_body
-        }
-
-        apiService(endpoint, method, {
-          content: new_content,
-          //file: this.file
-        }).then(post_data => {
-          /*eslint no-console: ["error", { allow: ["log", "error"]}] */
-          console.log(post_data);
-          this.$router.push({
-            name: "post",
-            params: { slug: post_data.slug }
-          });
-        });
+        apiService(endpoint, method, { content: this.post_body }).then(
+          post_data => {
+            this.$router.push({
+              name: "post",
+              params: { slug: post_data.slug }
+            });
+          }
+        );
       }
+    }
+  },
+  async beforeRouteEnter(to, from, next) {
+    if (to.params.slug !== undefined) {
+      let endpoint = `/api/posts/${to.params.slug}/`;
+      let data = await apiService(endpoint);
+      return next(vm => (vm.post_body = data.content));
+    } else {
+      return next();
     }
   },
   mounted() {
