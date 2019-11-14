@@ -3,6 +3,7 @@
     <p>
       <strong>{{ comment.author }}</strong> &#8901; {{ comment.created_at }}
     </p>
+    <p>{{ likesCounter }} likes</p>
     <p>{{ comment.body }}</p>
     <div v-if="isCommentAuthor">
       <v-tooltip bottom>
