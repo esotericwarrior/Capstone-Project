@@ -76,7 +76,7 @@ export default {
     return {
       liked: false,
       likesCounter: this.comment.likes_count,
-      userLikedComment: this.comment.user_has_voted
+      userLikedComment: this.comment.user_has_liked
     };
   },
   methods: {
