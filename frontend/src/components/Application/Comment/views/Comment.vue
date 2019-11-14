@@ -35,7 +35,7 @@
       <template v-slot:activator="{ on }">
         <v-btn icon @click="liked = !liked">
           <font-awesome-icon
-            :color="liked ? 'red' : ''"
+            :color="userLikedComment ? 'red' : ''"
             icon="heart"
             size="2x"
             v-on="on"
