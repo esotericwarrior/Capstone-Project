@@ -21,7 +21,7 @@
         <v-card-actions>
           <v-tooltip bottom>
             <template v-slot:activator="{ on }">
-              <v-btn icon>
+              <v-btn icon @click="toggleLike(post)">
                 <font-awesome-icon icon="heart" size="2x" v-on="on" />
               </v-btn>
             </template>
