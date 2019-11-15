@@ -38,7 +38,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        exclude = ["updated_at"]
+        exclude = ["post_likers", "updated_at"]
 
     def get_created_at(self, instance):
         return instance.created_at.strftime("%B %d, %Y")    # Name of month, date with a digit, year (e.g. December 25, 2019)
