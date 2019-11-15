@@ -33,6 +33,7 @@ class PostSerializer(serializers.ModelSerializer):
     slug = serializers.SlugField(read_only=True)
     comments_count = serializers.SerializerMethodField()
     user_has_commented = serializers.SerializerMethodField()
+    likes_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
