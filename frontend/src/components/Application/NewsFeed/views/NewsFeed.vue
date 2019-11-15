@@ -22,7 +22,12 @@
           <v-tooltip bottom>
             <template v-slot:activator="{ on }">
               <v-btn icon @click="toggleLike(post)">
-                <font-awesome-icon icon="heart" size="2x" v-on="on" />
+                <font-awesome-icon
+                  :color="post.user_has_liked ? 'red' : ''"
+                  icon="heart"
+                  size="2x"
+                  v-on="on"
+                />
               </v-btn>
             </template>
             <span>Like</span>
