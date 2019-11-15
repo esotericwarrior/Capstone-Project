@@ -19,6 +19,11 @@ urlpatterns = [
          pv.CommentCreateAPIView.as_view(),
          name="comment-create"),
 
+    # Path to like a specific post.
+    path("posts/<int:pk>/like/", # /posts/integer-primarykey/like/
+         pv.PostLikeAPIView.as_view(),
+         name="post-like"),
+
     # Path to view a specific comment.
     path("comments/<int:pk>/",  # /comments/integer-primarykey/
          pv.CommentRUDAPIView.as_view(),
