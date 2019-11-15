@@ -49,3 +49,6 @@ class PostSerializer(serializers.ModelSerializer):
     def get_user_has_commented(self, instance):
         request = self.context.get("request")
         return instance.comments.filter(author=request.user).exists()
+
+    def get_likes_count(self, instance):
+        return instance.post_likers.count()
