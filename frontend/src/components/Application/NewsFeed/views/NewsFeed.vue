@@ -117,6 +117,11 @@ export default {
           this.next = null;
         }
       });
+    },
+    toggleLike(post) {
+      post.user_has_liked === false
+        ? this.likePost(post)
+        : this.unLikePost(post);
     }
   },
   mounted() {
