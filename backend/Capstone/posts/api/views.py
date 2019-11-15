@@ -42,6 +42,38 @@ class CommentLikeAPIView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+class PostLikeAPIView(APIView):
+    """Allow users to add/remove a like to/from a Post instance."""
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, pk):  # Unlike
+        """Remove request.user from the 'likers' queryset of a Post instance."""
+        post = get_object_or_404(Post, pk=pk)
+        user = request.user
+
+        post.post_likers.remove(user) # Remove user's like from instance
+        post.save()  # Save the instance
+
+        serializer_context = {"request": request}
+        serializer = self.serializer_class(post, context=serializer_context)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request, pk):    # Like
+        """Add request.user to the 'likers' queryset of a Post instance."""
+        post = get_object_or_404(Post, pk=pk)
+        user = request.user
+
+        post.post_likers.add(user)
+        post.save()
+
+        serializer_context = {"request": request}
+        serializer = self.serializer_class(post, context=serializer_context)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
 class CommentRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
     """Provide *RUD functionality for a Comment instance to its author."""
     queryset = Comment.objects.all()
