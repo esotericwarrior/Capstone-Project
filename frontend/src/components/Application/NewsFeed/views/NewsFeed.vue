@@ -128,6 +128,12 @@ export default {
       post.user_has_liked === false
         ? this.likePost(post)
         : this.unLikePost(post);
+    },
+    unLikePost(post) {
+      post.user_has_liked = false;
+      post.likes_count -= 1;
+      let endpoint = `/api/posts/${post.id}/like/`;
+      apiService(endpoint, "DELETE");
     }
   },
   mounted() {
