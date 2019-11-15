@@ -51,6 +51,10 @@
           </v-tooltip>
         </v-card-actions>
 
+        <v-card-subtitle class="pa-0 pl-4">
+          {{ post.likes_count }} likes
+        </v-card-subtitle>
+
         <v-card-subtitle class="pb-0">
           Posted by: {{ post.author }} on {{ post.created_at }}
         </v-card-subtitle>
