@@ -9,6 +9,10 @@ from rest_framework.parsers import FileUploadParser, MultiPartParser, FormParser
 from posts.api.permissions import IsAuthorOrReadOnly
 from posts.api.serializers import CommentSerializer, PostSerializer
 from posts.models import Comment, Post
+from iv.forms import VideoForm, ImageForm
+from rest_framework.decorators import action
+import requests
+import json
 
 
 class CommentLikeAPIView(APIView):
@@ -56,25 +60,47 @@ class PostViewSet(viewsets.ModelViewSet):
     lookup_field = "slug"
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
-    #parser_classes = (FormParser, MultiPartParser, FileUploadParser, JSONParser)
+    parser_classes = (FormParser, MultiPartParser, FileUploadParser, JSONParser)
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
-    #def post(self, request, filename, format=None):
-    #    serializer = PostSerializer(post=request.data['file'])
-    #    if serializer.is_valid():
-    #        serializer.save()
-    #        return Response(serializer.post, status=status.HTTP_201_CREATED)
-    #    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+ #   @action(detail=True, methods=['post'])
+ #   def post(request):
+ #       form = ImageForm(request.POST, request.FILES)
+  #      if form.is_valid():
+            
+        #url = "https://api.imgur.com/3/upload"
+        #client_id = "f8a455e18a238be"
+        #headers = {'Authorization': 'Client-ID ' + client_id}
+        #data = {
+        #        'image': self.request.FILES.get('file').read(),
+        #        'title': self.request.POST['content'], 
+        #        'type': 'file'
+         #       }
+        #response = requests.request("POST", url, headers=headers, data=data)
+        #response_data = response.json()
+        #upload_success = response_data['success']
+        #print(response_data['data'])
+        #print(upload_success)
+        #external_link = response_data['data']['link']
+        #serializer_class.save(url=external_link)
 
-   # def post(self, request, *args, **kwargs):
-    #    file_serializer = MyFileSerializer(data=request.data)
-     #   if file_serializer.is_valid():
-      #          file_serializer.save()
-       #         return Response(file_serializer.data, status=status.HTTP_201_CREATED)
-        #else:
-         #       return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        #url = "https://api.imgur.com/3/upload"
+        #access_token = "931ddfab9e19c9a7512147c83459ce1d457e09cf"
+        #headers = {'Authorization': 'Bearer ' + access_token}
+        #data = {
+        #    'image': self.request.FILES.get('file').read(),
+       #    'title': self.request.POST['content'], 
+       #     'type': 'file'
+        #    }
+        #response = requests.post(url, data=data, headers=headers)
+        #print(response.json())
+        #response_data = response.json()
+        #upload_success = response_data['success']
+        #external_link = response_data['data']['link']
+        #print(upload_success)
+
 
 
 class CommentCreateAPIView(generics.CreateAPIView):

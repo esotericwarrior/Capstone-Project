@@ -26,10 +26,10 @@ MEDIA_URL="/media/"
 SECRET_KEY = '4-mf9!839!2*seox%ao3dgikeltyua1vvi6kptbr^(kuf5@ek0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'https://hi-grandpa.herokuapp.com/']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'https://hi-grandpa.herokuapp.com/', '127.0.0.1']
 
 CORS_ORIGIN_WHITELIST = (
     'https://localhost:8080',

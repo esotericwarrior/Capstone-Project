@@ -34,6 +34,7 @@ class PostSerializer(serializers.ModelSerializer):
     slug = serializers.SlugField(read_only=True)
     comments_count = serializers.SerializerMethodField()
     user_has_commented = serializers.SerializerMethodField()
+    url = serializers.StringRelatedField(read_only=True)
 
     class Meta:
         model = Post
@@ -48,3 +49,4 @@ class PostSerializer(serializers.ModelSerializer):
     def get_user_has_commented(self, instance):
         request = self.context.get("request")
         return instance.comments.filter(author=request.user).exists()
+
