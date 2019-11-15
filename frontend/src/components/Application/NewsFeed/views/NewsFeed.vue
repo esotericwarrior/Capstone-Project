@@ -118,6 +118,12 @@ export default {
         }
       });
     },
+    likePost(post) {
+      post.user_has_liked = true;
+      post.likes_count += 1;
+      let endpoint = `/api/posts/${post.id}/like/`;
+      apiService(endpoint, "POST");
+    },
     toggleLike(post) {
       post.user_has_liked === false
         ? this.likePost(post)
