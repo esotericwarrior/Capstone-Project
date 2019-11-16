@@ -33,10 +33,12 @@ class PostSerializer(serializers.ModelSerializer):
     slug = serializers.SlugField(read_only=True)
     comments_count = serializers.SerializerMethodField()
     user_has_commented = serializers.SerializerMethodField()
+    likes_count = serializers.SerializerMethodField()
+    user_has_liked = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
-        exclude = ["updated_at"]
+        exclude = ["post_likers", "updated_at"]
 
     def get_created_at(self, instance):
         return instance.created_at.strftime("%B %d, %Y")    # Name of month, date with a digit, year (e.g. December 25, 2019)
@@ -47,3 +49,10 @@ class PostSerializer(serializers.ModelSerializer):
     def get_user_has_commented(self, instance):
         request = self.context.get("request")
         return instance.comments.filter(author=request.user).exists()
+
+    def get_likes_count(self, instance):
+        return instance.post_likers.count()
+
+    def get_user_has_liked(self, instance):
+        request = self.context.get("request")
+        return instance.post_likers.filter(pk=request.user.pk).exists()

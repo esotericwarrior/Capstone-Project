@@ -3,6 +3,7 @@
     <p>
       <strong>{{ comment.author }}</strong> &#8901; {{ comment.created_at }}
     </p>
+    <p>{{ likesCounter }} likes</p>
     <p>{{ comment.body }}</p>
     <div v-if="isCommentAuthor">
       <v-tooltip bottom>
@@ -31,11 +32,25 @@
         <span>Delete Comment</span>
       </v-tooltip>
     </div>
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-btn icon @click="toggleLike">
+          <font-awesome-icon
+            :color="userLikedComment ? 'red' : ''"
+            icon="heart"
+            size="2x"
+            v-on="on"
+          />
+        </v-btn>
+      </template>
+      <span>Like</span>
+    </v-tooltip>
     <v-divider />
   </div>
 </template>
 
 <script>
+import { apiService } from "@/common/api.service.js";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
@@ -59,11 +74,32 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      liked: false,
+      likesCounter: this.comment.likes_count,
+      userLikedComment: this.comment.user_has_liked
+    };
   },
   methods: {
+    likeComment() {
+      this.userLikedComment = true;
+      this.likesCounter += 1;
+      let endpoint = `/api/comments/${this.comment.id}/like/`;
+      apiService(endpoint, "POST");
+    },
+    toggleLike() {
+      this.userLikedComment === false
+        ? this.likeComment()
+        : this.unLikeComment();
+    },
     triggerDeleteComment() {
       this.$emit("delete-comment", this.comment);
+    },
+    unLikeComment() {
+      this.userLikedComment = false;
+      this.likesCounter -= 1;
+      let endpoint = `/api/comments/${this.comment.id}/like/`;
+      apiService(endpoint, "DELETE");
     }
   }
 };
