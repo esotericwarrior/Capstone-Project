@@ -11,6 +11,7 @@ class Post(models.Model):
                                related_name="posts")
     post_likers = models.ManyToManyField(settings.AUTH_USER_MODEL,
                                     related_name="post_likes")
+    file = models.FileField(null=True, max_length=255)
 
     def __str__(self):
         return self.content

@@ -28,6 +28,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
+
     author = serializers.StringRelatedField(read_only=True)
     created_at = serializers.SerializerMethodField()
     slug = serializers.SlugField(read_only=True)
