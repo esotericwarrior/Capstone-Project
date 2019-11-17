@@ -22,7 +22,9 @@ export default {
       this.last_name = window.localStorage.getItem("last_name");
     }
   },
-  mounted() {}
+  mounted() {
+    this.getUser();
+  }
 };
 </script>
 <style lang="scss" scoped></style>
