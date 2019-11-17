@@ -45,6 +45,17 @@
                     </v-tooltip>
                   </v-card-actions>
                 </v-list-item>
+
+                <!-- Upload Button -->
+                <v-card-actions class="pl-10">
+                  <v-btn block class="ma-2" color="primary" dark x-large>
+                    Upload Photo / Video
+                    <v-icon dark right></v-icon>
+                    <slot>
+                      <font-awesome-icon icon="camera" size="lg" />
+                    </slot>
+                  </v-btn>
+                </v-card-actions>
               </div>
             </v-card>
           </v-col>
