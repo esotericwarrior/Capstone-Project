@@ -75,6 +75,9 @@ export default {
   components: {
     FontAwesomeIcon
   },
+  created() {
+    this.setRequestUser();
+  },
   data() {
     return {
       requestUser: null,
