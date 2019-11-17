@@ -28,6 +28,12 @@
 <script>
 export default {
   name: "ProfileBanner",
+  props: {
+    displayname: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {};
   }
