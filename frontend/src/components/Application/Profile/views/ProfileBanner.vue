@@ -31,6 +31,14 @@
                     <v-btn class="ma-2" color="grey darken-2" dark large>
                       Edit Profile
                     </v-btn>
+                    <v-tooltip bottom>
+                      <template v-slot:activator="{ on }">
+                        <v-btn icon>
+                          <font-awesome-icon icon="cog" size="2x" v-on="on" />
+                        </v-btn>
+                      </template>
+                      <span>Settings</span>
+                    </v-tooltip>
                   </v-card-actions>
                 </v-list-item>
               </div>
