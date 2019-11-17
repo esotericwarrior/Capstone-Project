@@ -13,7 +13,9 @@
           </v-col>
 
           <!-- Profile Header -->
-          <v-col cols="9"> </v-col>
+          <v-col cols="9">
+            <v-card class="pa-2" color="grey lighten-5" flat tile> </v-card>
+          </v-col>
         </v-row>
       </v-col>
     </v-row>
