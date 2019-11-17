@@ -11,7 +11,10 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      first_name: null,
+      last_name: null
+    };
   }
 };
 </script>
