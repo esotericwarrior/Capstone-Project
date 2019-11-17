@@ -38,8 +38,13 @@
   </v-container>
 </template>
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
 export default {
   name: "ProfileBanner",
+  components: {
+    FontAwesomeIcon
+  },
   props: {
     displayname: {
       type: String,
