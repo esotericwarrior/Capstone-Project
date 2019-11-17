@@ -4,7 +4,12 @@
 <script>
 export default {
   name: "Profile",
-
+  props: {
+    username: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {};
   }
