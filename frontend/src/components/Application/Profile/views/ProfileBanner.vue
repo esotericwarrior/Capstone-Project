@@ -25,6 +25,9 @@
                       {{ displayname }}
                     </v-list-item-subtitle>
                   </v-list-item-content>
+
+                  <!-- Profile Header Buttons -->
+                  <v-card-actions> </v-card-actions>
                 </v-list-item>
               </div>
             </v-card>
