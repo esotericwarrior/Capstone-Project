@@ -10,7 +10,11 @@ export default {
       required: true
     }
   },
-  computed: {},
+  computed: {
+    full_name: function() {
+      return this.first_name + " " + this.last_name;
+    }
+  },
   data() {
     return {
       first_name: null,
