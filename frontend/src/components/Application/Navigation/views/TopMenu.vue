@@ -84,6 +84,9 @@ export default {
   methods: {
     clearSearch() {
       this.search = "";
+    },
+    setRequestUser() {
+      this.requestUser = window.localStorage.getItem("username");
     }
   }
 };
