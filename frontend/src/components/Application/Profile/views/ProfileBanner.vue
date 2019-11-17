@@ -11,6 +11,9 @@
               </v-avatar>
             </div>
           </v-col>
+
+          <!-- Profile Header -->
+          <v-col cols="9"> </v-col>
         </v-row>
       </v-col>
     </v-row>
