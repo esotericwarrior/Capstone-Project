@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProfileBanner />
+    <ProfileBanner :displayname="full_name" :username="username" />
   </div>
 </template>
 <script>
