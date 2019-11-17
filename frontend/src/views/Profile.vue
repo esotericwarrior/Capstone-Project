@@ -21,7 +21,8 @@ export default {
       this.first_name = window.localStorage.getItem("first_name");
       this.last_name = window.localStorage.getItem("last_name");
     }
-  }
+  },
+  mounted() {}
 };
 </script>
 <style lang="scss" scoped></style>
