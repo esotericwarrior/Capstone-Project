@@ -10,6 +10,7 @@ export default {
       required: true
     }
   },
+  computed: {},
   data() {
     return {
       first_name: null,
