@@ -7,6 +7,9 @@ venv
 /venv
 
 *.__pycache__*
+
+## Webpack output
+**/stats.json
 webpack-stats.json
 
 # local env files
