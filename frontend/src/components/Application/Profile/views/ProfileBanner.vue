@@ -16,7 +16,16 @@
           <v-col cols="9">
             <v-card class="pa-2" color="grey lighten-5" flat tile>
               <div class="pl-10">
-                <v-list-item two-line> </v-list-item>
+                <v-list-item two-line>
+                  <v-list-item-content class="pl-6">
+                    <v-list-item-title class="headline">
+                      {{ username }}
+                    </v-list-item-title>
+                    <v-list-item-subtitle>
+                      {{ displayname }}
+                    </v-list-item-subtitle>
+                  </v-list-item-content>
+                </v-list-item>
               </div>
             </v-card>
           </v-col>
