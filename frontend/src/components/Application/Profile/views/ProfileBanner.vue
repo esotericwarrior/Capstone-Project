@@ -30,7 +30,7 @@
                   <v-card-actions>
                     <v-btn class="ma-2" color="grey darken-2" dark large>
                       Edit Profile
-                      <v-icon v-text="icon" dark right></v-icon>
+                      <v-icon dark right></v-icon>
                       <slot>
                         <font-awesome-icon icon="pen" size="lg" />
                       </slot>
