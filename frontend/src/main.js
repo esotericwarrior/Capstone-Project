@@ -2,35 +2,6 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import vuetify from "./plugins/vuetify";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faBell,
-  faCog,
-  faComment,
-  faEdit,
-  faHeart,
-  faHome,
-  faPlusSquare,
-  faSearch,
-  faStar,
-  faTrash,
-  faUserCircle
-} from "@fortawesome/free-solid-svg-icons";
-
-// Import the Icons used in the Application
-library.add(
-  faBell,
-  faCog,
-  faComment,
-  faEdit,
-  faHeart,
-  faHome,
-  faPlusSquare,
-  faSearch,
-  faStar,
-  faTrash,
-  faUserCircle
-);
 
 Vue.config.productionTip = false;
 
