@@ -16,7 +16,12 @@ export default {
       last_name: null
     };
   },
-  methods: {}
+  methods: {
+    getUser() {
+      this.first_name = window.localStorage.getItem("first_name");
+      this.last_name = window.localStorage.getItem("last_name");
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>
