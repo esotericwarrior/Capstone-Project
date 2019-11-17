@@ -15,7 +15,8 @@ export default {
       first_name: null,
       last_name: null
     };
-  }
+  },
+  methods: {}
 };
 </script>
 <style lang="scss" scoped></style>
