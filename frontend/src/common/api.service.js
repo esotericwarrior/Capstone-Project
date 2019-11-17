@@ -6,8 +6,6 @@ async function getJSON(response) {
 }
 
 function apiService(endpoint, method, data) {
-// eslint-disable-next-line no-console
- console.log(data)
   const config = {
     method: method || "GET",
     body: data !== undefined ? JSON.stringify(data) : null,
