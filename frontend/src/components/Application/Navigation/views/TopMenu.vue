@@ -50,7 +50,11 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn icon>
-            <font-awesome-icon icon="user-circle" size="2x" v-on="on" />
+            <router-link
+              :to="{ name: 'profile', params: { username: requestUser } }"
+            >
+              <font-awesome-icon icon="user-circle" size="2x" v-on="on" />
+            </router-link>
           </v-btn>
         </template>
         <span>My Profile</span>
