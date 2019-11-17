@@ -5,6 +5,7 @@ import CommentEditor from "../views/CommentEditor.vue";
 // import { CommentEditor } from "@/components/Application/Comment";
 import Home from "../views/Home.vue";
 import Post from "../views/Post.vue";
+import Profile from "../views/Profile.vue";
 import { PostEditor } from "@/components/Application/Posts";
 import Support from "../views/Support.vue";
 
@@ -39,6 +40,12 @@ export default new VueRouter({
       path: "/post/:slug",
       name: "post",
       component: Post,
+      props: true
+    },
+    {
+      path: "/profile/:username",
+      name: "profile",
+      component: Profile,
       props: true
     },
     {
