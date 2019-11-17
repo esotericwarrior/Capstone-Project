@@ -5,6 +5,7 @@ import vuetify from "./plugins/vuetify";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faBell,
+  faCog,
   faComment,
   faEdit,
   faHeart,
@@ -19,6 +20,7 @@ import {
 // Import the Icons used in the Application
 library.add(
   faBell,
+  faCog,
   faComment,
   faEdit,
   faHeart,
