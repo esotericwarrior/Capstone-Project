@@ -1,9 +1,16 @@
 <template>
-  <div></div>
+  <div>
+    <ProfileBanner />
+  </div>
 </template>
 <script>
+import { ProfileBanner } from "@/components/Application/Profile";
+
 export default {
   name: "Profile",
+  components: {
+    ProfileBanner
+  },
   props: {
     username: {
       type: String,
