@@ -75,9 +75,12 @@ export default {
   components: {
     FontAwesomeIcon
   },
-  data: () => ({
-    search: ""
-  }),
+  data() {
+    return {
+      requestUser: null,
+      search: ""
+    };
+  },
   methods: {
     clearSearch() {
       this.search = "";
