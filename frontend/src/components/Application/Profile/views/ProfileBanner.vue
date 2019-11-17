@@ -27,7 +27,11 @@
                   </v-list-item-content>
 
                   <!-- Profile Header Buttons -->
-                  <v-card-actions> </v-card-actions>
+                  <v-card-actions>
+                    <v-btn class="ma-2" color="grey darken-2" dark large>
+                      Edit Profile
+                    </v-btn>
+                  </v-card-actions>
                 </v-list-item>
               </div>
             </v-card>
