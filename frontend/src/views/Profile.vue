@@ -1,15 +1,18 @@
 <template>
   <div>
     <ProfileBanner :displayname="full_name" :username="username" />
+    <profile-pictures />
   </div>
 </template>
 <script>
 import { ProfileBanner } from "@/components/Application/Profile";
+import { ProfilePictures } from "@/components/Application/Profile";
 
 export default {
   name: "Profile",
   components: {
-    ProfileBanner
+    ProfileBanner,
+    ProfilePictures
   },
   props: {
     username: {
