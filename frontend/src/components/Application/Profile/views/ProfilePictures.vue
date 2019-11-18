@@ -108,7 +108,15 @@
               <v-row justify="center" no-gutters>
                 <v-col cols="12">
                   <v-row>
-                    <v-col cols="8"> </v-col>
+                    <v-col cols="8">
+                      <v-img
+                        :src="selectedImage"
+                        width="100%"
+                        @mouseover="isHovered = true"
+                        @mouseleave="isHovered = false"
+                      >
+                      </v-img>
+                    </v-col>
                   </v-row>
                 </v-col>
               </v-row>
