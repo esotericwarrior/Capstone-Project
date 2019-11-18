@@ -15,7 +15,8 @@ export default {
       isHovered: false,
       selectedImage: null
     };
-  }
+  },
+  methods: {}
 };
 </script>
 <style lang="scss" scoped></style>
