@@ -25,6 +25,10 @@ export default {
       this.dialog = !this.dialog;
       console.log(url);
       this.zoom(url);
+    },
+    zoom(url) {
+      console.log("Zoom", url);
+      this.selectedImage = url;
     }
   }
 };
