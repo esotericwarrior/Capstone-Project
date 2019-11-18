@@ -107,7 +107,9 @@
             <v-container>
               <v-row justify="center" no-gutters>
                 <v-col cols="12">
-                  <v-row> </v-row>
+                  <v-row>
+                    <v-col cols="8"> </v-col>
+                  </v-row>
                 </v-col>
               </v-row>
             </v-container>
