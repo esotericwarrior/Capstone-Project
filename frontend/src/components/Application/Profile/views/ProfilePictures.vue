@@ -129,6 +129,9 @@
                                 @click="closeZoom"
                               >
                                 <v-icon></v-icon>
+                                <slot>
+                                  <font-awesome-icon icon="times" size="lg" />
+                                </slot>
                               </v-btn>
                               <v-btn
                                 icon
