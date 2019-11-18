@@ -128,6 +128,9 @@
                                 dark
                                 @click="closeZoom"
                               >
+                                <slot>
+                                  <font-awesome-icon icon="times" size="lg" />
+                                </slot>
                               </v-btn>
                             </div>
                           </v-col>
