@@ -115,6 +115,9 @@
                         @mouseover="isHovered = true"
                         @mouseleave="isHovered = false"
                       >
+                        <v-row justify="start" class="fill-height">
+                          <v-col cols="10"> </v-col>
+                        </v-row>
                       </v-img>
                     </v-col>
                   </v-row>
