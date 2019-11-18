@@ -143,6 +143,9 @@
                                 @click="fullscreen = !fullscreen"
                               >
                                 <v-icon></v-icon>
+                                <slot>
+                                  <font-awesome-icon icon="expand" size="lg" />
+                                </slot>
                               </v-btn>
                             </div>
                           </v-col>
