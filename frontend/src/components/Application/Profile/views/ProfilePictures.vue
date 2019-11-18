@@ -118,8 +118,13 @@
   </v-container>
 </template>
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
 export default {
   name: "ProfilePictures",
+  components: {
+    FontAwesomeIcon
+  },
   data() {
     return {
       dialog: false,
