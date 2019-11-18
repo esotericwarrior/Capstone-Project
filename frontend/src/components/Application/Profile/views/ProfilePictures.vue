@@ -23,10 +23,12 @@ export default {
     },
     openDialog(url) {
       this.dialog = !this.dialog;
+      // eslint-disable-next-line no-console
       console.log(url);
       this.zoom(url);
     },
     zoom(url) {
+      // eslint-disable-next-line no-console
       console.log("Zoom", url);
       this.selectedImage = url;
     }
