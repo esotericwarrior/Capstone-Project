@@ -12,7 +12,8 @@ export default {
     return {
       dialog: false,
       fullscreen: false,
-      isHovered: false
+      isHovered: false,
+      selectedImage: null
     };
   }
 };
