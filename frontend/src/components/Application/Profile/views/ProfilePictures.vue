@@ -11,7 +11,8 @@ export default {
   data() {
     return {
       dialog: false,
-      fullscreen: false
+      fullscreen: false,
+      isHovered: false
     };
   }
 };
