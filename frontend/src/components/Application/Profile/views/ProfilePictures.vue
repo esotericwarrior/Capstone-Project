@@ -10,7 +10,8 @@ export default {
   name: "ProfilePictures",
   data() {
     return {
-      dialog: false
+      dialog: false,
+      fullscreen: false
     };
   }
 };
