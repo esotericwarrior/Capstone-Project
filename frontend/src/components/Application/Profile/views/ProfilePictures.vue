@@ -9,7 +9,9 @@
 export default {
   name: "ProfilePictures",
   data() {
-    return {};
+    return {
+      dialog: false
+    };
   }
 };
 </script>
