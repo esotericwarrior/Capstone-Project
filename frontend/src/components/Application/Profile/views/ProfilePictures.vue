@@ -132,6 +132,19 @@
                                   <font-awesome-icon icon="times" size="lg" />
                                 </slot>
                               </v-btn>
+                              <v-btn
+                                icon
+                                absolute
+                                top
+                                right
+                                dark
+                                color="primary"
+                                @click="fullscreen = !fullscreen"
+                              >
+                                <slot>
+                                  <font-awesome-icon icon="expand" size="lg" />
+                                </slot>
+                              </v-btn>
                             </div>
                           </v-col>
                         </v-row>
