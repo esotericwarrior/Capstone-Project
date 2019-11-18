@@ -14,7 +14,18 @@
           <!-- Posts -->
           <v-tab-item>
             <v-card color="grey lighten-5" flat tile>
-              <v-container fluid> </v-container>
+              <v-container fluid>
+                <v-row>
+                  <v-col
+                    v-for="n in 9"
+                    :key="n"
+                    class="d-flex child-flex"
+                    cols="4"
+                  >
+                    <v-card flat tile class="d-flex"> </v-card>
+                  </v-col>
+                </v-row>
+              </v-container>
             </v-card>
           </v-tab-item>
         </v-tabs>
