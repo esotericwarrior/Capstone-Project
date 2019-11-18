@@ -20,6 +20,11 @@ export default {
     closeZoom() {
       this.dialog = false;
       this.fullscreen = false;
+    },
+    openDialog(url) {
+      this.dialog = !this.dialog;
+      console.log(url);
+      this.zoom(url);
     }
   }
 };
