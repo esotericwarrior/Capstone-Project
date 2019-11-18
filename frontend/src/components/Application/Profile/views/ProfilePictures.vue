@@ -128,9 +128,7 @@
                                 dark
                                 @click="closeZoom"
                               >
-                                <slot>
-                                  <font-awesome-icon icon="times" size="lg" />
-                                </slot>
+                                <v-icon></v-icon>
                               </v-btn>
                               <v-btn
                                 icon
@@ -141,14 +139,39 @@
                                 color="primary"
                                 @click="fullscreen = !fullscreen"
                               >
-                                <slot>
-                                  <font-awesome-icon icon="expand" size="lg" />
-                                </slot>
+                                <v-icon></v-icon>
                               </v-btn>
                             </div>
                           </v-col>
                         </v-row>
                       </v-img>
+                    </v-col>
+                    <v-col cols="4">
+                      <v-card flat class="grey lighten-5">
+                        <v-list-item class="pa-5">
+                          <v-list-item-avatar color="grey"></v-list-item-avatar>
+                          <v-list-item-content>
+                            <v-list-item-title class="headline"
+                              ><strong>Username</strong></v-list-item-title
+                            >
+                          </v-list-item-content>
+                          <v-card-actions>
+                            <v-btn icon>
+                              <v-icon>mdi-pen</v-icon>
+                            </v-btn>
+                          </v-card-actions>
+                        </v-list-item>
+                        <v-divider></v-divider>
+                        <v-list-item class="pa-5">
+                          <v-list-item-avatar color="grey"></v-list-item-avatar>
+                          <v-list-item-content>
+                            <v-list-item-title
+                              ><strong>Username</strong> Post
+                              content</v-list-item-title
+                            >
+                          </v-list-item-content>
+                        </v-list-item>
+                      </v-card>
                     </v-col>
                   </v-row>
                 </v-col>
@@ -161,12 +184,12 @@
   </v-container>
 </template>
 <script>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+//import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
   name: "ProfilePictures",
   components: {
-    FontAwesomeIcon
+    //FontAwesomeIcon
   },
   data() {
     return {
