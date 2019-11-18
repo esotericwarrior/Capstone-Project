@@ -100,6 +100,9 @@
             </v-card>
           </v-tab-item>
         </v-tabs>
+
+        <!-- Posts Dialog -->
+        <v-dialog v-model="dialog" :fullscreen="fullscreen"> </v-dialog>
       </v-col>
     </v-row>
   </v-container>
