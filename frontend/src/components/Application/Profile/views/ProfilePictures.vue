@@ -116,7 +116,21 @@
                         @mouseleave="isHovered = false"
                       >
                         <v-row justify="start" class="fill-height">
-                          <v-col cols="10"> </v-col>
+                          <v-col cols="10">
+                            <div v-if="isHovered">
+                              <v-btn
+                                large
+                                color="primary"
+                                icon
+                                absolute
+                                top
+                                left
+                                dark
+                                @click="closeZoom"
+                              >
+                              </v-btn>
+                            </div>
+                          </v-col>
                         </v-row>
                       </v-img>
                     </v-col>
