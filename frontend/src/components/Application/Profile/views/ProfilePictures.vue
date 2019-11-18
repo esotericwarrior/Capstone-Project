@@ -102,7 +102,17 @@
         </v-tabs>
 
         <!-- Posts Dialog -->
-        <v-dialog v-model="dialog" :fullscreen="fullscreen"> </v-dialog>
+        <v-dialog v-model="dialog" :fullscreen="fullscreen">
+          <v-card color="grey lighten-5" max-height="900">
+            <v-container>
+              <v-row justify="center" no-gutters>
+                <v-col cols="12">
+                  <v-row> </v-row>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card>
+        </v-dialog>
       </v-col>
     </v-row>
   </v-container>
