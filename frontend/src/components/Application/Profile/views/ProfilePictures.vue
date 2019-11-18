@@ -10,6 +10,13 @@
         >
           <v-tab>My Posts</v-tab>
           <v-tab>Favorites</v-tab>
+
+          <!-- Posts -->
+          <v-tab-item>
+            <v-card color="grey lighten-5" flat tile>
+              <v-container fluid> </v-container>
+            </v-card>
+          </v-tab-item>
         </v-tabs>
       </v-col>
     </v-row>
