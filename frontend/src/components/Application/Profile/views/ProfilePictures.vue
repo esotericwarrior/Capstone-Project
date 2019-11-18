@@ -16,7 +16,12 @@ export default {
       selectedImage: null
     };
   },
-  methods: {}
+  methods: {
+    closeZoom() {
+      this.dialog = false;
+      this.fullscreen = false;
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>
