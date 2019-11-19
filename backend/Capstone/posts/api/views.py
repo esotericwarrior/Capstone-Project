@@ -12,12 +12,12 @@ from posts.models import Comment, Post
 
 
 class CommentLikeAPIView(APIView):
-    """Allow users to add/remove a like to/from an Comment instance."""
+    """Allow users to add/remove a like to/from a Comment instance."""
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticated]
 
     def delete(self, request, pk):  # Unlike
-        """Remove request.user from the 'likers' queryset of an Comment instance."""
+        """Remove request.user from the 'likers' queryset of a Comment instance."""
         comment = get_object_or_404(Comment, pk=pk)
         user = request.user
 
@@ -30,15 +30,47 @@ class CommentLikeAPIView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, pk):    # Like
-        """Add request.user to the 'likers' queryset of an Comment instance."""
+        """Add request.user to the 'likers' queryset of a Comment instance."""
         comment = get_object_or_404(Comment, pk=pk)
         user = request.user
 
         comment.likers.add(user)
         comment.save()
 
-        serializer_context = {"request": request}   # TODO: Remove restriction that only allows users to comment once.
+        serializer_context = {"request": request}
         serializer = self.serializer_class(comment, context=serializer_context)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class PostLikeAPIView(APIView):
+    """Allow users to add/remove a like to/from a Post instance."""
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, pk):  # Unlike
+        """Remove request.user from the 'likers' queryset of a Post instance."""
+        post = get_object_or_404(Post, pk=pk)
+        user = request.user
+
+        post.post_likers.remove(user) # Remove user's like from instance
+        post.save()  # Save the instance
+
+        serializer_context = {"request": request}
+        serializer = self.serializer_class(post, context=serializer_context)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request, pk):    # Like
+        """Add request.user to the 'likers' queryset of a Post instance."""
+        post = get_object_or_404(Post, pk=pk)
+        user = request.user
+
+        post.post_likers.add(user)
+        post.save()
+
+        serializer_context = {"request": request}
+        serializer = self.serializer_class(post, context=serializer_context)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
