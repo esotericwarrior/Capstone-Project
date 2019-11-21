@@ -21,8 +21,13 @@
         <v-card-actions>
           <v-tooltip bottom>
             <template v-slot:activator="{ on }">
-              <v-btn icon>
-                <font-awesome-icon icon="heart" size="2x" v-on="on" />
+              <v-btn icon @click="toggleLike(post)">
+                <font-awesome-icon
+                  :color="post.user_has_liked ? 'red' : ''"
+                  icon="heart"
+                  size="2x"
+                  v-on="on"
+                />
               </v-btn>
             </template>
             <span>Like</span>
@@ -45,6 +50,10 @@
             <span>Favorite</span>
           </v-tooltip>
         </v-card-actions>
+
+        <v-card-subtitle class="pa-0 pl-4">
+          {{ post.likes_count }} likes
+        </v-card-subtitle>
 
         <v-card-subtitle class="pb-0">
           Posted by: {{ post.author }} on {{ post.created_at }}
@@ -117,6 +126,23 @@ export default {
           this.next = null;
         }
       });
+    },
+    likePost(post) {
+      post.user_has_liked = true;
+      post.likes_count += 1;
+      let endpoint = `/api/posts/${post.id}/like/`;
+      apiService(endpoint, "POST");
+    },
+    toggleLike(post) {
+      post.user_has_liked === false
+        ? this.likePost(post)
+        : this.unLikePost(post);
+    },
+    unLikePost(post) {
+      post.user_has_liked = false;
+      post.likes_count -= 1;
+      let endpoint = `/api/posts/${post.id}/like/`;
+      apiService(endpoint, "DELETE");
     }
   },
   mounted() {
