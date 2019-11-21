@@ -17,7 +17,7 @@
                 <v-text-field v-model="speech" v-if="sentences.length > 0" v-bind:key="sentences" 
                   :value="sentences">
                 </v-text-field>
-                <span v-for="sentence in sentences" v-bind:key="sentence">{{sentence}}. </span>
+                <span v-for="sentence in sentences" v-bind:key="sentence">{{sentence}} </span>
                 <span>{{runtimeTranscription}}</span>
               </p>
             </v-flex>
@@ -188,7 +188,7 @@ export default {
         data.append('content', new_content)
         data.append('file', this.file)
 
-        apiService(endpoint, method, data).then(
+        apiService(endpoint, method, { content: new_content }).then(
           post_data => {
             this.$router.push({
               name: "post",

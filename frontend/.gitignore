@@ -5,7 +5,8 @@ node_modules
 env
 venv
 /venv
-__pycache__
+media
+
 *.__pycache__*
 webpack-stats.json
 
