@@ -1,6 +1,7 @@
 <template>
   <div class="single-post mt-2">
     <div class="container">
+      <img :src="post.file">
       <h1>{{ post.content }}</h1>
       <PostActions v-if="isPostAuthor" :slug="post.slug" />
       <p class="mb-0">

@@ -188,7 +188,7 @@ export default {
         data.append('content', new_content)
         data.append('file', this.file)
 
-        apiService(endpoint, method, { content: new_content }).then(
+        apiService(endpoint, method, data).then(
           post_data => {
             this.$router.push({
               name: "post",
