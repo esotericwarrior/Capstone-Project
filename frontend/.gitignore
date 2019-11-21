@@ -9,6 +9,7 @@ media
 
 *.__pycache__*
 webpack-stats.json
+media
 
 # local env files
 .env.local
