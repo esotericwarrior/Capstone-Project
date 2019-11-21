@@ -1,7 +1,8 @@
 <template>
   <div class="single-post mt-2">
     <div class="container">
-      <img :src="post.file">
+      <img :src="post.url">
+      <blockquote class="imgur-embed-pub" lang="en" data-id="oBlivgM"></blockquote>
       <h1>{{ post.content }}</h1>
       <PostActions v-if="isPostAuthor" :slug="post.slug" />
       <p class="mb-0">

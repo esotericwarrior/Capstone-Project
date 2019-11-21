@@ -54,7 +54,7 @@ let SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 let recognition = SpeechRecognition ? new SpeechRecognition() : false;
 import { apiService } from "@/common/api.service.js";
-
+import { imgurService } from "@/common/api.service.js";
 
 export default {
   name: "PostEditor",
@@ -82,7 +82,8 @@ export default {
       sentences: [],
       speech: null,
       post_body: null,
-      file: null
+      file: null,
+      url: null
     };
   },
   methods: {
@@ -184,18 +185,39 @@ export default {
           method = "PUT";
         }
 
+        let imgur_data = new FormData()
+        imgur_data.append('image', this.file)
+        imgur_data.append('title', new_content)
+        imgur_data.append('type', 'file')
+
         let data = new FormData()
         data.append('content', new_content)
         data.append('file', this.file)
 
-        apiService(endpoint, method, data).then(
-          post_data => {
-            this.$router.push({
-              name: "post",
-              params: { slug: post_data.data.slug }
-            });
+
+        imgurService(imgur_data).then(
+          imgur_data => {
+           // eslint-disable-next-line no-console
+			console.log(imgur_data);
+			// eslint-disable-next-line no-console
+			console.log(imgur_data['data']['data']['link']);
+          	data.append('url', imgur_data['data']['data']['link'])
+
+            // eslint-disable-next-line no-console
+          	console.log(data.get('url'))
+
+		    apiService(endpoint, method, data).then(
+		      post_data => {
+		        this.$router.push({
+		          name: "post",
+		          params: { slug: post_data.data.slug }
+		        });
+		      }
+		    );
           }
-        );
+        )
+
+
       }
     },
   },

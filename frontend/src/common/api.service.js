@@ -9,9 +9,8 @@ async function getJSON(response) {
 function apiService(endpoint, method, data) {
  if (method == "POST"){
   // eslint-disable-next-line no-console
- //console.log(data.get("content"))
- // eslint-disable-next-line no-console
-// console.log(data.get("file"))
+ console.log(data.get("url"))
+
   var content_type;
 
   if (endpoint == "/api/posts/"){
@@ -49,5 +48,18 @@ function apiService(endpoint, method, data) {
  }
 }
 
+async function imgurService(data){
+  return axios.post("https://api.imgur.com/3/image",
+    data,
+    {
+       headers: {
+        "Authorization": "Bearer 931ddfab9e19c9a7512147c83459ce1d457e09cf"
+       }
+    })
+}
+
 export { apiService };
+export { imgurService };
+
+
 
