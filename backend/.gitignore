@@ -6,7 +6,7 @@ env
 venv
 /venv
 __pycache__
-
+migrations
 *.__pycache__*
 webpack-stats.json
 
