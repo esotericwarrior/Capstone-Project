@@ -33,9 +33,9 @@
     </div>
     <div class="container">
       <Comment
-        v-for="(comment, index) in comments"
+        v-for="comment in comments"
         :comment="comment"
-        :key="index"
+        :key="comment.id"
         :requestUser="requestUser"
         @delete-comment="deleteComment"
       />
