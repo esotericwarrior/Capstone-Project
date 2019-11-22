@@ -14,7 +14,7 @@
         <v-img
           class="white--text align-end"
           height="600px"
-          src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+          :src="post.url"
         >
         </v-img>
 
@@ -34,9 +34,14 @@
           </v-tooltip>
           <v-tooltip bottom>
             <template v-slot:activator="{ on }">
-              <v-btn icon>
+            <router-link
+              :to="{ name: 'post', params: { slug: post.slug } }"
+              class="post-link"
+              >              <v-btn icon>
                 <font-awesome-icon icon="comment" size="2x" v-on="on" />
               </v-btn>
+
+            </router-link>
             </template>
             <span>Comment</span>
           </v-tooltip>
