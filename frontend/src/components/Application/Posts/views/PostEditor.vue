@@ -14,11 +14,17 @@
               ></v-text-field>
               <p v-if="error" class="grey--text">{{ error }}</p>
               <p v-else class="mb-0">
-                <v-text-field v-model="speech" v-if="sentences.length > 0" v-bind:key="sentences" 
-                  :value="sentences">
+                <v-text-field
+                  v-model="speech"
+                  v-if="sentences.length > 0"
+                  v-bind:key="sentences"
+                  :value="sentences"
+                >
                 </v-text-field>
-                <span v-for="sentence in sentences" v-bind:key="sentence">{{sentence}} </span>
-                <span>{{runtimeTranscription}}</span>
+                <span v-for="sentence in sentences" v-bind:key="sentence"
+                  >{{ sentence }}
+                </span>
+                <span>{{ runtimeTranscription }}</span>
               </p>
             </v-flex>
             <v-flex xs2 sm1 text-xs-center>
@@ -47,33 +53,43 @@
       <v-btn type="submit">Publish</v-btn>
     </v-form>
 
+    <video autoplay style="display:none"></video>
+    <button id="screenshot-button" @click="takePicture" style="display:none">
+      Take Picture
+    </button>
+    <button id="record-button" @click="recordVideo" style="display:none">
+      Record Video
+    </button>
+    <img src="" />
+    <canvas style="display:none;"></canvas>
+    <button id="save-media-button" @click="saveMedia" style="display:none">
+      Save Media
+    </button>
+    <button
+      id="discard-media-button"
+      @click="discardMedia"
+      style="display:none"
+    >
+      Discard Media
+    </button>
+    <button id="stop-recording-button" style="display:none">
+      Stop Recording
+    </button>
+    <a id="download" style="display:none">Download</a>
 
-
-      <video autoplay style="display:none"></video>
-      <button id="screenshot-button" @click="takePicture" style="display:none">Take Picture</button>
-      <button id="record-button" @click="recordVideo" style="display:none">Record Video</button>
-      <img src="">
-      <canvas style="display:none;"></canvas>
-      <button id="save-media-button" @click="saveMedia" style="display:none">Save Media</button>
-      <button id="discard-media-button" @click="discardMedia" style="display:none">Discard Media</button>
-      <button id="stop-recording-button" style="display:none">Stop Recording</button>
-      <a id="download" style="display:none">Download</a>
-
-      <v-flex xs2 sm1 text-xs-center>
-        <v-btn
-          dark
-          @click.stop="
-            mediaToggle ? stopMediaStream() : startMediaStream()
-          "
-          icon
-          :color="!mediaToggle ? 'grey' : speaking ? 'red' : 'red darken-3'"
-          :class="{ 'animated infinite pulse': mediaToggle }"
-        >
-          <v-icon>{{ mediaToggle ? "Stop Mediastream" : "Start Mediastream" }}</v-icon>
-        </v-btn>
-      </v-flex>
-
-
+    <v-flex xs2 sm1 text-xs-center>
+      <v-btn
+        dark
+        @click.stop="mediaToggle ? stopMediaStream() : startMediaStream()"
+        icon
+        :color="!mediaToggle ? 'grey' : speaking ? 'red' : 'red darken-3'"
+        :class="{ 'animated infinite pulse': mediaToggle }"
+      >
+        <v-icon>{{
+          mediaToggle ? "Stop Mediastream" : "Start Mediastream"
+        }}</v-icon>
+      </v-btn>
+    </v-flex>
 
     <p v-if="error">{{ error }}</p>
   </div>
@@ -112,8 +128,8 @@ export default {
       speech: null,
       post_body: null,
       file: null,
-      url: null
-      video:null,
+      url: null,
+      video: null,
       mediaToggle: false
     };
   },
@@ -127,8 +143,8 @@ export default {
     endSpeechRecognition() {
       recognition.stop();
       this.toggle = false;
-      this.text = this.sentences.join(" ")
-      this.speech = this.sentences.join(" ")
+      this.text = this.sentences.join(" ");
+      this.speech = this.sentences.join(" ");
       this.$emit("speechend", {
         sentences: this.sentences,
         text: this.sentences.join(" ")
@@ -186,17 +202,24 @@ export default {
       this.file = this.$refs.file.files[0];
     },
     onSubmit() {
-
-      var speech = this.speech
+      var speech = this.speech;
 
       // Tell the REST API to create or update a Post Instance
-      if ((this.post_body && this.post_body.length > 0) && (speech && speech.length > 0)) {
-        this.error = "Please use text-to-speech or type your message, not both.";
+      if (
+        this.post_body &&
+        this.post_body.length > 0 &&
+        (speech && speech.length > 0)
+      ) {
+        this.error =
+          "Please use text-to-speech or type your message, not both.";
       } else if (!this.post_body && (speech && speech.length < 1)) {
         this.error = "You can't send an empty post!";
-      } else if ((this.post_body && this.post_body.length > 240) || (speech && speech.length > 240)) {
+      } else if (
+        (this.post_body && this.post_body.length > 240) ||
+        (speech && speech.length > 240)
+      ) {
         this.error = "Ensure this field has no more than 240 characters!";
-      } else if (!this.file){
+      } else if (!this.file) {
         this.error = "Please upload a picture or video to go with your post";
       } else {
         let endpoint = "/api/posts/";
@@ -204,11 +227,10 @@ export default {
 
         var new_content;
 
-        if (!this.post_body){
-          new_content = speech
-        }
-        else{
-          new_content = this.post_body
+        if (!this.post_body) {
+          new_content = speech;
+        } else {
+          new_content = this.post_body;
         }
 
         if (this.slug !== undefined) {
@@ -216,137 +238,142 @@ export default {
           method = "PUT";
         }
 
-        let imgur_data = new FormData()
-        imgur_data.append('image', this.file)
-        imgur_data.append('title', new_content)
-        imgur_data.append('type', 'file')
+        let imgur_data = new FormData();
+        var file_type;
+        if (this.file instanceof File){
+        	file_type = "file";
+        }
+        else{
+        	file_type = "base64"
+        }
+        imgur_data.append("image", this.file);
+        imgur_data.append("title", new_content);
+        imgur_data.append("type", file_type);
 
-        let data = new FormData()
-        data.append('content', new_content)
-        data.append('file', this.file)
+        let data = new FormData();
+        data.append("content", new_content);
+        data.append("file", this.file);
 
+        imgurService(imgur_data).then(imgur_data => {
+          // eslint-disable-next-line no-console
+          console.log(imgur_data);
+          // eslint-disable-next-line no-console
+          console.log(imgur_data["data"]["data"]["link"]);
+          data.append("url", imgur_data["data"]["data"]["link"]);
 
-        imgurService(imgur_data).then(
-          imgur_data => {
-           // eslint-disable-next-line no-console
-			console.log(imgur_data);
-			// eslint-disable-next-line no-console
-			console.log(imgur_data['data']['data']['link']);
-          	data.append('url', imgur_data['data']['data']['link'])
+          // eslint-disable-next-line no-console
+          console.log(data.get("url"));
 
-            // eslint-disable-next-line no-console
-          	console.log(data.get('url'))
-
-		    apiService(endpoint, method, data).then(
-		      post_data => {
-		        this.$router.push({
-		          name: "post",
-		          params: { slug: post_data.data.slug }
-		        });
-		      }
-		    );
-          }
-        )
-
-
+          apiService(endpoint, method, data).then(post_data => {
+            this.$router.push({
+              name: "post",
+              params: { slug: post_data.data.slug }
+            });
+          });
+        });
       }
     },
     checkMediaCompatibility() {
       if (!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) {
-        this.error =
-          "mediastream not supported";
-//          alert("alert: mediastream not supported");
+        this.error = "mediastream not supported";
+        //          alert("alert: mediastream not supported");
       } else {
-//      alert("alert: mediastream supported");
+        //      alert("alert: mediastream supported");
       }
-    }, 
-    startMediaStream(){
+    },
+    startMediaStream() {
       const constraints = {
         video: true
       };
-      const video = document.querySelector('video');
+      const video = document.querySelector("video");
       this.mediaToggle = true;
-      
-      navigator.mediaDevices.getUserMedia(constraints).
-        then((stream) => {video.srcObject = stream});
-      
+
+      navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+        video.srcObject = stream;
+      });
+
       video.style.display = "inline";
-      const screenshotButton = document.querySelector('#screenshot-button');
+      const screenshotButton = document.querySelector("#screenshot-button");
       screenshotButton.style.display = "block";
-      const recordButton = document.querySelector('#record-button');
+      const recordButton = document.querySelector("#record-button");
       recordButton.style.display = "block";
-    }, 
-    stopMediaStream(){
-      const video = document.querySelector('video');
+    },
+    stopMediaStream() {
+      const video = document.querySelector("video");
       video.srcObject.getVideoTracks().forEach(track => track.stop());
-      
+
       video.srcObject = null;
       video.style.display = "none";
-      const screenshotButton = document.querySelector('#screenshot-button');
+      const screenshotButton = document.querySelector("#screenshot-button");
       screenshotButton.style.display = "none";
-      const recordButton = document.querySelector('#record-button');
+      const recordButton = document.querySelector("#record-button");
       recordButton.style.display = "none";
       this.mediaToggle = false;
     },
-    takePicture(){
-      const video = document.querySelector('video');
-      const canvas = document.querySelector('canvas');
-      const img = document.querySelector('img');
-      const saveMediaButton = document.querySelector('#save-media-button');
-      const discardMediaButton = document.querySelector('#discard-media-button');
-
+    takePicture() {
+      const video = document.querySelector("video");
+      const canvas = document.querySelector("canvas");
+      const img = document.querySelector("img");
+      const saveMediaButton = document.querySelector("#save-media-button");
+      const discardMediaButton = document.querySelector(
+        "#discard-media-button"
+      );
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
-      canvas.getContext('2d').drawImage(video, 0, 0);
-      img.src = canvas.toDataURL('image/webp');
+      canvas.getContext("2d").drawImage(video, 0, 0);
+      img.src = canvas.toDataURL("image/png");
       saveMediaButton.style.display = "block";
       discardMediaButton.style.display = "block";
     },
-    recordVideo(){
+    recordVideo() {
       let _this = this;
-      const video = document.querySelector('video');
+      const video = document.querySelector("video");
       const stream = video.srcObject;
-      const stopButton = document.querySelector('#stop-recording-button');
-      const downloadLink = document.querySelector('#download');
-      const options = {mimeType: 'video/webm'};
+      const stopButton = document.querySelector("#stop-recording-button");
+      const downloadLink = document.querySelector("#download");
+      const options = { mimeType: "video/webm" };
       const recordedChunks = [];
       const mediaRecorder = new MediaRecorder(stream, options);
-      const screenshotButton = document.querySelector('#screenshot-button');
-      const recordButton = document.querySelector('#record-button');
-      
+      const screenshotButton = document.querySelector("#screenshot-button");
+      const recordButton = document.querySelector("#record-button");
+
       screenshotButton.style.display = "none";
       recordButton.style.display = "none";
       stopButton.style.display = "block";
-      
-      stopButton.addEventListener('click', function() {
+
+      stopButton.addEventListener("click", function() {
         stopButton.style.display = "none";
         mediaRecorder.stop();
         _this.stopMediaStream();
       });
 
-      mediaRecorder.addEventListener('dataavailable', function(e) {
+      mediaRecorder.addEventListener("dataavailable", function(e) {
         if (e.data.size > 0) {
           recordedChunks.push(e.data);
         }
       });
 
-      mediaRecorder.addEventListener('stop', function() {
+      mediaRecorder.addEventListener("stop", function() {
         downloadLink.style.display = "block";
         downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
-        downloadLink.download = 'video.webm';
+        downloadLink.download = "video.webm";
       });
 
       mediaRecorder.start();
     },
-    saveMedia(){
-      const img = document.querySelector('img');
-//      console.log(img.src);
-      this.file = img.src;
+    saveMedia() {
+      const img = document.querySelector("img");
+      //      console.log(img.src);
+      var str = img.src;
+      var new_str = str.replace("data:image/png;base64,","");
+      this.file = new_str;
     },
-    discardMedia(){
-      const img = document.querySelector('img');
-      const saveMediaButton = document.querySelector('#save-media-button');
-      const discardMediaButton = document.querySelector('#discard-media-button');
+    discardMedia() {
+      const img = document.querySelector("img");
+      const saveMediaButton = document.querySelector("#save-media-button");
+      const discardMediaButton = document.querySelector(
+        "#discard-media-button"
+      );
       img.src = "";
       saveMediaButton.style.display = "none";
       discardMediaButton.style.display = "none";
