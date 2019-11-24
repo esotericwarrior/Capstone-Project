@@ -1,6 +1,8 @@
 <template>
   <div class="single-post mt-2">
     <div class="container">
+      <img :src="post.url">
+      <blockquote class="imgur-embed-pub" lang="en" data-id="oBlivgM"></blockquote>
       <h1>{{ post.content }}</h1>
       <PostActions v-if="isPostAuthor" :slug="post.slug" />
       <p class="mb-0">
@@ -133,13 +135,15 @@ export default {
         this.setPageTitle(data.content);
       });
     },
-    onSubmit() {
+    async onSubmit() {
       // Tell the REST API to create a new comment for this post based on the user input, then update some data properties
       if (this.newCommentBody) {
         let endpoint = `/api/posts/${this.slug}/comment/`;
         apiService(endpoint, "POST", { body: this.newCommentBody }).then(
           data => {
-            this.comments.unshift(data);
+            this.comments.unshift(data.data);
+            // eslint-disable-next-line no-console
+            console.log(this.comments);
           }
         );
         this.newCommentBody = null;

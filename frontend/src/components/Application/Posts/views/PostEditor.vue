@@ -54,6 +54,7 @@ let SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 let recognition = SpeechRecognition ? new SpeechRecognition() : false;
 import { apiService } from "@/common/api.service.js";
+import { imgurService } from "@/common/api.service.js";
 
 export default {
   name: "PostEditor",
@@ -81,7 +82,8 @@ export default {
       sentences: [],
       speech: null,
       post_body: null,
-      file: null
+      file: null,
+      url: null
     };
   },
   methods: {
@@ -156,8 +158,6 @@ export default {
 
       var speech = this.speech
 
-      /*eslint no-console: ["error", { allow: ["log", "error"]}] */
-       console.log(this)
       // Tell the REST API to create or update a Post Instance
       if ((this.post_body && this.post_body.length > 0) && (speech && speech.length > 0)) {
         this.error = "Please use text-to-speech or type your message, not both.";
@@ -165,6 +165,8 @@ export default {
         this.error = "You can't send an empty post!";
       } else if ((this.post_body && this.post_body.length > 240) || (speech && speech.length > 240)) {
         this.error = "Ensure this field has no more than 240 characters!";
+      } else if (!this.file){
+        this.error = "Please upload a picture or video to go with your post";
       } else {
         let endpoint = "/api/posts/";
         let method = "POST";
@@ -183,19 +185,41 @@ export default {
           method = "PUT";
         }
 
-        /*eslint no-console: ["error", { allow: ["log", "error"]}] */
-        console.log(this.slug)
+        let imgur_data = new FormData()
+        imgur_data.append('image', this.file)
+        imgur_data.append('title', new_content)
+        imgur_data.append('type', 'file')
 
-        apiService(endpoint, method, { content: new_content }).then(
-          post_data => {
-            this.$router.push({
-              name: "post",
-              params: { slug: post_data.slug }
-            });
+        let data = new FormData()
+        data.append('content', new_content)
+        data.append('file', this.file)
+
+
+        imgurService(imgur_data).then(
+          imgur_data => {
+           // eslint-disable-next-line no-console
+			console.log(imgur_data);
+			// eslint-disable-next-line no-console
+			console.log(imgur_data['data']['data']['link']);
+          	data.append('url', imgur_data['data']['data']['link'])
+
+            // eslint-disable-next-line no-console
+          	console.log(data.get('url'))
+
+		    apiService(endpoint, method, data).then(
+		      post_data => {
+		        this.$router.push({
+		          name: "post",
+		          params: { slug: post_data.data.slug }
+		        });
+		      }
+		    );
           }
-        );
+        )
+
+
       }
-    }
+    },
   },
   async beforeRouteEnter(to, from, next) {
     if (to.params.slug !== undefined) {

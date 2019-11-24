@@ -5,13 +5,10 @@ node_modules
 env
 venv
 /venv
-media
-
+__pycache__
 *.__pycache__*
-
-## Webpack output
-**/stats.json
 webpack-stats.json
+*.webpack-stats.json
 media
 
 # local env files
