@@ -1,4 +1,5 @@
 from django.db.models.signals import pre_save
+from django.core.signals import request_started
 from django.dispatch import receiver
 from django.utils.text import slugify
 
@@ -15,6 +16,8 @@ from posts.models import Post
 @receiver(pre_save, sender=Post)
 def add_slug_to_post(sender, instance, *args, **kwargs):
     if instance and not instance.slug:
+        print(instance)
         slug = slugify(instance.content)
         random_string = generate_random_string()
         instance.slug = slug + "-" + random_string
+

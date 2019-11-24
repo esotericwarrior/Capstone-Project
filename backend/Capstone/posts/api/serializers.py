@@ -34,6 +34,7 @@ class PostSerializer(serializers.ModelSerializer):
     slug = serializers.SlugField(read_only=True)
     comments_count = serializers.SerializerMethodField()
     user_has_commented = serializers.SerializerMethodField()
+    url = serializers.StringRelatedField(read_only=True)
     likes_count = serializers.SerializerMethodField()
     user_has_liked = serializers.SerializerMethodField()
 
@@ -57,3 +58,4 @@ class PostSerializer(serializers.ModelSerializer):
     def get_user_has_liked(self, instance):
         request = self.context.get("request")
         return instance.post_likers.filter(pk=request.user.pk).exists()
+
