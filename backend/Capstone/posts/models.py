@@ -9,6 +9,8 @@ class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                on_delete=models.CASCADE,
                                related_name="posts")
+    post_likers = models.ManyToManyField(settings.AUTH_USER_MODEL,
+                                    related_name="post_likes")
     file = models.FileField(null=True, max_length=255)
 
     def __str__(self):
