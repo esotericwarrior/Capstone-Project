@@ -8,6 +8,9 @@ venv
 media
 
 *.__pycache__*
+
+## Webpack output
+**/stats.json
 webpack-stats.json
 media
 
