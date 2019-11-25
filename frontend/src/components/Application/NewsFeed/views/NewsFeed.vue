@@ -99,7 +99,8 @@ export default {
       loader: null,
       loadingPosts: false,
       next: null,
-      posts: []
+      posts: [],
+      requestUser: null
     };
   },
   methods: {
