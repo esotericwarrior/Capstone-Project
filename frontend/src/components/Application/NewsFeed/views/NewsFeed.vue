@@ -175,6 +175,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .post-link {
   font-weight: bold;
   color: black;
