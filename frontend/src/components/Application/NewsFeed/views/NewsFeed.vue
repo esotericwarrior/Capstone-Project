@@ -6,7 +6,16 @@
           <v-list-item-avatar color="grey"></v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title class="headline">
-              {{ post.author }}
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on }">
+                  <router-link
+                    :to="{ name: 'profile', params: { username: requestUser } }"
+                  >
+                    <span v-on="on">{{ post.author }}</span>
+                  </router-link>
+                </template>
+                <span>{{ post.author }}</span>
+              </v-tooltip>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
