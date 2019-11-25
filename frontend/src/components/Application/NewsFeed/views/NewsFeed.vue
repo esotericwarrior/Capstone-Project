@@ -134,6 +134,9 @@ export default {
       let endpoint = `/api/posts/${post.id}/like/`;
       apiService(endpoint, "POST");
     },
+    setRequestUser() {
+      this.requestUser = window.localStorage.getItem("username");
+    },
     toggleLike(post) {
       post.user_has_liked === false
         ? this.likePost(post)
