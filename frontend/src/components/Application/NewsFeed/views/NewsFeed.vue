@@ -6,7 +6,10 @@
           <v-tooltip bottom>
             <template v-slot:activator="{ on }">
               <router-link
-                :to="{ name: 'profile', params: { username: requestUser } }"
+                :to="{
+                  name: 'profile',
+                  params: { username: post.author, displayname: post.author }
+                }"
               >
                 <v-list-item-avatar color="grey" v-on="on"></v-list-item-avatar>
               </router-link>
@@ -18,7 +21,7 @@
               <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
                   <router-link
-                    :to="{ name: 'profile', params: { username: requestUser } }"
+                    :to="{ name: 'profile', params: { username: post.author } }"
                   >
                     <span v-on="on">{{ post.author }}</span>
                   </router-link>
@@ -29,11 +32,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-img
-          class="white--text align-end"
-          height="600px"
-          src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-        >
+        <v-img class="white--text align-end" height="600px" :src="post.url">
         </v-img>
 
         <v-card-actions>
