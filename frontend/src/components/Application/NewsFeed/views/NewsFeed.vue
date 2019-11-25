@@ -3,7 +3,16 @@
     <div v-for="post in posts" :key="post.pk">
       <v-card class="mx-auto" max-width="650">
         <v-list-item>
-          <v-list-item-avatar color="grey"></v-list-item-avatar>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <router-link
+                :to="{ name: 'profile', params: { username: requestUser } }"
+              >
+                <v-list-item-avatar color="grey" v-on="on"></v-list-item-avatar>
+              </router-link>
+            </template>
+            <span>{{ post.author }}</span>
+          </v-tooltip>
           <v-list-item-content>
             <v-list-item-title class="headline">
               <v-tooltip bottom>
