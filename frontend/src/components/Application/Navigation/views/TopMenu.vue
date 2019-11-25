@@ -101,5 +101,6 @@ export default {
 <style lang="scss" scoped>
 a {
   text-decoration: none;
+  color: grey;
 }
 </style>
