@@ -121,6 +121,9 @@ export default {
       requestUser: null
     };
   },
+  created() {
+    this.setRequestUser();
+  },
   methods: {
     getPosts() {
       // axios
@@ -169,7 +172,6 @@ export default {
   },
   mounted() {
     this.getPosts();
-    this.setRequestUser();
   },
   watch: {
     loader() {
