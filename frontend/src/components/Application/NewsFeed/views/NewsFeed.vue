@@ -151,6 +151,7 @@ export default {
   },
   mounted() {
     this.getPosts();
+    this.setRequestUser();
   },
   watch: {
     loader() {
