@@ -135,7 +135,7 @@ export default {
         this.setPageTitle(data.content);
       });
     },
-    async onSubmit() {
+    onSubmit() {
       // Tell the REST API to create a new comment for this post based on the user input, then update some data properties
       if (this.newCommentBody) {
         let endpoint = `/api/posts/${this.slug}/comment/`;
