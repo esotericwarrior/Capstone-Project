@@ -7,14 +7,13 @@ async function getJSON(response) {
 }
 
 function apiService(endpoint, method, data) {
- if (method == "POST"){
-
+ if (method == "POST") {
   var content_type;
 
-  if (endpoint == "/api/posts/"){
+  if (endpoint == "/api/posts/") {
     content_type = "multipart/form-data"
   }
-  else{
+  else {
     content_type = "application/json"
   }
 
@@ -46,7 +45,7 @@ function apiService(endpoint, method, data) {
  }
 }
 
-async function imgurService(data){
+async function imgurService(data) {
   return axios.post("https://api.imgur.com/3/image",
     data,
     {
