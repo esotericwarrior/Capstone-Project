@@ -8,8 +8,6 @@ async function getJSON(response) {
 
 function apiService(endpoint, method, data) {
  if (method == "POST"){
-  // eslint-disable-next-line no-console
- console.log(data.get("url"))
 
   var content_type;
 
