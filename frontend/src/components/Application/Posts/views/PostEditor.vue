@@ -53,7 +53,7 @@
       <v-btn type="submit">Publish</v-btn>
     </v-form>
 
-    <video autoplay style="display:none"></video>
+    <video id="webcam-stream" autoplay style="display:none"></video>
     <button id="screenshot-button" @click="takePicture" style="display:none">
       Take Picture
     </button>
@@ -62,6 +62,7 @@
     </button>
     <img src="" />
     <canvas style="display:none;"></canvas>
+    <video id="playback-video" style="display:none" controls></video>
     <button id="save-media-button" @click="saveMedia" style="display:none">
       Save Media
     </button>
@@ -285,7 +286,7 @@ export default {
       const constraints = {
         video: true
       };
-      const video = document.querySelector("video");
+      const video = document.querySelector("#webcam-stream");
       this.mediaToggle = true;
 
       navigator.mediaDevices.getUserMedia(constraints).then(stream => {
@@ -299,7 +300,7 @@ export default {
       recordButton.style.display = "block";
     },
     stopMediaStream() {
-      const video = document.querySelector("video");
+      const video = document.querySelector("#webcam-stream");
       video.srcObject.getVideoTracks().forEach(track => track.stop());
 
       video.srcObject = null;
@@ -311,7 +312,7 @@ export default {
       this.mediaToggle = false;
     },
     takePicture() {
-      const video = document.querySelector("video");
+      const video = document.querySelector("#webcam-stream");
       const canvas = document.querySelector("canvas");
       const img = document.querySelector("img");
       const saveMediaButton = document.querySelector("#save-media-button");
@@ -327,7 +328,7 @@ export default {
     },
     recordVideo() {
       let _this = this;
-      const video = document.querySelector("video");
+      const video = document.querySelector("#webcam-stream");
       const stream = video.srcObject;
       const stopButton = document.querySelector("#stop-recording-button");
       const downloadLink = document.querySelector("#download");
@@ -357,26 +358,35 @@ export default {
         downloadLink.style.display = "block";
         downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
         downloadLink.download = "video.webm";
+        const playback_video = document.querySelector("#playback-video");
+        const discardMediaButton = document.querySelector("#discard-media-button");
+        playback_video.src = downloadLink.href;
+        playback_video.style.display = "block";
+        discardMediaButton.style.display = "block";
+        playback_video.load();
       });
 
       mediaRecorder.start();
     },
     saveMedia() {
       const img = document.querySelector("img");
-      //      console.log(img.src);
       var str = img.src;
       var new_str = str.replace("data:image/png;base64,","");
       this.file = new_str;
     },
     discardMedia() {
       const img = document.querySelector("img");
+      const video = document.querySelector("#playback-video");
       const saveMediaButton = document.querySelector("#save-media-button");
       const discardMediaButton = document.querySelector(
         "#discard-media-button"
       );
+      const downloadLink = document.querySelector("#download");
       img.src = "";
+      video.style.display = "none";
       saveMediaButton.style.display = "none";
       discardMediaButton.style.display = "none";
+      downloadLink.style.display = "none";
     }
   },
   async beforeRouteEnter(to, from, next) {
