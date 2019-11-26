@@ -53,7 +53,7 @@
       <v-btn type="submit">Publish</v-btn>
     </v-form>
 
-    <video id="webcam-stream" autoplay style="display:none"></video>
+    <video id="webcam-stream" autoplay muted style="display:none"></video>
     <button id="screenshot-button" @click="takePicture" style="display:none">
       Take Picture
     </button>
@@ -284,7 +284,8 @@ export default {
     },
     startMediaStream() {
       const constraints = {
-        video: true
+        video: true,
+        audio: true
       };
       const video = document.querySelector("#webcam-stream");
       this.mediaToggle = true;
@@ -302,7 +303,7 @@ export default {
     stopMediaStream() {
       const video = document.querySelector("#webcam-stream");
       video.srcObject.getVideoTracks().forEach(track => track.stop());
-
+      video.srcObject.getAudioTracks().forEach(track => track.stop());
       video.srcObject = null;
       video.style.display = "none";
       const screenshotButton = document.querySelector("#screenshot-button");
