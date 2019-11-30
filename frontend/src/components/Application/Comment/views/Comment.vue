@@ -1,8 +1,20 @@
 <template>
   <div>
-    <p>
-      <strong>{{ comment.author }}</strong> &#8901; {{ comment.created_at }}
-    </p>
+    <v-list-item>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <router-link
+            :to="{
+              name: 'profile',
+              params: { username: comment.author, displayname: comment.author }
+            }"
+          >
+            <v-list-item-avatar color="grey" v-on="on"></v-list-item-avatar>
+          </router-link>
+        </template>
+        <span>{{ comment.author }}</span>
+      </v-tooltip>
+    </v-list-item>
     <p>{{ likesCounter }} likes</p>
     <p>{{ comment.body }}</p>
     <div v-if="isCommentAuthor">
