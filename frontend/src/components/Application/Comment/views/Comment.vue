@@ -14,6 +14,20 @@
         </template>
         <span>{{ comment.author }}</span>
       </v-tooltip>
+      <v-list-item-content>
+        <v-list-item-title class="headline">
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <router-link
+                :to="{ name: 'profile', params: { username: comment.author } }"
+              >
+                <span v-on="on">{{ comment.author }}</span>
+              </router-link>
+            </template>
+            <span>{{ comment.author }}</span>
+          </v-tooltip>
+        </v-list-item-title>
+      </v-list-item-content>
     </v-list-item>
     <p>{{ likesCounter }} likes</p>
     <p>{{ comment.body }}</p>
