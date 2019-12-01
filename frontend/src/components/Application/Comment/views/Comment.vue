@@ -32,6 +32,7 @@
           </template>
           <span>{{ comment.author }}</span>
         </v-tooltip>
+        <span class="title font-weight-light pl-5">{{ comment.body }}</span>
       </v-card-title>
     </v-card-text>
     <p>{{ likesCounter }} likes</p>
