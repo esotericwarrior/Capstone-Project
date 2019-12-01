@@ -42,6 +42,12 @@
               <font-awesome-icon icon="ellipsis-h" size="2x" />
             </v-btn>
           </template>
+
+          <v-list>
+            <v-list-item v-for="(item, i) in items" :key="i">
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
         </v-menu>
         <span class="title font-weight-light pl-5">{{ comment.body }}</span>
       </v-card-title>
