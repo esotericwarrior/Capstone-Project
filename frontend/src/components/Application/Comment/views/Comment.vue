@@ -71,6 +71,19 @@
                   </router-link>
 
                   <v-list-item>
+                    <v-tooltip bottom>
+                      <template v-slot:activator="{ on }">
+                        <v-btn icon>
+                          <font-awesome-icon
+                            icon="trash"
+                            size="2x"
+                            v-on="on"
+                            @click="triggerDeleteComment"
+                          />
+                        </v-btn>
+                      </template>
+                      <span>Delete Comment</span>
+                    </v-tooltip>
                     <v-list-item-title>Delete Comment</v-list-item-title>
                   </v-list-item>
                 </div>
