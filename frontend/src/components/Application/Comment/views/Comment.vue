@@ -1,5 +1,10 @@
 <template>
-  <div>
+  <v-card
+    max-width="800"
+    class="mx-auto grey lighten-5"
+    color="grey lighten-5"
+    flat
+  >
     <v-list-item>
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
@@ -31,33 +36,6 @@
     </v-list-item>
     <p>{{ likesCounter }} likes</p>
     <p>{{ comment.body }}</p>
-    <div v-if="isCommentAuthor">
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-btn icon>
-            <router-link
-              :to="{ name: 'comment-editor', params: { id: comment.id } }"
-            >
-              <font-awesome-icon icon="edit" size="2x" v-on="on" />
-            </router-link>
-          </v-btn>
-        </template>
-        <span>Edit Comment</span>
-      </v-tooltip>
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-btn icon>
-            <font-awesome-icon
-              icon="trash"
-              size="2x"
-              v-on="on"
-              @click="triggerDeleteComment"
-            />
-          </v-btn>
-        </template>
-        <span>Delete Comment</span>
-      </v-tooltip>
-    </div>
     <v-tooltip bottom>
       <template v-slot:activator="{ on }">
         <v-btn icon @click="toggleLike">
@@ -72,7 +50,7 @@
       <span>Like</span>
     </v-tooltip>
     <v-divider />
-  </div>
+  </v-card>
 </template>
 
 <script>
