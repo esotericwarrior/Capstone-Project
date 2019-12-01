@@ -88,6 +88,19 @@
                     <v-tooltip bottom>
                       <template v-slot:activator="{ on }">
                         <v-btn icon>
+                          <font-awesome-icon icon="share" size="2x" v-on="on" />
+                        </v-btn>
+                      </template>
+                      <span>Share</span>
+                    </v-tooltip>
+                    <v-list-item-title>
+                      Share
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item>
+                    <v-tooltip bottom>
+                      <template v-slot:activator="{ on }">
+                        <v-btn icon>
                           <font-awesome-icon icon="ban" size="2x" v-on="on" />
                         </v-btn>
                       </template>
