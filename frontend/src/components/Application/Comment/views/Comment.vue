@@ -34,6 +34,15 @@
           </template>
           <span>{{ comment.author }}</span>
         </v-tooltip>
+        <v-spacer></v-spacer>
+
+        <v-menu bottom left>
+          <template v-slot:activator="{ on }">
+            <v-btn icon v-on="on">
+              <font-awesome-icon icon="ellipsis-h" size="2x" />
+            </v-btn>
+          </template>
+        </v-menu>
         <span class="title font-weight-light pl-5">{{ comment.body }}</span>
       </v-card-title>
     </v-card-text>
