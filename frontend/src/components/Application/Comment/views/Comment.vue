@@ -34,6 +34,7 @@
         </v-tooltip>
         <span class="title font-weight-light pl-5">{{ comment.body }}</span>
       </v-card-title>
+      <v-card-subtitle class="pl-5">{{ likesCounter }} likes</v-card-subtitle>
     </v-card-text>
     <p>{{ likesCounter }} likes</p>
     <p>{{ comment.body }}</p>
