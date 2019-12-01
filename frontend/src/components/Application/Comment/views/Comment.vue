@@ -36,8 +36,7 @@
       </v-card-title>
       <v-card-subtitle class="pl-5">{{ likesCounter }} likes</v-card-subtitle>
     </v-card-text>
-    <p>{{ likesCounter }} likes</p>
-    <p>{{ comment.body }}</p>
+
     <v-tooltip bottom>
       <template v-slot:activator="{ on }">
         <v-btn icon @click="toggleLike">
