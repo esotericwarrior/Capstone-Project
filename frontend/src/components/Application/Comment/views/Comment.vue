@@ -2,6 +2,7 @@
   <v-card max-width="800" class="mx-auto grey lighten-5" flat>
     <v-card-text color="grey lighten-5">
       <v-card-title>
+        <!-- Avatar -->
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <router-link
@@ -19,6 +20,7 @@
           <span>{{ comment.author }}</span>
         </v-tooltip>
 
+        <!-- Comment Author -->
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <router-link
