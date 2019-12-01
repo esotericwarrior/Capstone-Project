@@ -37,19 +37,7 @@
       <v-card-subtitle class="pl-5">{{ likesCounter }} likes</v-card-subtitle>
     </v-card-text>
 
-    <v-tooltip bottom>
-      <template v-slot:activator="{ on }">
-        <v-btn icon @click="toggleLike">
-          <font-awesome-icon
-            :color="userLikedComment ? 'red' : ''"
-            icon="heart"
-            size="2x"
-            v-on="on"
-          />
-        </v-btn>
-      </template>
-      <span>Like</span>
-    </v-tooltip>
+    <v-card-actions> </v-card-actions>
     <v-divider />
   </v-card>
 </template>
