@@ -45,7 +45,9 @@
 
           <v-list>
             <v-list-item>
-              <v-list-item-title></v-list-item-title>
+              <v-list-item-title>
+                <div v-if="isCommentAuthor"></div>
+              </v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
