@@ -1,7 +1,7 @@
 <template>
   <v-card max-width="800" class="mx-auto grey lighten-5" flat>
     <v-card-text color="grey lighten-5">
-      <v-card-title>
+      <v-card-title class="pa-0 ma-0">
         <!-- Avatar -->
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
