@@ -1,6 +1,6 @@
 <template>
   <v-card max-width="800" class="mx-auto grey lighten-5" flat>
-    <v-list color="grey lighten-5">
+    <v-list color="grey lighten-5" three-line>
       <v-list-item>
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
