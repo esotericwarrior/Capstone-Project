@@ -37,7 +37,13 @@
       <v-card-subtitle class="pl-5">{{ likesCounter }} likes</v-card-subtitle>
     </v-card-text>
 
-    <v-card-actions> </v-card-actions>
+    <v-card-actions>
+      <v-list-item class="grow">
+        <v-list-item-content>
+          <v-list-item-title>{{ likesCounter }} likes</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-card-actions>
     <v-divider />
   </v-card>
 </template>
