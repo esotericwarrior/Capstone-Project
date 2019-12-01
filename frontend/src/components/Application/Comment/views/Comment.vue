@@ -46,7 +46,15 @@
           <v-list>
             <v-list-item>
               <v-list-item-title>
-                <div v-if="isCommentAuthor"></div>
+                <div v-if="isCommentAuthor">
+                  <router-link
+                    :to="{
+                      name: 'comment-editor',
+                      params: { id: comment.id }
+                    }"
+                  >
+                  </router-link>
+                </div>
               </v-list-item-title>
             </v-list-item>
           </v-list>
