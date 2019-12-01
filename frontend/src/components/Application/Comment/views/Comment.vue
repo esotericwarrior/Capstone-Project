@@ -83,7 +83,21 @@
                   </v-list-item>
                 </div>
 
-                <div v-else></div>
+                <div v-else>
+                  <v-list-item>
+                    <v-tooltip bottom>
+                      <template v-slot:activator="{ on }">
+                        <v-btn icon>
+                          <font-awesome-icon icon="ban" size="2x" v-on="on" />
+                        </v-btn>
+                      </template>
+                      <span>Unfollow {{ comment.author }}</span>
+                    </v-tooltip>
+                    <v-list-item-title>
+                      Unfollow {{ comment.author }}
+                    </v-list-item-title>
+                  </v-list-item>
+                </div>
               </v-list-item-title>
             </v-list-item>
           </v-list>
