@@ -53,6 +53,9 @@
                       params: { id: comment.id }
                     }"
                   >
+                    <v-list-item>
+                      <v-list-item-title>Edit Comment</v-list-item-title>
+                    </v-list-item>
                   </router-link>
                 </div>
               </v-list-item-title>
