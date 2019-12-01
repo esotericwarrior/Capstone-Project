@@ -69,6 +69,10 @@
                       <v-list-item-title>Edit Comment</v-list-item-title>
                     </v-list-item>
                   </router-link>
+
+                  <v-list-item>
+                    <v-list-item-title>Delete Comment</v-list-item-title>
+                  </v-list-item>
                 </div>
               </v-list-item-title>
             </v-list-item>
