@@ -1,7 +1,7 @@
 <template>
   <v-card max-width="800" class="mx-auto grey lighten-5" flat>
-    <v-list color="grey lighten-5" three-line>
-      <v-list-item>
+    <v-card-text color="grey lighten-5">
+      <v-card-title>
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <router-link
@@ -18,25 +18,22 @@
           </template>
           <span>{{ comment.author }}</span>
         </v-tooltip>
-        <v-list-item-content>
-          <v-list-item-title class="headline">
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
-                <router-link
-                  :to="{
-                    name: 'profile',
-                    params: { username: comment.author }
-                  }"
-                >
-                  <span v-on="on">{{ comment.author }}</span>
-                </router-link>
-              </template>
-              <span>{{ comment.author }}</span>
-            </v-tooltip>
-          </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
+
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <router-link
+              :to="{
+                name: 'profile',
+                params: { username: comment.author }
+              }"
+            >
+              <span v-on="on">{{ comment.author }}</span>
+            </router-link>
+          </template>
+          <span>{{ comment.author }}</span>
+        </v-tooltip>
+      </v-card-title>
+    </v-card-text>
     <p>{{ likesCounter }} likes</p>
     <p>{{ comment.body }}</p>
     <v-tooltip bottom>
