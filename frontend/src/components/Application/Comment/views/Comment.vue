@@ -52,7 +52,7 @@
       </v-card-title>
     </v-card-text>
 
-    <v-card-text class="title font-weight-light pl-5">
+    <v-card-text class="title font-weight-light pl-5 ma-0 pa-0">
       {{ comment.body }}
     </v-card-text>
 
