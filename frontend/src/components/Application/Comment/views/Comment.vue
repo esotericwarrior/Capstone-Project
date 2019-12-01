@@ -49,8 +49,11 @@
             </v-list-item>
           </v-list>
         </v-menu>
-        <span class="title font-weight-light pl-5">{{ comment.body }}</span>
       </v-card-title>
+    </v-card-text>
+
+    <v-card-text class="title font-weight-light pl-5">
+      {{ comment.body }}
     </v-card-text>
 
     <v-card-actions>
