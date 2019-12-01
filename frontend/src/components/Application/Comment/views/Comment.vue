@@ -54,6 +54,18 @@
                     }"
                   >
                     <v-list-item>
+                      <v-tooltip bottom>
+                        <template v-slot:activator="{ on }">
+                          <v-btn text icon>
+                            <font-awesome-icon
+                              icon="edit"
+                              size="2x"
+                              v-on="on"
+                            />
+                          </v-btn>
+                        </template>
+                        <span>Edit Comment</span>
+                      </v-tooltip>
                       <v-list-item-title>Edit Comment</v-list-item-title>
                     </v-list-item>
                   </router-link>
