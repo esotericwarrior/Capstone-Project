@@ -1,10 +1,5 @@
 <template>
-  <v-card
-    max-width="800"
-    class="mx-auto grey lighten-5"
-    color="grey lighten-5"
-    flat
-  >
+  <v-card max-width="800" class="mx-auto grey lighten-5" flat>
     <v-list three-line>
       <v-list-item>
         <v-tooltip bottom>
