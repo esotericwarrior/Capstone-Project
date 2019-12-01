@@ -44,8 +44,8 @@
           </template>
 
           <v-list>
-            <v-list-item v-for="(item, i) in items" :key="i">
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item>
+              <v-list-item-title></v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
