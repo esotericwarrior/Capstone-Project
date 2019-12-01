@@ -6,7 +6,6 @@
           background-color="grey lighten-5"
           class="mx-2 grey lighten-5"
           no-resize
-          rows="2"
           solo
           v-model="commentBody"
         >
