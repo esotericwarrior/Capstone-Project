@@ -5,35 +5,43 @@
     color="grey lighten-5"
     flat
   >
-    <v-list-item>
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <router-link
-            :to="{
-              name: 'profile',
-              params: { username: comment.author, displayname: comment.author }
-            }"
-          >
-            <v-list-item-avatar color="grey" v-on="on"></v-list-item-avatar>
-          </router-link>
-        </template>
-        <span>{{ comment.author }}</span>
-      </v-tooltip>
-      <v-list-item-content>
-        <v-list-item-title class="headline">
-          <v-tooltip bottom>
-            <template v-slot:activator="{ on }">
-              <router-link
-                :to="{ name: 'profile', params: { username: comment.author } }"
-              >
-                <span v-on="on">{{ comment.author }}</span>
-              </router-link>
-            </template>
-            <span>{{ comment.author }}</span>
-          </v-tooltip>
-        </v-list-item-title>
-      </v-list-item-content>
-    </v-list-item>
+    <v-list three-line>
+      <v-list-item>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <router-link
+              :to="{
+                name: 'profile',
+                params: {
+                  username: comment.author,
+                  displayname: comment.author
+                }
+              }"
+            >
+              <v-list-item-avatar color="grey" v-on="on"></v-list-item-avatar>
+            </router-link>
+          </template>
+          <span>{{ comment.author }}</span>
+        </v-tooltip>
+        <v-list-item-content>
+          <v-list-item-title class="headline">
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on }">
+                <router-link
+                  :to="{
+                    name: 'profile',
+                    params: { username: comment.author }
+                  }"
+                >
+                  <span v-on="on">{{ comment.author }}</span>
+                </router-link>
+              </template>
+              <span>{{ comment.author }}</span>
+            </v-tooltip>
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
     <p>{{ likesCounter }} likes</p>
     <p>{{ comment.body }}</p>
     <v-tooltip bottom>
