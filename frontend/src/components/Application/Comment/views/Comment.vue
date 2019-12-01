@@ -110,6 +110,19 @@
                       Unfollow {{ comment.author }}
                     </v-list-item-title>
                   </v-list-item>
+                  <v-list-item>
+                    <v-tooltip bottom>
+                      <template v-slot:activator="{ on }">
+                        <v-btn icon>
+                          <font-awesome-icon icon="flag" size="2x" v-on="on" />
+                        </v-btn>
+                      </template>
+                      <span>Unfollow {{ comment.author }}</span>
+                    </v-tooltip>
+                    <v-list-item-title>
+                      Report
+                    </v-list-item-title>
+                  </v-list-item>
                 </div>
               </v-list-item-title>
             </v-list-item>
