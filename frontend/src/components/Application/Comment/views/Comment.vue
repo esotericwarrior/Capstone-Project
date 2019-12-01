@@ -42,6 +42,8 @@
         <v-list-item-content>
           <v-list-item-title>{{ likesCounter }} likes</v-list-item-title>
         </v-list-item-content>
+
+        <v-row align="center" justify="end"> </v-row>
       </v-list-item>
     </v-card-actions>
     <v-divider />
