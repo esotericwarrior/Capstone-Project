@@ -82,6 +82,8 @@
                     <v-list-item-title>Delete Comment</v-list-item-title>
                   </v-list-item>
                 </div>
+
+                <div v-else></div>
               </v-list-item-title>
             </v-list-item>
           </v-list>
