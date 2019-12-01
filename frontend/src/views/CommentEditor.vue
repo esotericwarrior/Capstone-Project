@@ -3,6 +3,7 @@
     <div>
       <v-form @submit.prevent="onSubmit">
         <v-textarea
+          auto-grow
           background-color="grey lighten-5"
           class="mx-2 grey lighten-5"
           no-resize
