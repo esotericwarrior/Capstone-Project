@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row>
+    <v-row no-gutters>
       <v-col>
         <div>
           <v-form @submit.prevent="onSubmit">
