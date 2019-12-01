@@ -91,6 +91,7 @@ export default {
   },
   data() {
     return {
+      items: [{ title: "Edit" }, { title: "Delete" }],
       liked: false,
       likesCounter: this.comment.likes_count,
       userLikedComment: this.comment.user_has_liked
