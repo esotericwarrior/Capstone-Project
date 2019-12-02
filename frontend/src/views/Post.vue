@@ -1,67 +1,73 @@
 <template>
-  <v-card class="mx-auto grey lighten-5" max-width="900">
-    <div class="container">
-      <img :src="post.url" />
-      <blockquote
-        class="imgur-embed-pub"
-        lang="en"
-        data-id="oBlivgM"
-      ></blockquote>
-      <h1>{{ post.content }}</h1>
-      <PostActions v-if="isPostAuthor" :slug="post.slug" />
-      <p class="mb-0">
-        Posted by:
-        <span class="author-name">{{ post.author }}</span>
-      </p>
-      <p>{{ post.created_at }}</p>
-      <v-divider />
-      <div>
-        <v-form @submit.prevent="onSubmit">
-          <v-textarea
-            background-color="grey lighten-5"
-            class="mx-2 grey lighten-5"
-            flat
-            no-resize
-            placeholder="Add a comment..."
-            rows="2"
-            solo
-            v-model="newCommentBody"
-          >
-            <template v-slot:append>
-              <v-btn type="submit" color="success">Post</v-btn>
-            </template>
-          </v-textarea>
-        </v-form>
-        <div v-if="error">
-          <p class="error">{{ error }}</p>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <Comment
-        v-for="comment in comments"
-        :comment="comment"
-        :key="comment.id"
-        :requestUser="requestUser"
-        @delete-comment="deleteComment"
-      />
-    </div>
-    <div align="center">
-      <!-- Load More Comments Button -->
-      <v-btn
-        text
-        color="success"
-        v-show="next"
-        @click="getPostComments"
-        class="ma-2"
-      >
-        Load More Comments
-        <template v-slot:loader>
-          <span>Loading...</span>
-        </template>
-      </v-btn>
-    </div>
-  </v-card>
+  <v-container>
+    <v-row no-gutters>
+      <v-col>
+        <v-card class="mx-auto grey lighten-5" max-width="900">
+          <div class="container">
+            <img :src="post.url" />
+            <blockquote
+              class="imgur-embed-pub"
+              lang="en"
+              data-id="oBlivgM"
+            ></blockquote>
+            <h1>{{ post.content }}</h1>
+            <PostActions v-if="isPostAuthor" :slug="post.slug" />
+            <p class="mb-0">
+              Posted by:
+              <span class="author-name">{{ post.author }}</span>
+            </p>
+            <p>{{ post.created_at }}</p>
+            <v-divider />
+            <div>
+              <v-form @submit.prevent="onSubmit">
+                <v-textarea
+                  background-color="grey lighten-5"
+                  class="mx-2 grey lighten-5"
+                  flat
+                  no-resize
+                  placeholder="Add a comment..."
+                  rows="2"
+                  solo
+                  v-model="newCommentBody"
+                >
+                  <template v-slot:append>
+                    <v-btn type="submit" color="success">Post</v-btn>
+                  </template>
+                </v-textarea>
+              </v-form>
+              <div v-if="error">
+                <p class="error">{{ error }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <Comment
+              v-for="comment in comments"
+              :comment="comment"
+              :key="comment.id"
+              :requestUser="requestUser"
+              @delete-comment="deleteComment"
+            />
+          </div>
+          <div align="center">
+            <!-- Load More Comments Button -->
+            <v-btn
+              text
+              color="success"
+              v-show="next"
+              @click="getPostComments"
+              class="ma-2"
+            >
+              Load More Comments
+              <template v-slot:loader>
+                <span>Loading...</span>
+              </template>
+            </v-btn>
+          </div>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
