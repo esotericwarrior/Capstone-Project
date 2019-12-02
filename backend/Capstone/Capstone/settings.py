@@ -119,7 +119,7 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'grandpa2',
+        'NAME': 'grandpa1',
         'HOST': 'mongodb+srv://sample_user:467grandpapassword@cluster0-sjdfw.mongodb.net/test?retryWrites=true&w=majority',
         'USER': 'sample_user',
         'PASSWORD': '467grandpapassword',
