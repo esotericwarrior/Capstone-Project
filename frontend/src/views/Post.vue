@@ -1,8 +1,12 @@
 <template>
-  <div class="single-post mt-2">
+  <v-card class="mx-auto grey lighten-5" max-width="900">
     <div class="container">
-      <img :src="post.url">
-      <blockquote class="imgur-embed-pub" lang="en" data-id="oBlivgM"></blockquote>
+      <img :src="post.url" />
+      <blockquote
+        class="imgur-embed-pub"
+        lang="en"
+        data-id="oBlivgM"
+      ></blockquote>
       <h1>{{ post.content }}</h1>
       <PostActions v-if="isPostAuthor" :slug="post.slug" />
       <p class="mb-0">
@@ -57,7 +61,7 @@
         </template>
       </v-btn>
     </div>
-  </div>
+  </v-card>
 </template>
 
 <script>
