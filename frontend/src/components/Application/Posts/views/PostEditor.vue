@@ -14,11 +14,17 @@
               ></v-text-field>
               <p v-if="error" class="grey--text">{{ error }}</p>
               <p v-else class="mb-0">
-                <v-text-field v-model="speech" v-if="sentences.length > 0" v-bind:key="sentences" 
-                  :value="sentences">
+                <v-text-field
+                  v-model="speech"
+                  v-if="sentences.length > 0"
+                  v-bind:key="sentences"
+                  :value="sentences"
+                >
                 </v-text-field>
-                <span v-for="sentence in sentences" v-bind:key="sentence">{{sentence}} </span>
-                <span>{{runtimeTranscription}}</span>
+                <span v-for="sentence in sentences" v-bind:key="sentence"
+                  >{{ sentence }}
+                </span>
+                <span>{{ runtimeTranscription }}</span>
               </p>
             </v-flex>
             <v-flex xs2 sm1 text-xs-center>
@@ -96,8 +102,8 @@ export default {
     endSpeechRecognition() {
       recognition.stop();
       this.toggle = false;
-      this.text = this.sentences.join(" ")
-      this.speech = this.sentences.join(" ")
+      this.text = this.sentences.join(" ");
+      this.speech = this.sentences.join(" ");
       this.$emit("speechend", {
         sentences: this.sentences,
         text: this.sentences.join(" ")
@@ -155,17 +161,24 @@ export default {
       this.file = this.$refs.file.files[0];
     },
     onSubmit() {
-
-      var speech = this.speech
+      var speech = this.speech;
 
       // Tell the REST API to create or update a Post Instance
-      if ((this.post_body && this.post_body.length > 0) && (speech && speech.length > 0)) {
-        this.error = "Please use text-to-speech or type your message, not both.";
+      if (
+        this.post_body &&
+        this.post_body.length > 0 &&
+        (speech && speech.length > 0)
+      ) {
+        this.error =
+          "Please use text-to-speech or type your message, not both.";
       } else if (!this.post_body && speech.length < 1) {
         this.error = "You can't send an empty post!";
-      } else if ((this.post_body && this.post_body.length > 240) || (speech && speech.length > 240)) {
+      } else if (
+        (this.post_body && this.post_body.length > 240) ||
+        (speech && speech.length > 240)
+      ) {
         this.error = "Ensure this field has no more than 240 characters!";
-      } else if (!this.file){
+      } else if (!this.file) {
         this.error = "Please upload a picture or video to go with your post";
       } else {
         let endpoint = "/api/posts/";
@@ -173,11 +186,10 @@ export default {
 
         var new_content;
 
-        if (!this.post_body){
-          new_content = speech
-        }
-        else{
-          new_content = this.post_body
+        if (!this.post_body) {
+          new_content = speech;
+        } else {
+          new_content = this.post_body;
         }
 
         if (this.slug !== undefined) {
@@ -185,41 +197,34 @@ export default {
           method = "PUT";
         }
 
-        let imgur_data = new FormData()
-        imgur_data.append('image', this.file)
-        imgur_data.append('title', new_content)
-        imgur_data.append('type', 'file')
+        let imgur_data = new FormData();
+        imgur_data.append("image", this.file);
+        imgur_data.append("title", new_content);
+        imgur_data.append("type", "file");
 
-        let data = new FormData()
-        data.append('content', new_content)
-        data.append('file', this.file)
+        let data = new FormData();
+        data.append("content", new_content);
+        data.append("file", this.file);
 
+        imgurService(imgur_data).then(imgur_data => {
+          // eslint-disable-next-line no-console
+          console.log(imgur_data);
+          // eslint-disable-next-line no-console
+          console.log(imgur_data["data"]["data"]["link"]);
+          data.append("url", imgur_data["data"]["data"]["link"]);
 
-        imgurService(imgur_data).then(
-          imgur_data => {
-           // eslint-disable-next-line no-console
-			console.log(imgur_data);
-			// eslint-disable-next-line no-console
-			console.log(imgur_data['data']['data']['link']);
-          	data.append('url', imgur_data['data']['data']['link'])
+          // eslint-disable-next-line no-console
+          console.log(data.get("url"));
 
-            // eslint-disable-next-line no-console
-          	console.log(data.get('url'))
-
-		    apiService(endpoint, method, data).then(
-		      post_data => {
-		        this.$router.push({
-		          name: "post",
-		          params: { slug: post_data.data.slug }
-		        });
-		      }
-		    );
-          }
-        )
-
-
+          apiService(endpoint, method, data).then(post_data => {
+            this.$router.push({
+              name: "post",
+              params: { slug: post_data.data.slug }
+            });
+          });
+        });
       }
-    },
+    }
   },
   async beforeRouteEnter(to, from, next) {
     if (to.params.slug !== undefined) {
