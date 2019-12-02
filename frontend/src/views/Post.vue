@@ -2,7 +2,7 @@
   <v-container>
     <v-row no-gutters>
       <v-col>
-        <v-card class="mx-auto grey lighten-5" max-width="900">
+        <v-card class="mx-auto grey lighten-5" flat max-width="900">
           <div class="container">
             <img :src="post.url" />
             <blockquote
