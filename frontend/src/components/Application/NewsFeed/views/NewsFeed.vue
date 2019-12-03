@@ -32,7 +32,12 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-img class="white--text align-end" height="600px" :src="post.url">
+        <v-img
+          class="white--text align-end"
+          contain
+          height="600px"
+          :src="post.url"
+        >
         </v-img>
 
         <v-card-actions>
