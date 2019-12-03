@@ -1,66 +1,55 @@
 <template>
-  <div class="container mt-2">
-    <h1 class="mb-3">Post Something</h1>
+  <v-container>
     <v-form @submit.prevent="onSubmit">
-      <v-card>
-        <v-card-text>
-          <v-layout row wrap justify-space-around>
-            <v-flex xs8 sm9 text-xs-center>
-              <v-text-field
-                v-model="post_body"
-                class="form-control"
-                placeholder="What do you want to post?"
-                rows="3"
-              ></v-text-field>
-              <p v-if="error" class="grey--text">{{ error }}</p>
-              <p v-else class="mb-0">
-                <v-text-field
-                  v-model="speech"
-                  v-if="sentences.length > 0"
-                  v-bind:key="sentences"
-                  :value="sentences"
-                >
-                </v-text-field>
-                <span v-for="sentence in sentences" v-bind:key="sentence"
-                  >{{ sentence }}
-                </span>
-                <span>{{ runtimeTranscription }}</span>
-              </p>
-            </v-flex>
-            <v-flex xs2 sm1 text-xs-center>
-              <v-btn
-                dark
-                @click.stop="
-                  toggle ? endSpeechRecognition() : startSpeechRecognition()
-                "
-                icon
-                :color="!toggle ? 'grey' : speaking ? 'red' : 'red darken-3'"
-                :class="{ 'animated infinite pulse': toggle }"
-              >
-                <v-icon>{{ toggle ? "mic_off" : "mic" }}</v-icon>
-              </v-btn>
-            </v-flex>
-          </v-layout>
-        </v-card-text>
-      </v-card>
+      <v-card class="mx-auto grey lighten-5" flat max-width="800">
+        <v-card-title class="headline justify-center">
+          What would you like to post?
+        </v-card-title>
 
-      <input
-        type="file"
-        id="file"
-        ref="file"
-        v-on:change="onFileChange()"
-      /><br />
-      <v-btn type="submit">Publish</v-btn>
+        <v-row no-gutters>
+          <v-col>
+            <v-text-field
+              append
+              auto-grow
+              v-model="post_body"
+              placeholder="What do you want to post?"
+            >
+              <template v-slot:append>
+                <speechToText
+                  :text.sync="post_body"
+                  @speechend="speechEnd"
+                ></speechToText>
+              </template>
+            </v-text-field>
+          </v-col>
+        </v-row>
+        <v-card-actions>
+          <input
+            type="file"
+            id="file"
+            ref="file"
+            v-on:change="onFileChange()"
+          />
+          <v-spacer />
+          <v-btn type="submit">Publish</v-btn>
+        </v-card-actions>
+      </v-card>
     </v-form>
-    <p v-if="error">{{ error }}</p>
-  </div>
+
+    <v-snackbar color="red" multi-line v-model="snackbar">
+      {{ error }}
+      <v-btn text @click="snackbar = false">
+        Close
+      </v-btn>
+    </v-snackbar>
+  </v-container>
 </template>
+
 <script>
-let SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
-let recognition = SpeechRecognition ? new SpeechRecognition() : false;
 import { apiService } from "@/common/api.service.js";
 import { imgurService } from "@/common/api.service.js";
+import { SpeechToText } from "@/components/Application/Speech";
+
 export default {
   name: "PostEditor",
   created() {},
@@ -69,14 +58,13 @@ export default {
       type: String,
       default: "en-US"
     },
-    text: {
-      type: [String, null],
-      required: true
-    },
     slug: {
       type: String,
       required: false
     }
+  },
+  components: {
+    SpeechToText
   },
   data() {
     return {
@@ -84,73 +72,22 @@ export default {
       speaking: false,
       toggle: false,
       runtimeTranscription: "",
-      sentences: [],
+      sentences: null,
       speech: null,
-      post_body: null,
+      post_body: "",
       file: null,
+      text: "",
+      snackbar: false,
       url: null
     };
   },
   methods: {
-    checkCompatibility() {
-      if (!recognition) {
-        this.error =
-          "Speech Recognition is not available on this browser. Please use Chrome or Firefox";
-      }
-    },
-    endSpeechRecognition() {
-      recognition.stop();
-      this.toggle = false;
-      this.text = this.sentences.join(" ");
-      this.speech = this.sentences.join(" ");
-      this.$emit("speechend", {
-        sentences: this.sentences,
-        text: this.sentences.join(" ")
-      });
-    },
-    startSpeechRecognition() {
-      if (!recognition) {
-        this.error =
-          "Speech Recognition is not available on this browser. Please use Chrome or Firefox";
-        return false;
-      }
-      this.toggle = true;
-      recognition.lang = this.lang;
-      recognition.interimResults = true;
-      recognition.addEventListener("speechstart", () => {
-        this.speaking = true;
-      });
-      recognition.addEventListener("speechend", () => {
-        this.speaking = false;
-      });
-      recognition.addEventListener("result", event => {
-        const text = Array.from(event.results)
-          .map(result => result[0])
-          .map(result => result.transcript)
-          .join("");
-        this.runtimeTranscription = text;
-      });
-      recognition.addEventListener("end", () => {
-        if (this.runtimeTranscription !== "") {
-          this.sentences.push(
-            this.capitalizeFirstLetter(this.runtimeTranscription)
-          );
-          this.$emit(
-            "update:text",
-            `${this.text}${this.sentences.slice(-1)[0]}. `
-          );
-        }
-        this.runtimeTranscription = "";
-        recognition.stop();
-        if (this.toggle) {
-          // keep it going.
-          recognition.start();
-        }
-      });
-      recognition.start();
-    },
-    capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
+    speechEnd({ sentences, post_body }) {
+      // eslint-disable-next-line no-console
+      console.log("text", post_body);
+      // eslint-disable-next-line no-console
+      console.log("sentences", sentences);
+      this.sentences = sentences;
     },
     onFileChange() {
       this.file = this.$refs.file.files[0];
@@ -165,15 +102,19 @@ export default {
       ) {
         this.error =
           "Please use text-to-speech or type your message, not both.";
+        this.snackbar = true;
       } else if (!this.post_body && (speech && speech.length < 1)) {
         this.error = "You can't send an empty post!";
+        this.snackbar = true;
       } else if (
         (this.post_body && this.post_body.length > 240) ||
         (speech && speech.length > 240)
       ) {
         this.error = "Ensure this field has no more than 240 characters!";
+        this.snackbar = true;
       } else if (!this.file) {
         this.error = "Please upload a picture or video to go with your post";
+        this.snackbar = true;
       } else {
         let endpoint = "/api/posts/";
         let method = "POST";
@@ -226,9 +167,6 @@ export default {
     } else {
       return next();
     }
-  },
-  mounted() {
-    this.checkCompatibility();
   }
 };
 </script>
