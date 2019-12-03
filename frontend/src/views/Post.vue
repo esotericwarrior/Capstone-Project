@@ -4,7 +4,7 @@
       <v-col>
         <v-card class="mx-auto grey lighten-5" flat max-width="900">
           <div class="container">
-            <v-img :src="post.url" height="600px" />
+            <v-img contain :src="post.url" height="600px" />
             <blockquote
               class="imgur-embed-pub"
               lang="en"
