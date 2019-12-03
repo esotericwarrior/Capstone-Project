@@ -3,6 +3,15 @@
     <v-row no-gutters>
       <v-col>
         <v-card class="mx-auto grey lighten-5" flat max-width="900">
+          <v-list-item>
+            <v-list-item-avatar color="grey"></v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title class="headline">{{
+                post.author
+              }}</v-list-item-title>
+              <v-list-item-subtitle>{{ post.created_at }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
           <div class="container">
             <v-img contain :src="post.url" height="600px" />
             <blockquote
@@ -10,13 +19,12 @@
               lang="en"
               data-id="oBlivgM"
             ></blockquote>
-            <h1>{{ post.content }}</h1>
+            <v-card-text
+              align="justify-center"
+              class="headline font-weight-bold"
+              >{{ post.content }}</v-card-text
+            >
             <PostActions v-if="isPostAuthor" :slug="post.slug" />
-            <p class="mb-0">
-              Posted by:
-              <span class="author-name">{{ post.author }}</span>
-            </p>
-            <p>{{ post.created_at }}</p>
             <v-divider />
             <div>
               <v-form @submit.prevent="onSubmit">
