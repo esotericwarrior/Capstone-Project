@@ -2,6 +2,7 @@
   <v-container>
     <v-row>
       <v-col>
+        <span>{{ runtimeTranscription }}</span>
         <v-btn
           dark
           @click.stop="
