@@ -8,7 +8,7 @@
 
         <v-row no-gutters>
           <v-col>
-            <v-text-field
+            <v-textarea
               append
               auto-grow
               v-model="post_body"
@@ -20,7 +20,7 @@
                   @speechend="speechEnd"
                 ></speechToText>
               </template>
-            </v-text-field>
+            </v-textarea>
           </v-col>
         </v-row>
         <v-card-actions>
