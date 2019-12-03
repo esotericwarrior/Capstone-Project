@@ -61,7 +61,6 @@ let SpeechRecognition =
 let recognition = SpeechRecognition ? new SpeechRecognition() : false;
 import { apiService } from "@/common/api.service.js";
 import { imgurService } from "@/common/api.service.js";
-
 export default {
   name: "PostEditor",
   created() {},
@@ -118,15 +117,12 @@ export default {
       this.toggle = true;
       recognition.lang = this.lang;
       recognition.interimResults = true;
-
       recognition.addEventListener("speechstart", () => {
         this.speaking = true;
       });
-
       recognition.addEventListener("speechend", () => {
         this.speaking = false;
       });
-
       recognition.addEventListener("result", event => {
         const text = Array.from(event.results)
           .map(result => result[0])
@@ -134,7 +130,6 @@ export default {
           .join("");
         this.runtimeTranscription = text;
       });
-
       recognition.addEventListener("end", () => {
         if (this.runtimeTranscription !== "") {
           this.sentences.push(
@@ -162,7 +157,6 @@ export default {
     },
     onSubmit() {
       var speech = this.speech;
-
       // Tell the REST API to create or update a Post Instance
       if (
         this.post_body &&
@@ -171,7 +165,7 @@ export default {
       ) {
         this.error =
           "Please use text-to-speech or type your message, not both.";
-      } else if (!this.post_body && speech.length < 1) {
+      } else if (!this.post_body && (speech && speech.length < 1)) {
         this.error = "You can't send an empty post!";
       } else if (
         (this.post_body && this.post_body.length > 240) ||
@@ -183,39 +177,37 @@ export default {
       } else {
         let endpoint = "/api/posts/";
         let method = "POST";
-
         var new_content;
-
         if (!this.post_body) {
           new_content = speech;
         } else {
           new_content = this.post_body;
         }
-
         if (this.slug !== undefined) {
           endpoint += `${this.slug}/`;
           method = "PUT";
         }
-
         let imgur_data = new FormData();
+        var file_type;
+        if (this.file instanceof File) {
+          file_type = "file";
+        } else {
+          file_type = "base64";
+        }
         imgur_data.append("image", this.file);
         imgur_data.append("title", new_content);
-        imgur_data.append("type", "file");
-
+        imgur_data.append("type", file_type);
         let data = new FormData();
         data.append("content", new_content);
         data.append("file", this.file);
-
         imgurService(imgur_data).then(imgur_data => {
           // eslint-disable-next-line no-console
           console.log(imgur_data);
           // eslint-disable-next-line no-console
           console.log(imgur_data["data"]["data"]["link"]);
           data.append("url", imgur_data["data"]["data"]["link"]);
-
           // eslint-disable-next-line no-console
           console.log(data.get("url"));
-
           apiService(endpoint, method, data).then(post_data => {
             this.$router.push({
               name: "post",
