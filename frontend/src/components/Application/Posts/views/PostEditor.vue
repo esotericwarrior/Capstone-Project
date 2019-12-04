@@ -80,7 +80,6 @@
         <v-icon>{{ mediaToggle ? "Stop Mediastream" : "Start Mediastream" }}</v-icon>
       </v-btn>
     </v-flex>
-  </div>
 </template>
 
 <script>
