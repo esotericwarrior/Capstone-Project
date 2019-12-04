@@ -32,6 +32,7 @@
           </v-list-item-content>
         </v-list-item>
 
+        <div v-if="post.url.includes('imgur')" >
         <v-img
           class="white--text align-end"
           contain
@@ -39,6 +40,11 @@
           :src="post.url"
         >
         </v-img>
+        </div>
+        <div v-else-if="post.url.includes('vimeo')">
+          <iframe :src="post.url.replace('vimeo.com','player.vimeo.com/video')" height="600" width="650" frameborder="0" allowfullscreen></iframe>
+        </div>
+
 
         <v-card-actions>
           <v-tooltip bottom>
@@ -56,9 +62,14 @@
           </v-tooltip>
           <v-tooltip bottom>
             <template v-slot:activator="{ on }">
-              <v-btn icon>
+            <router-link
+              :to="{ name: 'post', params: { slug: post.slug } }"
+              class="post-link"
+              >              <v-btn icon>
                 <font-awesome-icon icon="comment" size="2x" v-on="on" />
               </v-btn>
+
+            </router-link>
             </template>
             <span>Comment</span>
           </v-tooltip>
