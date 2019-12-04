@@ -154,7 +154,7 @@ export default {
     startSpeechRecognition() {
       if (!recognition) {
         this.error =
-          "Speech Recognition is not available on this browser. Please use Chrome or Firefox";
+          "Speech Recognition is not available on this browser. Please use Chrome";
         return false;
       }
       this.toggle = true;
@@ -203,6 +203,8 @@ export default {
       this.file = this.$refs.file.files[0];
     },
     onSubmit() {
+      // eslint-disable-next-line no-console
+      console.log(this.file)
       var speech = this.speech;
 
       // Tell the REST API to create or update a Post Instance
@@ -369,6 +371,7 @@ export default {
       stopButton.addEventListener("click", function() {
         stopButton.style.display = "none";
         _this.stopMediaStream();
+        mediaRecorder.stop()
       });
 
       mediaRecorder.addEventListener("dataavailable", function(e) {
