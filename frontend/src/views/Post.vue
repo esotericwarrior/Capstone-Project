@@ -1,8 +1,13 @@
 <template>
   <div class="single-post mt-2">
     <div class="container">
+     <div v-if="mediaType == 'image'">
       <img :src="post.url">
       <blockquote class="imgur-embed-pub" lang="en" data-id="oBlivgM"></blockquote>
+    </div>
+    <div v-if="mediaType == 'video'">
+       <iframe :src="videoUrl" width="650" height="600" frameborder="0" allowfullscreen></iframe>
+    </div>
       <h1>{{ post.content }}</h1>
       <PostActions v-if="isPostAuthor" :slug="post.slug" />
       <p class="mb-0">
@@ -98,7 +103,9 @@ export default {
       post: {},
       requestUser: null,
       showForm: false,
-      userHasCommented: false
+      userHasCommented: false,
+      mediaType: null,
+      videoUrl: null
     };
   },
   methods: {
@@ -133,6 +140,13 @@ export default {
       apiService(endpoint).then(data => {
         this.post = data;
         this.setPageTitle(data.content);
+        if (data.url.includes("vimeo")){
+          this.mediaType = "video";
+          this.videoUrl = data.url.replace("vimeo.com", "player.vimeo.com/video");
+        }
+        else if (data.url.includes("imgur")){
+          this.mediaType = "image";
+        }
       });
     },
     onSubmit() {
