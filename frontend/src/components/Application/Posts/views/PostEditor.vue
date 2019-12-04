@@ -368,7 +368,6 @@ export default {
 
       stopButton.addEventListener("click", function() {
         stopButton.style.display = "none";
-        mediaRecorder.stop();
         _this.stopMediaStream();
       });
 
@@ -380,7 +379,11 @@ export default {
 
       mediaRecorder.addEventListener("stop", function() {
         downloadLink.style.display = "block";
-        downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+        
+        var blob = new Blob(recordedChunks);
+        _this.file = new File([blob], "video.webm", { type: "video/webm", lastModified: Date.now() });
+
+        downloadLink.href = URL.createObjectURL(blob);
         downloadLink.download = "video.webm";
         const playback_video = document.querySelector("#playback-video");
         const discardMediaButton = document.querySelector("#discard-media-button");
@@ -388,6 +391,7 @@ export default {
         playback_video.style.display = "block";
         discardMediaButton.style.display = "block";
         playback_video.load();
+
       });
 
       mediaRecorder.start();
