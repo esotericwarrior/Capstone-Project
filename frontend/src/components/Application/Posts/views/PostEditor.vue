@@ -36,14 +36,6 @@
       </v-card>
     </v-form>
     
-    <v-snackbar color="red" multi-line v-model="snackbar">
-      {{ error }}
-      <v-btn text @click="snackbar = false">
-        Close
-      </v-btn>
-    </v-snackbar>
-  </v-container>
-
     <video id="webcam-stream" autoplay muted style="display:none"></video>
     <button id="screenshot-button" @click="takePicture" style="display:none">
       Take Picture
@@ -55,13 +47,9 @@
     <canvas style="display:none;"></canvas>
     <video id="playback-video" style="display:none" controls></video>
     <button id="save-media-button" @click="saveMedia" style="display:none">
-       Add Media To Post
+      Add Media To Post
     </button>
-    <button
-      id="discard-media-button"
-      @click="discardMedia"
-      style="display:none"
-    >
+    <button id="discard-media-button" @click="discardMedia" style="display:none">
       Discard Media
     </button>
     <button id="stop-recording-button" style="display:none">
@@ -77,9 +65,19 @@
         :color="!mediaToggle ? 'grey' : speaking ? 'red' : 'red darken-3'"
         :class="{ 'animated infinite pulse': mediaToggle }"
       >
-        <v-icon>{{ mediaToggle ? "Stop Mediastream" : "Start Mediastream" }}</v-icon>
+        <v-icon>{{
+          mediaToggle ? "Stop Mediastream" : "Start Mediastream"
+        }}</v-icon>
       </v-btn>
     </v-flex>
+    
+    <v-snackbar color="red" multi-line v-model="snackbar">
+      {{ error }}
+      <v-btn text @click="snackbar = false">
+        Close
+      </v-btn>
+    </v-snackbar>
+  </v-container>
 </template>
 
 <script>
