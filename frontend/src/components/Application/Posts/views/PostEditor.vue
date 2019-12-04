@@ -107,7 +107,7 @@ export default {
   data() {
     return {
       error: null,
-      mediaToggle: false
+      mediaToggle: false,
       speaking: false,
       toggle: false,
       runtimeTranscription: "",
