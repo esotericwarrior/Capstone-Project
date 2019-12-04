@@ -64,7 +64,7 @@
     <canvas style="display:none;"></canvas>
     <video id="playback-video" style="display:none" controls></video>
     <button id="save-media-button" @click="saveMedia" style="display:none">
-      Save Media
+       Add Media To Post
     </button>
     <button
       id="discard-media-button"
@@ -222,6 +222,32 @@ export default {
         this.error = "Ensure this field has no more than 240 characters!";
       } else if (!this.file) {
         this.error = "Please upload a picture or video to go with your post";
+      } else if (this.file.type.includes("video")) {
+
+        let endpoint = "/upload/video/";
+        let method = "POST";
+        new_content = this.post_body;
+
+        let video_data = new FormData();
+        video_data.append("video", this.file);
+        video_data.append("content", new_content);
+        // eslint-disable-next-line no-console
+        console.log(Array.from(video_data));
+
+        apiService(endpoint, method, video_data).then(response => {
+          // eslint-disable-next-line no-console
+          video_data.append("url", response.data);
+          // eslint-disable-next-line no-console
+          console.log(video_data.get("url"));
+
+          apiService("/api/posts/", "POST", video_data).then(post_data => {
+            this.$router.push({
+              name: "post",
+              params: { slug: post_data.data.slug }
+            });
+          });
+        });
+
       } else {
         let endpoint = "/api/posts/";
         let method = "POST";
@@ -277,10 +303,7 @@ export default {
     checkMediaCompatibility() {
       if (!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) {
         this.error = "mediastream not supported";
-        //          alert("alert: mediastream not supported");
-      } else {
-        //      alert("alert: mediastream supported");
-      }
+      } 
     },
     startMediaStream() {
       const constraints = {

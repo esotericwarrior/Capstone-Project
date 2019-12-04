@@ -11,7 +11,7 @@ function apiService(endpoint, method, data) {
 
   var content_type;
 
-  if (endpoint == "/api/posts/"){
+  if (endpoint == "/api/posts/" || endpoint == "/upload/video/"){
     content_type = "multipart/form-data"
   }
   else{
