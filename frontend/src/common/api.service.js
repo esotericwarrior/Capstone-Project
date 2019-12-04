@@ -8,6 +8,7 @@ async function getJSON(response) {
 
 function apiService(endpoint, method, data) {
  if (method == "POST") {
+
   var content_type;
 
   if (endpoint == "/api/posts/") {
