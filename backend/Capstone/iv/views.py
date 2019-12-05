@@ -5,6 +5,7 @@ from posts.models import Post
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import redirect
+from django.http import HttpResponse
 import requests
 import json
 import vimeo
@@ -46,44 +47,43 @@ def image_form_upload(request):
 
 def video_form_upload(request):
     if request.method == 'POST':
-        form = VideoForm(request.POST, request.FILES)
-        if form.is_valid():
+        
+        # vimeo needs to upload from filepath, so save media temporarily
+        video = Video(videofile = request.FILES['video'])
+        video.save()
+        
+        client = vimeo.VimeoClient(
+          token='a3340925680abc80d0327ca333c3f57d',
+          key='900d7836b6e85f3ee6dde4ccce84e1e4aa45d986',
+          secret='+cwWHT7FDZEJeuS29Et2TjZQZRfoATTt0FHe8ou2EyXD9nBVt6xySAK3SG86Gz86lAt+L1vM6n3/2rp3ojehHILs8rfj0EcGxorHlqmI90PvXYbYzlQa/xwGSZQCJ02y'
+        )
+        
+        # grab file from where django saved it 
+        file_name = settings.MEDIA_ROOT + video.videofile.name
+        uri = client.upload(file_name, data={
+          'description': request.POST['content']
+        })
 
-            # vimeo needs to upload from filepath, so save media temporarily
-            video = Video(videofile = request.FILES['videofile'])
-            video.save()
-            
-            client = vimeo.VimeoClient(
-              token='a3340925680abc80d0327ca333c3f57d',
-              key='900d7836b6e85f3ee6dde4ccce84e1e4aa45d986',
-              secret='+cwWHT7FDZEJeuS29Et2TjZQZRfoATTt0FHe8ou2EyXD9nBVt6xySAK3SG86Gz86lAt+L1vM6n3/2rp3ojehHILs8rfj0EcGxorHlqmI90PvXYbYzlQa/xwGSZQCJ02y'
-            )
+        response = client.get(uri + '?fields=transcode.status').json()
+        if response['transcode']['status'] == 'complete':
+          print ('Your video finished transcoding.')
+        elif response['transcode']['status'] == 'in_progress':
+          print ('Your video is still transcoding.')
+        else:
+          print ('Your video encountered an error during transcoding.')
 
-            # grab file from where django saved it 
-            file_name = settings.MEDIA_ROOT + video.videofile.name
-            uri = client.upload(file_name, data={
-              'description': request.POST['description']
-            })
+        response = client.get(uri + '?fields=link').json()
+        external_link = response['link']
+        print(external_link)
+        
+        # save reference in database as a post
+        #new_post = Post(content = external_link, author = request.user)
+        #new_post.save()
 
-            response = client.get(uri + '?fields=transcode.status').json()
-            if response['transcode']['status'] == 'complete':
-              print ('Your video finished transcoding.')
-            elif response['transcode']['status'] == 'in_progress':
-              print ('Your video is still transcoding.')
-            else:
-              print ('Your video encountered an error during transcoding.')
+        # clean up
+        os.remove(settings.MEDIA_ROOT + video.videofile.name)
+        return HttpResponse({ external_link })
 
-            response = client.get(uri + '?fields=link').json()
-            external_link = response['link']
-            print(external_link)
-            
-            # save reference in database as a post
-            new_post = Post(content = external_link, author = request.user)
-            new_post.save()
-
-            # clean up
-            os.remove(settings.MEDIA_ROOT + video.videofile.name)
-            return redirect('video')
     else:
         form = VideoForm()
     return render(request, 'iv/video.html', {

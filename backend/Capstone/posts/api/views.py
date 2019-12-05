@@ -97,41 +97,6 @@ class PostViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
- #   @action(detail=True, methods=['post'])
- #   def post(request):
- #       form = ImageForm(request.POST, request.FILES)
-  #      if form.is_valid():
-            
-        #url = "https://api.imgur.com/3/upload"
-        #client_id = "f8a455e18a238be"
-        #headers = {'Authorization': 'Client-ID ' + client_id}
-        #data = {
-        #        'image': self.request.FILES.get('file').read(),
-        #        'title': self.request.POST['content'], 
-        #        'type': 'file'
-         #       }
-        #response = requests.request("POST", url, headers=headers, data=data)
-        #response_data = response.json()
-        #upload_success = response_data['success']
-        #print(response_data['data'])
-        #print(upload_success)
-        #external_link = response_data['data']['link']
-        #serializer_class.save(url=external_link)
-
-        #url = "https://api.imgur.com/3/upload"
-        #access_token = "931ddfab9e19c9a7512147c83459ce1d457e09cf"
-        #headers = {'Authorization': 'Bearer ' + access_token}
-        #data = {
-        #    'image': self.request.FILES.get('file').read(),
-       #    'title': self.request.POST['content'], 
-       #     'type': 'file'
-        #    }
-        #response = requests.post(url, data=data, headers=headers)
-        #print(response.json())
-        #response_data = response.json()
-        #upload_success = response_data['success']
-        #external_link = response_data['data']['link']
-        #print(upload_success)
 
 
 

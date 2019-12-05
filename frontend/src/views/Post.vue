@@ -13,7 +13,12 @@
             </v-list-item-content>
           </v-list-item>
           <div class="container">
-            <v-img contain :src="post.url" height="600px" />
+            <div v-if="mediaType == 'image'">
+              <v-img contain :src="post.url" height="600px" />
+            </div>
+            <div v-if="mediaType == 'video'">
+               <iframe :src="videoUrl" width="650" height="600" frameborder="0" allowfullscreen></iframe>
+            </div>
             <blockquote
               class="imgur-embed-pub"
               lang="en"
@@ -116,7 +121,9 @@ export default {
       post: {},
       requestUser: null,
       showForm: false,
-      userHasCommented: false
+      userHasCommented: false,
+      mediaType: null,
+      videoUrl: null
     };
   },
   methods: {
@@ -151,6 +158,13 @@ export default {
       apiService(endpoint).then(data => {
         this.post = data;
         this.setPageTitle(data.content);
+        if (data.url.includes("vimeo")){
+          this.mediaType = "video";
+          this.videoUrl = data.url.replace("vimeo.com", "player.vimeo.com/video");
+        }
+        else if (data.url.includes("imgur")){
+          this.mediaType = "image";
+        }
       });
     },
     onSubmit() {
