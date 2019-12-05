@@ -158,11 +158,11 @@ export default {
       apiService(endpoint).then(data => {
         this.post = data;
         this.setPageTitle(data.content);
-        if (data.url.includes("vimeo")){
+        if (data.url && data.url.includes("vimeo")){
           this.mediaType = "video";
           this.videoUrl = data.url.replace("vimeo.com", "player.vimeo.com/video");
         }
-        else if (data.url.includes("imgur")){
+        else if (data.url && data.url.includes("imgur")){
           this.mediaType = "image";
         }
       });
