@@ -29,7 +29,7 @@ SECRET_KEY = '4-mf9!839!2*seox%ao3dgikeltyua1vvi6kptbr^(kuf5@ek0'
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'https://hi-grandpa.herokuapp.com/']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'https://hi-grandpa.herokuapp.com/', '127.0.0.1']
 
 CORS_ORIGIN_WHITELIST = (
     'https://localhost:8080',
@@ -40,6 +40,8 @@ CORS_ORIGIN_WHITELIST = (
     'https://127.0.0.1:8000',
     'http://127.0.0.1:8080',
     'http://127.0.0.1:8000',
+    'http://localhost:8000',
+    'http://0.0.0.0:8000'
 )
 
 # Application definition
@@ -119,7 +121,7 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'grandpa1',
+        'NAME': 'grandpatest',
         'HOST': 'mongodb+srv://sample_user:467grandpapassword@cluster0-sjdfw.mongodb.net/test?retryWrites=true&w=majority',
         'USER': 'sample_user',
         'PASSWORD': '467grandpapassword',
@@ -199,11 +201,22 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FileUploadParser',
+    ),
     # Data Pagination
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 4
 }
 
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "assets"),
+    # os.path.join(BASE_DIR, "../../frontend/dist"),
+]
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': 'dist/',

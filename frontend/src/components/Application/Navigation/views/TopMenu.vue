@@ -50,7 +50,11 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn icon>
-            <font-awesome-icon icon="user-circle" size="2x" v-on="on" />
+            <router-link
+              :to="{ name: 'profile', params: { username: requestUser } }"
+            >
+              <font-awesome-icon icon="user-circle" size="2x" v-on="on" />
+            </router-link>
           </v-btn>
         </template>
         <span>My Profile</span>
@@ -75,12 +79,21 @@ export default {
   components: {
     FontAwesomeIcon
   },
-  data: () => ({
-    search: ""
-  }),
+  created() {
+    this.setRequestUser();
+  },
+  data() {
+    return {
+      requestUser: null,
+      search: ""
+    };
+  },
   methods: {
     clearSearch() {
       this.search = "";
+    },
+    setRequestUser() {
+      this.requestUser = window.localStorage.getItem("username");
     }
   }
 };
@@ -88,5 +101,6 @@ export default {
 <style lang="scss" scoped>
 a {
   text-decoration: none;
+  color: grey;
 }
 </style>

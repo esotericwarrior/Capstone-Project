@@ -3,20 +3,50 @@
     <div v-for="post in posts" :key="post.pk">
       <v-card class="mx-auto" max-width="650">
         <v-list-item>
-          <v-list-item-avatar color="grey"></v-list-item-avatar>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <router-link
+                :to="{
+                  name: 'profile',
+                  params: { username: post.author, displayname: post.author }
+                }"
+              >
+                <v-list-item-avatar color="grey" v-on="on"></v-list-item-avatar>
+              </router-link>
+            </template>
+            <span>{{ post.author }}</span>
+          </v-tooltip>
           <v-list-item-content>
             <v-list-item-title class="headline">
-              {{ post.author }}
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on }">
+                  <router-link
+                    :to="{ name: 'profile', params: { username: post.author } }"
+                  >
+                    <span v-on="on">{{ post.author }}</span>
+                  </router-link>
+                </template>
+                <span>{{ post.author }}</span>
+              </v-tooltip>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
-        <v-img
-          class="white--text align-end"
-          height="600px"
-          src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-        >
-        </v-img>
+        <div v-if="post.url">
+          <div v-if="post.url.includes('imgur')" >
+          <v-img
+            class="white--text align-end"
+            contain
+            height="600px"
+            :src="post.url"
+          >
+          </v-img>
+          </div>
+          <div v-else-if="post.url.includes('vimeo')">
+            <iframe :src="post.url.replace('vimeo.com','player.vimeo.com/video')" height="600" width="650" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+
 
         <v-card-actions>
           <v-tooltip bottom>
@@ -34,9 +64,14 @@
           </v-tooltip>
           <v-tooltip bottom>
             <template v-slot:activator="{ on }">
-              <v-btn icon>
+            <router-link
+              :to="{ name: 'post', params: { slug: post.slug } }"
+              class="post-link"
+              >              <v-btn icon>
                 <font-awesome-icon icon="comment" size="2x" v-on="on" />
               </v-btn>
+
+            </router-link>
             </template>
             <span>Comment</span>
           </v-tooltip>
@@ -99,8 +134,12 @@ export default {
       loader: null,
       loadingPosts: false,
       next: null,
-      posts: []
+      posts: [],
+      requestUser: null
     };
+  },
+  created() {
+    this.setRequestUser();
   },
   methods: {
     getPosts() {
@@ -133,6 +172,12 @@ export default {
       let endpoint = `/api/posts/${post.id}/like/`;
       apiService(endpoint, "POST");
     },
+    setPageTitle() {
+      document.title = "OSU Capstone";
+    },
+    setRequestUser() {
+      this.requestUser = window.localStorage.getItem("username");
+    },
     toggleLike(post) {
       post.user_has_liked === false
         ? this.likePost(post)
@@ -147,6 +192,7 @@ export default {
   },
   mounted() {
     this.getPosts();
+    this.setPageTitle();
   },
   watch: {
     loader() {
@@ -161,6 +207,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .post-link {
   font-weight: bold;
   color: black;

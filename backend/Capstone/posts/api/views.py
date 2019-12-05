@@ -4,10 +4,15 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.parsers import FileUploadParser, MultiPartParser, FormParser, JSONParser
 
 from posts.api.permissions import IsAuthorOrReadOnly
 from posts.api.serializers import CommentSerializer, PostSerializer
 from posts.models import Comment, Post
+from iv.forms import VideoForm, ImageForm
+from rest_framework.decorators import action
+import requests
+import json
 
 
 class CommentLikeAPIView(APIView):
@@ -87,9 +92,12 @@ class PostViewSet(viewsets.ModelViewSet):
     lookup_field = "slug"
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
+    parser_classes = (FormParser, MultiPartParser, FileUploadParser, JSONParser)
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+
 
 
 class CommentCreateAPIView(generics.CreateAPIView):
