@@ -32,17 +32,19 @@
           </v-list-item-content>
         </v-list-item>
 
-        <div v-if="post.url.includes('imgur')" >
-        <v-img
-          class="white--text align-end"
-          contain
-          height="600px"
-          :src="post.url"
-        >
-        </v-img>
-        </div>
-        <div v-else-if="post.url.includes('vimeo')">
-          <iframe :src="post.url.replace('vimeo.com','player.vimeo.com/video')" height="600" width="650" frameborder="0" allowfullscreen></iframe>
+        <div v-if="post.url">
+          <div v-if="post.url.includes('imgur')" >
+          <v-img
+            class="white--text align-end"
+            contain
+            height="600px"
+            :src="post.url"
+          >
+          </v-img>
+          </div>
+          <div v-else-if="post.url.includes('vimeo')">
+            <iframe :src="post.url.replace('vimeo.com','player.vimeo.com/video')" height="600" width="650" frameborder="0" allowfullscreen></iframe>
+          </div>
         </div>
 
 

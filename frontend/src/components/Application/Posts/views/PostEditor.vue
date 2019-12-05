@@ -150,15 +150,13 @@ export default {
       } else if (!this.post_body && (speech && speech.length < 1)) {
         this.error = "You can't send an empty post!";
         this.snackbar = true;
-      } else if (!this.post_body && (speech && speech.length < 1)) {
-        this.error = "You can't send an empty post!";
       } else if (
         (this.post_body && this.post_body.length > 240) ||
         (speech && speech.length > 240)
       ) {
         this.error = "Ensure this field has no more than 240 characters!";
         this.snackbar = true;
-      } else if (this.file.type && this.file.type.includes("video")) {
+      } else if (this.file && this.file.type && this.file.type.includes("video")) {
 
         let endpoint = "/upload/video/";
         let method = "POST";
