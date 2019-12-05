@@ -172,6 +172,9 @@ export default {
       let endpoint = `/api/posts/${post.id}/like/`;
       apiService(endpoint, "POST");
     },
+    setPageTitle() {
+      document.title = "OSU Capstone";
+    },
     setRequestUser() {
       this.requestUser = window.localStorage.getItem("username");
     },
@@ -189,6 +192,7 @@ export default {
   },
   mounted() {
     this.getPosts();
+    this.setPageTitle();
   },
   watch: {
     loader() {
