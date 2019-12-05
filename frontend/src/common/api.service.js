@@ -7,9 +7,8 @@ async function getJSON(response) {
 }
 
 function apiService(endpoint, method, data) {
+ var content_type;
  if (method == "POST") {
-
-  var content_type;
 
   if (endpoint == "/api/posts/") {
     content_type = "multipart/form-data"
@@ -27,7 +26,25 @@ function apiService(endpoint, method, data) {
        }
     })
   }
+  else if (method == "PATCH"){
 
+    if (endpoint.includes("/api/posts/")) {
+      content_type = "multipart/form-data"
+    }
+    else {
+      content_type = "application/json"
+    }
+
+    return axios.patch(endpoint,
+      data,
+      {
+         headers: {
+            "Content-Type": content_type,
+            "X-CSRFTOKEN": CSRF_TOKEN
+         }
+      })
+  }
+  
   else {
     const config = {
     method: method || "GET",

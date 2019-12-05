@@ -90,7 +90,13 @@ export default {
       this.sentences = sentences;
     },
     onFileChange() {
-      this.file = this.$refs.file.files[0];
+      if((this.$refs.file.files[0].type.includes("image") && (this.$refs.file.files[0].type.includes("jpeg") || this.$refs.file.files[0].type.includes("gif") || this.$refs.file.files[0].type.includes("tiff") || this.$refs.file.files[0].type.includes("apng") || this.$refs.file.files[0].type.includes("png"))) || (this.$refs.file.files[0].type.includes("video"))){
+        this.file = this.$refs.file.files[0];
+      }
+      else{
+        this.error = "File type not supported. File will not be uploaded. Please choose another file.";
+        this.snackbar = true;
+      }
     },
     onSubmit() {
       var speech = this.speech;
@@ -112,9 +118,6 @@ export default {
       ) {
         this.error = "Ensure this field has no more than 240 characters!";
         this.snackbar = true;
-      } else if (!this.file) {
-        this.error = "Please upload a picture or video to go with your post";
-        this.snackbar = true;
       } else {
         let endpoint = "/api/posts/";
         let method = "POST";
@@ -126,36 +129,49 @@ export default {
         }
         if (this.slug !== undefined) {
           endpoint += `${this.slug}/`;
-          method = "PUT";
+          method = "PATCH";
         }
-        let imgur_data = new FormData();
-        var file_type;
-        if (this.file instanceof File) {
-          file_type = "file";
-        } else {
-          file_type = "base64";
+        if (this.file != null){
+            let imgur_data = new FormData();
+	        var file_type;
+	        if (this.file instanceof File) {
+	          file_type = "file";
+	        } else {
+	          file_type = "base64";
+	        }
+	        imgur_data.append("image", this.file);
+	        imgur_data.append("title", new_content);
+	        imgur_data.append("type", file_type);
+	        let data = new FormData();
+	        data.append("content", new_content);
+	        data.append("file", this.file);
+	        imgurService(imgur_data).then(imgur_data => {
+	          // eslint-disable-next-line no-console
+	          console.log(imgur_data);
+	          // eslint-disable-next-line no-console
+	          console.log(imgur_data["data"]["data"]["link"]);
+	          data.append("url", imgur_data["data"]["data"]["link"]);
+	          // eslint-disable-next-line no-console
+	          console.log(data.get("url"));
+	          apiService(endpoint, method, data).then(post_data => {
+	            this.$router.push({
+	              name: "post",
+	              params: { slug: post_data.data.slug }
+	            });
+	          });
+	        });
         }
-        imgur_data.append("image", this.file);
-        imgur_data.append("title", new_content);
-        imgur_data.append("type", file_type);
-        let data = new FormData();
-        data.append("content", new_content);
-        data.append("file", this.file);
-        imgurService(imgur_data).then(imgur_data => {
-          // eslint-disable-next-line no-console
-          console.log(imgur_data);
-          // eslint-disable-next-line no-console
-          console.log(imgur_data["data"]["data"]["link"]);
-          data.append("url", imgur_data["data"]["data"]["link"]);
-          // eslint-disable-next-line no-console
-          console.log(data.get("url"));
-          apiService(endpoint, method, data).then(post_data => {
-            this.$router.push({
+        else{
+           let data = new FormData();
+           data.append("content", new_content);
+       	   apiService(endpoint, method, data).then(post_data => {
+           this.$router.push({
               name: "post",
               params: { slug: post_data.data.slug }
             });
           });
-        });
+        }
+
       }
     }
   },
